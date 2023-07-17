@@ -82,9 +82,12 @@ test("add([10,20],[30,['40','abc']]) => 100", function(){
 test("add(function(){ return 10;}, function(){ return 20;}) => 30", function(){
     expect(add(function(){ return 10;}, function(){ return 20;})).toBe(30);
 })
+
 test("add(function(){ return [10,20];}, function(){ return [30,'40','abc'];}) => 100", function(){
     expect(add(function(){ return [10,20];}, function(){ return [30,'40','abc'];})).toBe(100);
 })
+
+
 test("add([function(){ return [10,20];}, function(){ return [30,'40','abc'];}]) => 100", function(){
     expect(add([function(){ return [10,20];}, function(){ return [30,'40','abc'];}])).toBe(100);
 })
