@@ -35,16 +35,21 @@
 3. Object Based (Visual Basic, Delphi, **JavaScript**)
 4. Object Oriented (C++, Java, C#)
 5. Functional (Haskell, LISP, F#, Scala, **JavaScript**)
-
+---
 1. loosely typed (**JavaScript**, Python)
 2. strongly typed
-
+---
 1. static 
 2. dynamic (**JavaScript**)
 ```
 var obj = {}
+
+//add attributes after the object is created
 obj.id = 100
 obj.name = 'Pen'
+
+//remove attributes from an object
+delete obj.id
 ```
 
 ### Functional Language ###
