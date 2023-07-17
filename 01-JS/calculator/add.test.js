@@ -1,5 +1,23 @@
 function add(x,y){
-    return x + y;
+    function parseArg(n){
+        if (typeof n === 'function'){
+            return parseArg(n());
+        }
+        if (Array.isArray(n)){
+            // TODO: remove the duplication
+            var result = 0;
+            for (var i = 0; i < n.length; i++){
+                result += parseArg(n[i]);
+            }
+            return result;
+        }
+        return isNaN(n) ? 0 : parseInt(n);
+    }  
+    var result = 0;
+    for (var i = 0; i < arguments.length; i++){
+        result += parseArg(arguments[i])
+    }
+    return result
 }
 
 test('add(10,20) => 30', function(){
@@ -13,36 +31,60 @@ test('add(10,20) => 30', function(){
     expect(actual).toBe(expected);
 })
 
-test.skip("add(10,'20') => 30", function(){
-
+/* Hint : use parseInt() to convert string to number */
+test("add(10,'20') => 30", function(){
+    expect(add(10,'20')).toBe(30);
 })
-test.skip("add(10, 'abc') => 10", function(){
 
+/* Hint : use IsNaN() */
+test("add(10, 'abc') => 10", function(){
+    expect(add(10, 'abc')).toBe(10);
+});
+
+/* Hint : y is undefined */
+test("add(10) => 10", function(){
+    expect(add(10)).toBe(10);
 })
-test.skip("add(10) => 10", function(){
 
+/* Hint : x & y are undefined */
+test("add() => 0", function(){
+    expect(add()).toBe(0);
 })
-test.skip("add() => 0", function(){
 
+/* Hint : use arguments object 
+    - array like object containing all the arguments passed to the function
+    - arguments.length => # of arguments 
+    - arguments[0]
+    - arguments[1]
+    - arguments[2]....
+*/
+test("add(10,20,30,40,50) => 150", function(){
+    expect(add(10,20,30,40,50)).toBe(150);
 })
-test.skip("add(10,20,30,40,50) => 150", function(){
 
+test("add(10,20,30,'40','abc') => 100", function(){
+    expect(add(10,20,30,'40','abc')).toBe(100);
 })
-test.skip("add(10,20,30,'40','abc') => 100", function(){
 
+/* Hint : Use Array.isArray() to check if an object is an array */
+test("add([10,20],[30,'40','abc']) => 100", function(){
+    expect(add([10,20],[30,'40','abc'])).toBe(100);
 })
-test.skip("add([10,20],[30,'40','abc']) => 100", function(){
-
+test("add([10,20],[30,['40','abc']]) => 100", function(){
+    expect(add([10,20],[30,['40','abc']])).toBe(100);
 })
-test.skip("add([10,20],[30,['40','abc']]) => 100", function(){
 
+/* Hint : Use typeof() to check if an object is an function  */
+/* 
+    var x = function(){}
+    typeof x === 'function'
+*/
+test("add(function(){ return 10;}, function(){ return 20;}) => 30", function(){
+    expect(add(function(){ return 10;}, function(){ return 20;})).toBe(30);
 })
-test.skip("add(function(){ return 10;}, function(){ return 20;}) => 30", function(){
-
+test("add(function(){ return [10,20];}, function(){ return [30,'40','abc'];}) => 100", function(){
+    expect(add(function(){ return [10,20];}, function(){ return [30,'40','abc'];})).toBe(100);
 })
-test.skip("add(function(){ return [10,20];}, function(){ return [30,'40','abc'];}) => 100", function(){
-
-})
-test.skip("add([function(){ return [10,20];}, function(){ return [30,'40','abc'];}]) => 100", function(){
-
+test("add([function(){ return [10,20];}, function(){ return [30,'40','abc'];}]) => 100", function(){
+    expect(add([function(){ return [10,20];}, function(){ return [30,'40','abc'];}])).toBe(100);
 })
