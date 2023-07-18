@@ -1,3 +1,4 @@
+/* 
 function memoize(fn){
     var results = {}
     return function(n){
@@ -6,6 +7,19 @@ function memoize(fn){
         console.log('processing ', n);
         results[n] = fn(n)
         return results[n]
+    }
+} 
+*/
+
+function memoize(fn){
+    var results = {}
+    return function(){
+        var key = JSON.stringify(arguments);
+        if (typeof results[key] !== 'undefined')
+            return results[key];
+        console.log('processing ', arguments);
+        results[key] = fn.apply(this, arguments)
+        return results[key]
     }
 }
 
@@ -39,3 +53,7 @@ var isOddOrEven = memoize(function(n){
     if (n % 2 === 0) return 'even';
     return 'odd';
 })
+
+function add(x,y){
+    return x + y
+}
