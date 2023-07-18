@@ -1,7 +1,6 @@
 var isPrime = (function (){
     var results = {}
-
-    return function isPrime(n){
+    return function(n){
         if (typeof results[n] !== 'undefined')
             return results[n];
         console.log('processing ', n);
