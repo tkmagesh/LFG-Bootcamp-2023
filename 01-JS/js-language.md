@@ -126,7 +126,7 @@ fn()
 
 ## Implicit Values in a function ##
 - arguments
-    - array like object containing all the arguments passed to the function
+    - array **like** object containing all the arguments passed to the function
     - arguments.length => # of arguments 
     - arguments[0]
     - arguments[1]
