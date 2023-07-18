@@ -1,0 +1,35 @@
+Create an object and assign it to variable (spinner)
+
+var spinner = /*.....*/
+
+the created object should have the following methods:
+- up()
+- down()
+
+The behavior of the methods should be as follows:
+
+spinner.up() // => 1
+spinner.up() // => 2
+spinner.up() // => 3
+spinner.up() // => 4
+
+spinner.down() //=> 3
+spinner.down() //=> 2
+spinner.down() //=> 1
+spinner.down() //=> 0
+spinner.down() //=> -1
+
+IMPORTANT:
+    There should be NO way by which one can influence the outcome of the up and down methods
+
+    The following SHOULD NOT be possible
+    spinner.count = 10000
+    spinner.up() // => 10001
+
+    OR
+
+    window.count = 10000
+    spinner.up() //=> 10001
+
+Note:
+    NO HTML, NO DOM, NO Click event handler
