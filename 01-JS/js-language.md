@@ -133,3 +133,75 @@ fn()
     - arguments[2]....
 
 - this
+
+## this (Invocation Context) ##
+- In JS, it DOES NOT matter WHERE the function is or WHO owns the function
+- What matters is **HOW** the function is invoked
+- There are 6 different ways to invoke a function 
+
+### When a function is invoked... ###
+- As a method of an object (obj)
+    - this => obj
+    ```
+        var person = {
+            name : 'Magesh'
+        }
+        
+        function whoAmI(){
+            console.log('I am ', this.name);
+        }
+        
+        //make the 'whoAmI' function a method of 'person'
+        person.whoAmI = whoAmI;
+
+        person.whoAmI()
+
+        //create another object
+        var product = {
+            name : 'Pen'
+        }
+        
+        product.whoAmI = whoAmI
+
+        product.whoAmI()
+    ```
+- As a function
+    - this => global scope (window in the browser)
+
+- Using the "call()" method of the function
+    ```
+    var person = {
+        name : 'Magesh'
+    }
+    
+    function whoAmI(){
+        console.log('I am ', this.name);
+    }
+
+    whoAmI.call(person)
+
+    function greet(salutation, msg){
+        console.log(salutation + this.name + ', ' + msg)
+    }
+
+    greet.call(person, 'Mr.', 'Have a nice day!')
+    ```
+
+- Using the "apply()" method of the function
+    ```
+    var person = {
+        name : 'Magesh'
+    }
+    
+    function whoAmI(){
+        console.log('I am ', this.name);
+    }
+
+    whoAmI.apply(person)
+
+    function greet(salutation, msg){
+        console.log(salutation + this.name + ', ' + msg)
+    }
+
+    greet.apply(person, ['Mr.', 'Have a nice day!'] )
+    ```
