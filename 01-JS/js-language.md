@@ -205,3 +205,14 @@ fn()
 
     greet.apply(person, ['Mr.', 'Have a nice day!'] )
     ```
+- As an "Immediately Invoked Function Expression (IIFE)"
+    ```
+    (function fn(){
+        console.log('fn invoked')
+    })()
+
+    
+    (function add(x,y){
+        return x + y
+    })(100,200)
+    ```
