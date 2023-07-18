@@ -14,24 +14,101 @@ Write the functions for the following tasks:
     - groupBy
 */
 
-console.log('Initial List')
-console.table(products);
-
-console.log('Sorting')
-console.log('Sort products by id')
-function sortProductsById(){
-    //bubble sort
+function useCase(title, fn){
+    console.group(title);
+    fn();
+    console.groupEnd();
 }
-console.table(products);
 
-console.log('Sort any list by any attribute')
-function sort(/*  */){
+useCase('Initial List', function(){
+    console.table(products);
+})
 
-}
-console.log('products by cost')
-sort(/*  */)
-console.table(products)
+useCase('Sorting', function(){
+    useCase('Sort products by id', function(){
+        function sortProductsById(){
+            for(var i = 0; i < products.length-1; i++){
+                for (var j = i+1; j < products.length; j++){
+                    if (products[i].id > products[j].id){
+                        var temp = products[i];
+                        products[i] = products[j];
+                        products[j] = temp;
+                    }
+                }
+            }
+        }
+        sortProductsById();
+        console.table(products);
+    });
 
-console.log('products by units')
-sort(/*  */)
-console.table(products)
+    function sort(list, comparer /* either attrName or comparerFn */){
+        var comparerFn = null;
+        if (typeof comparer === 'function') comparerFn = comparer;
+        if (typeof comparer === 'string') {
+            comparerFn = function(p1, p2){
+                if (p1[comparer] > p2[comparer]) return 1
+                if (p1[comparer] < p2[comparer]) return -1
+                return 0
+            }
+        }
+        if (!comparerFn) return;
+        for(var i = 0; i < list.length-1; i++){
+            for (var j = i+1; j < list.length; j++){
+                if (comparerFn(list[i], list[j]) > 0){
+                    var temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
+                }
+            }
+        }
+    }
+    
+    useCase('Sort any list by any attribute', function(){
+        /* function sortByAttr(list, attrName){
+            for(var i = 0; i < list.length-1; i++){
+                for (var j = i+1; j < list.length; j++){
+                    if (list[i][attrName] > list[j][attrName]){
+                        var temp = list[i];
+                        list[i] = list[j];
+                        list[j] = temp;
+                    }
+                }
+            }
+        } */
+        useCase('products by cost', function(){
+            sort(products, 'cost')
+            console.table(products)
+        });
+
+        useCase('products by units', function(){
+            sort(products, 'units')
+            console.table(products)
+        });
+    });
+
+    useCase('Sort any list by any comparer', function(){
+        /* function sortByComparer(list, comparerFn){
+            for(var i = 0; i < list.length-1; i++){
+                for (var j = i+1; j < list.length; j++){
+                    if (comparerFn(list[i], list[j]) > 0){
+                        var temp = list[i];
+                        list[i] = list[j];
+                        list[j] = temp;
+                    }
+                }
+            }
+        } */
+
+        useCase('products by value [cost * units]', function(){
+            function productsComparerByValue(p1, p2){
+                var p1Value = p1.cost * p1.units;
+                var p2Value = p2.cost * p2.units;
+                if (p1Value < p2Value) return -1;
+                if (p1Value === p2Value) return 0;
+                return 1;
+            }
+            sort(products, productsComparerByValue)
+            console.table(products)
+        });
+    });
+});
