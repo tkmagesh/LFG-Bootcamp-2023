@@ -125,22 +125,53 @@ useCase('Sort', function(){
 useCase('Filter', function(){
     useCase('Concrete Implementations', function(){
         useCase('Filter stationary products [category = stationary]', function(){
-            // write the function to filter stationary products
+            function filterStationaryProducts(){
+                var result = [];
+                for (var i = 0;i < products.length; i++){
+                    if (products[i].category === 'stationary')
+                        result.push(products[i])
+                }
+                return result
+            }
+            var stationaryProducts = filterStationaryProducts()
+            console.table(stationaryProducts)
         });
         useCase('Filter costly products [cost > 50]', function(){
-            //write the function to filter costly products
+            function filterCostlyProducts(){
+                var result = [];
+                for (var i = 0;i < products.length; i++){
+                    if (products[i].cost > 50)
+                        result.push(products[i])
+                }
+                return result
+            }
+            var costlyProducts = filterCostlyProducts()
+            console.table(costlyProducts)
         })
     })
     useCase('Abstract Implementation', function(){
-        function filter(/* ... */){
-
+        function filter(list, predicate){
+             var result = [];
+                for (var i = 0;i < list.length; i++){
+                    if (predicate(list[i]) === true)
+                        result.push(list[i])
+                }
+                return result
         }
         useCase('Any list by any criteria', function(){
             useCase('Filter stationary products [category = stationary]', function(){
-                // use the 'filter' function to filter stationary products
+                function stationaryProductPredicate(product){
+                    return product.category === 'stationary'
+                }
+                var stationaryProducts = filter(products, stationaryProductPredicate)
+                console.table(stationaryProducts);
             });
             useCase('Filter costly products [cost > 50]', function(){
-                //use the 'filter' function to filter costly products
+                function costlyProductPredicate(product){
+                    return product.cost > 50
+                }
+                var costlyProducts = filter(products, costlyProductPredicate)
+                console.table(costlyProducts)
             })
         })
     })
