@@ -28,7 +28,7 @@ function add(x,y){
         if (Array.isArray(n)) return add.apply(this, n)
         return isNaN(n) ? 0 : parseInt(n);
     }  
-    return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + add([].slice.call(arguments, 1))
+    return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + add(Array.prototype.slice.call(arguments, 1))
 } 
 
 test('add(10,20) => 30', function(){

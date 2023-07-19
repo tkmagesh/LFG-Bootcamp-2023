@@ -234,3 +234,7 @@ fn()
 - once
 - after
 - pairs
+
+## Prototypal Inheritance ##
+- One object acts as a base object for a family of object instances
+![image prototypal inheritance](./inheritance.png)
