@@ -284,5 +284,47 @@ useCase("GroupBy", function(){
             var productsByCategory = groupProductsByCategory()
             console.log(productsByCategory)
         })
+        useCase("Products by cost", function(){
+            function groupProductsByCost(){
+                var result = {}
+                for (var i = 0; i < products.length; i++){
+                    var product = products[i],
+                        key = product.cost > 50 ? 'costly' : 'affordable';
+                    if (typeof result[key] === 'undefined')
+                        result[key] = [];
+                    result[key].push(product)
+                }
+                return result;
+            }
+            var productsByCost = groupProductsByCost()
+            console.log(productsByCost)
+        })
+    })
+    useCase("Generalized implementations", function(){
+        function groupBy(list, keySelectorFn){
+            var result = {}
+            for (var i = 0; i < list.length; i++){
+                var product = list[i],
+                    key = keySelectorFn(product);
+                if (typeof result[key] === 'undefined')
+                    result[key] = [];
+                result[key].push(product)
+            }
+            return result;
+        }
+        useCase("Products by category", function(){
+            function categoryKeySelector(product){
+                return product.category
+            }
+            var productsByCategory = groupBy(products, categoryKeySelector)
+            console.log(productsByCategory)
+        })
+        useCase("Products by cost", function(){
+            function costKeySelector(product){
+                return product.cost > 50 ? 'costly' : 'affordable'
+            }
+            var productsByCost = groupBy(products, costKeySelector)
+            console.log(productsByCost)
+        })
     })
 })
