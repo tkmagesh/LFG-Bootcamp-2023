@@ -301,8 +301,16 @@ useCase("GroupBy", function(){
         })
     })
     useCase("Generalized implementations", function(){
-        function groupBy(list, keySelectorFn){
+        function groupBy(list, keySelector){
             var result = {}
+            var keySelectorFn = null;
+            if (typeof keySelector === 'function') keySelectorFn = keySelector;
+            if (typeof keySelector === 'string') {
+                keySelectorFn = function(item){
+                    return item[keySelector]
+                }
+            }
+            if (!keySelectorFn) return result;
             for (var i = 0; i < list.length; i++){
                 var product = list[i],
                     key = keySelectorFn(product);
@@ -313,10 +321,13 @@ useCase("GroupBy", function(){
             return result;
         }
         useCase("Products by category", function(){
+            /* 
             function categoryKeySelector(product){
                 return product.category
             }
-            var productsByCategory = groupBy(products, categoryKeySelector)
+            var productsByCategory = groupBy(products, categoryKeySelector) 
+            */
+            var productsByCategory = groupBy(products, 'category') 
             console.log(productsByCategory)
         })
         useCase("Products by cost", function(){
