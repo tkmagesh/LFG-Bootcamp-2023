@@ -158,6 +158,11 @@ useCase('Filter', function(){
                 }
                 return result
         }
+        function negate(predicateFn){
+            return function(item){
+                return !predicateFn(item)
+            }
+        }
         useCase('Any list by any criteria', function(){
             useCase('Filter stationary products [category = stationary]', function(){
                 function stationaryProductPredicate(product){
@@ -166,12 +171,48 @@ useCase('Filter', function(){
                 var stationaryProducts = filter(products, stationaryProductPredicate)
                 console.table(stationaryProducts);
             });
-            useCase('Filter costly products [cost > 50]', function(){
+            useCase("Products by Cost", function(){
                 function costlyProductPredicate(product){
                     return product.cost > 50
                 }
-                var costlyProducts = filter(products, costlyProductPredicate)
-                console.table(costlyProducts)
+                /* 
+                function affordableProductPredicate(product){
+                    return product.cost <= 50
+                } 
+                */
+                /* 
+                function affordableProductPredicate(product){
+                    return !costlyProductPredicate(product)
+                } 
+                */
+                var affordableProductPredicate = negate(costlyProductPredicate);
+                
+                useCase('Filter costly products [cost > 50]', function(){
+                    var costlyProducts = filter(products, costlyProductPredicate)
+                    console.table(costlyProducts)
+                })
+                useCase('Filter affordable products [!costlyProduct]', function(){
+                    var affordableProducts = filter(products, affordableProductPredicate)
+                    console.table(affordableProducts)
+                })
+            })
+            useCase("Products by Units", function(){
+                function understockedProductPredicate(product){
+                    return product.units <= 60;
+                }
+                function wellstockedProductPredicate(product){
+                    return !understockedProductPredicate(product)
+                }
+                useCase('Filter understocked products [units <= 60]', function(){
+                    
+                    var understockedProducts = filter(products, understockedProductPredicate)
+                    console.table(understockedProducts);
+                })
+                useCase('Filter wellstocked products [units > 60]', function(){
+                    
+                    var wellstockedProducts = filter(products, wellstockedProductPredicate)
+                    console.table(wellstockedProducts);
+                })
             })
         })
     })
