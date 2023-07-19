@@ -216,3 +216,21 @@ fn()
         return x + y
     })(100,200)
     ```
+- Using the "new" keyword
+    - When a function is invoked using the "new" keyword
+        - this => new object
+        - this => returned by default
+
+
+## Functional Programming ##
+### Create the following functions ###
+- map
+- find
+- reject (opp of filter)
+- every
+- some
+- max
+- min
+- once
+- after
+- pairs
