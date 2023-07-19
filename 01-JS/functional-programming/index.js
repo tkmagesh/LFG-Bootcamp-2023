@@ -74,6 +74,11 @@ useCase('Sort', function(){
                     }
             
         }
+        function getDescComparer(comparer){
+            return function(){
+                return comparer.apply(this, arguments) * -1;
+            }
+        }
         useCase('Any list by any attribute', function(){
             function sortByAttr(list, attrName){
                 for(var i =0;i < list.length-1; i++)
@@ -106,16 +111,27 @@ useCase('Sort', function(){
                             list[j] = temp;
                         }
             }
+            function productsComparerByValue(p1, p2){
+                var p1Value = p1.cost * p1.units,
+                    p2Value = p2.cost * p2.units;
+                if (p1Value < p2Value) return -1;
+                if (p1Value === p2Value) return 0;
+                return 1;
+            }
             useCase('products by product value [cost * units]', function(){
-                function productsComparerByValue(p1, p2){
-                    var p1Value = p1.cost * p1.units,
-                        p2Value = p2.cost * p2.units;
-                    if (p1Value < p2Value) return -1;
-                    if (p1Value === p2Value) return 0;
-                    return 1;
-                }
+                
                 // sortByComparer(products, productsComparerByValue)
                 sort(products, productsComparerByValue)
+                console.table(products)
+            })
+            useCase('products by product value [cost * units][descending]', function(){
+                /* 
+                function productsComparerByValueDesc(p1, p2){
+                    return productsComparerByValue(p1, p2) * -1;
+                } 
+                */
+                var productsComparerByValueDesc = getDescComparer(productsComparerByValue)
+                sort(products, productsComparerByValueDesc)
                 console.table(products)
             })
         })
@@ -159,8 +175,8 @@ useCase('Filter', function(){
                 return result
         }
         function negate(predicateFn){
-            return function(item){
-                return !predicateFn(item)
+            return function(){
+                return !predicateFn.apply(this, arguments)
             }
         }
         useCase('Any list by any criteria', function(){
@@ -186,7 +202,7 @@ useCase('Filter', function(){
                 } 
                 */
                 var affordableProductPredicate = negate(costlyProductPredicate);
-                
+
                 useCase('Filter costly products [cost > 50]', function(){
                     var costlyProducts = filter(products, costlyProductPredicate)
                     console.table(costlyProducts)
