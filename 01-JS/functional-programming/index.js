@@ -266,3 +266,23 @@ useCase('Filter', function(){
         })
     })
 })
+
+useCase("GroupBy", function(){
+    useCase("Concrete implementations", function(){
+        useCase("Products by category", function(){
+            function groupProductsByCategory(){
+                var result = {}
+                for (var i = 0; i < products.length; i++){
+                    var product = products[i],
+                        key = product.category;
+                    if (typeof result[key] === 'undefined')
+                        result[key] = [];
+                    result[key].push(product)
+                }
+                return result;
+            }
+            var productsByCategory = groupProductsByCategory()
+            console.log(productsByCategory)
+        })
+    })
+})
