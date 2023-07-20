@@ -46,9 +46,13 @@ function useCase(title, fn){
     console.groupEnd();
 }
 
+/* 
 useCase('Initial List', function(){
     console.table(products);
-})
+}) 
+*/
+
+useCase('Initial List', () => console.table(products))
     
 useCase('Sort', function(){
     useCase('Default Sort [products by id]', function(){
@@ -109,11 +113,16 @@ useCase('Sort', function(){
             
         }
         // convert the below to ES6
+        /* 
         function getDescComparer(comparer){
             return function(){
                 return comparer.apply(this, arguments) * -1;
             }
-        }
+        } 
+        */
+
+        const getDescComparer = comparer => (...args) => comparer(...args) * -1;
+
         useCase('Any list by any attribute', function(){
             function sortByAttr(list, attrName){
                 for(var i =0;i < list.length-1; i++)
@@ -147,13 +156,21 @@ useCase('Sort', function(){
                         }
             }
             // convert the below to ES6
+           /* 
             function productsComparerByValue(p1, p2){
                 var p1Value = p1.cost * p1.units,
                     p2Value = p2.cost * p2.units;
                 if (p1Value < p2Value) return -1;
                 if (p1Value === p2Value) return 0;
                 return 1;
-            }
+            } 
+            */
+
+            const productsComparerByValue = ({cost : p1Cost, units : p1Units}, {cost : p2Cost, units : p2Units}) => {
+                const [p1Value, p2Value] = [p1Cost * p1Units, p2Cost * p2Units]
+                return p1Value - p2Value;
+            };
+
             useCase('products by product value [cost * units]', function(){
                 
                 // sortByComparer(products, productsComparerByValue)
@@ -211,25 +228,36 @@ useCase('Filter', function(){
                 return result
         }
         // convert the below to ES6
+        /* 
         function negate(predicateFn){
             return function(){
                 return !predicateFn.apply(this, arguments)
             }
-        }
+        } 
+        */
+       const negate = predicateFn => (...args) => !predicateFn(...args)
+
         useCase('Any list by any criteria', function(){
             useCase('Filter stationary products [category = stationary]', function(){
                 // convert the below to ES6
+               /* 
                 function stationaryProductPredicate(product){
                     return product.category === 'stationary'
-                }
+                } 
+                */
+                const stationaryProductPredicate = product => product.category === 'stationary';
                 var stationaryProducts = filter(products, stationaryProductPredicate)
                 console.table(stationaryProducts);
             });
             useCase("Products by Cost", function(){
                 // convert the below to ES6
+                /* 
                 function costlyProductPredicate(product){
                     return product.cost > 50
-                }
+                } 
+                */
+
+                const costlyProductPredicate = ({cost}) => cost > 50
                 /* 
                 function affordableProductPredicate(product){
                     return product.cost <= 50
@@ -339,10 +367,13 @@ useCase("GroupBy", function(){
             console.log(productsByCategory)
         })
         useCase("Products by cost", function(){
+            /* 
             function costKeySelector(product){
                 return product.cost > 50 ? 'costly' : 'affordable'
             }
-            var productsByCost = groupBy(products, costKeySelector)
+            var productsByCost = groupBy(products, costKeySelector) 
+            */
+            var productsByCost = groupBy(products, ({cost}) => cost > 50 ? 'costly' : 'affordable')
             console.log(productsByCost)
         })
     })
