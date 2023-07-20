@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <style>
+        .field{
+            margin-bottom: 10px;
+        }
+        label{
+            display: block;
+        }
+    </style>
+    <script>
+        /*
+        //NON UI
+        //To get all the products
+        var p = axios.get('http://localhost:3000/products')
+        p.then(function(response){
+            console.table(response.data)
+        })
+
+        //To create a new product
+        let newProductData = { name : 'Notepad', cost : 20 }
+        var p = axios.post('http://localhost:3000/products', newProductData)
+        p.then(function(response){
+            console.log('new product created ', response.data)
+        })
+
+        //UI
+        //To create a new list item for the newly created product
+        let newItem = document.createElement('li')
+        newItem.textContent = 'Another Dummy Product [$99]'
+        
+        let ulProductsList = document.getElementById('ulProductsList')
+        ulProductsList.appendChild(newItem)
+        */
+
+        
+    </script>
+</head>
+<body>
+    <h1>Products</h1>
+    <h3>Create Product</h3>
+    <div class="field">
+        <label for="">Product Name :</label>
+        <input type="text" name="" id="txtNewProductName">
+    </div>
+    <div class="field">
+        <label for="">Cost :</label>
+        <input type="number" name="" id="txtNewProductCost">
+    </div>
+    <div class="field">
+        <button id="btnCreateProduct">Save</button>
+    </div>
+    <ul id="ulProductsList">
+        <li>....All the products</li>
+        <li>Dummy [$10]</li>
+    </ul>
+</body>
+</html>
