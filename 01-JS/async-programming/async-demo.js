@@ -46,12 +46,22 @@
         return p;
     }
 
+    
+
+    /* 
     function addAsyncPromiseClient(){
         console.log('[@client] invoking the service');
         var p = addAsyncPromise(100,200);
         p.then(function(result){
             console.log('[@client] result = ', result)
         })
+    } 
+    */
+
+    async function addAsyncPromiseClient(){
+        console.log('[@client] invoking the service');
+        var result = await addAsyncPromise(100,200);        
+        console.log('[@client] result = ', result)
     }
 
     window['addAsyncPromiseClient'] = addAsyncPromiseClient
@@ -86,6 +96,7 @@
         })
     } 
     */
+    /* 
     function divideAsyncPromiseClient(x,y){
         console.log('[@client] invoking the service');
         divideAsyncPromise(x,y)
@@ -98,8 +109,38 @@
             .finally(function(){
                 console.log('async operation completed')
             })
+    } 
+    */
+   async function divideAsyncPromiseClient(x,y){
+        console.log('[@client] invoking the service');
+        try {
+            var result = await divideAsyncPromise(x,y);
+            console.log('[@client] result = ', result)
+        } catch (err) {
+            console.log('promise rejected with error :', err)
+        } finally {
+            console.log('async operation completed')
+        }
     }
 
     window['divideAsyncPromiseClient'] = divideAsyncPromiseClient
     
+
+    function asyncExperiments(){
+        // add
+        console.log('[@client] invoking the add service');
+        var p1 = addAsyncPromise(100,200);
+        p1.then(function(result){
+            console.log('[@client] result [add] = ', result)
+        })
+
+        //divide
+        console.log('[@client] invoking the divide service');
+        var p2 = divideAsyncPromise(100,20)
+        p2.then(function(result){
+            console.log('[@client] result [divide]= ', result)
+        })
+    }
+
+    window['asyncExperiments'] = asyncExperiments;
 })()
