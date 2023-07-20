@@ -114,7 +114,7 @@
         return x + y;
     }
     */
-    
+
     //arrow function (2)
     //when the function body is an expression
     let add = (x,y) => x + y;
@@ -122,4 +122,34 @@
     //arrow function(3)
     //when there is only one parameter
     let isEven = no => no % 2 === 0;
+```
+## Iterators (for..of) ##
+```
+    let nos = [3,1,4,2,5]
+    
+    for(let no of nos)
+        console.log(no)
+
+    //custom iterator
+    function getNos(){
+        let nos = [3,1,4,2,5]
+        return {
+            [Symbol.iterator](){
+                let idx = -1;
+                return {
+                    next : function(){
+                        idx++
+                        if (idx >= nos.length){
+                            return { value : undefined, done : true }
+                        }
+                        return {value : nos[idx], done : false}
+                    }
+                }
+            }
+        }
+    }
+    let iter = getNos()
+    for(let no of nos){
+        console.log(no)
+    }
 ```
