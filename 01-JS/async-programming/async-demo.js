@@ -14,19 +14,21 @@
 
     window['addSyncClient'] = addSyncClient;
 
-    function addAsync(x,y){
+    function addAsync(x,y, callbackFn /* phone number */){
         console.log('   [@service] processing', x , ' and ', y)
         setTimeout(function(){
             var result = x + y;
             console.log('   [@service] returing the result')
-            return result;
+            callbackFn(result);
         }, 5000)
+        return
     }
 
     function addAsyncClient(){
         console.log('[@client] invoking the service')
-        var result = addAsync(100,200)
-        console.log('[@client] result = ', result)
+        addAsync(100,200, function(result){
+            console.log('[@client] result = ', result)
+        })
     }
 
     window['addAsyncClient'] = addAsyncClient;
