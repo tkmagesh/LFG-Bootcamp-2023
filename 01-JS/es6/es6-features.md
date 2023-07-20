@@ -114,7 +114,12 @@
         return x + y;
     }
     */
+    
     //arrow function (2)
     //when the function body is an expression
     let add = (x,y) => x + y;
+
+    //arrow function(3)
+    //when there is only one parameter
+    let isEven = no => no % 2 === 0;
 ```
