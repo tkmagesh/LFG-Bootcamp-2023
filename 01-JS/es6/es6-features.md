@@ -79,3 +79,42 @@
     }
     let newProduct = { ...product, cost : 10, category : 'Stationary' }
 ```
+## Default arguments ##
+```
+    function add(x = 10,y = 20){
+        return x + y
+    }
+    
+    add() //=> 30
+
+    add(100) //=> 120
+
+    add(undefined, 200) //=> 210
+
+    add(100,200) //=> 300
+
+```
+
+## Arrow functions ##
+```
+    /*
+    //function statement
+    function add(x,y){
+        return x + y
+    }
+
+    //function expression
+    let add = function(x,y){
+        return x + y;
+    }
+
+    //arrow function (1)
+    //when the function body is a block
+    let add = (x,y) => {
+        return x + y;
+    }
+    */
+    //arrow function (2)
+    //when the function body is an expression
+    let add = (x,y) => x + y;
+```
