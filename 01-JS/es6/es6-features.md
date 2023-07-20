@@ -43,3 +43,39 @@
     sum(10,20,30,40,50)
     sum(...nos)
 ```
+## Object destructuring ##
+```
+    let product = {
+        id : 100,
+        name : 'Pen',
+        cost : 5,
+        units : 200
+    }
+    //variable names must match the attribute names
+    let {id, cost} = product
+
+    //incase the variables are different from the attribute names
+    let {id : x, cost : y} = product
+```
+
+## Rest Operator (Object) ##
+```
+    let product = {
+        id : 100,
+        name : 'Pen',
+        cost : 5,
+        units : 200
+    }
+    let {cost, ...z} = product
+```
+
+## Spread Operator (Object) ##
+```
+    let product = {
+        id : 100,
+        name : 'Pen',
+        cost : 5,
+        units : 200
+    }
+    let newProduct = { ...product, cost : 10, category : 'Stationary' }
+```
