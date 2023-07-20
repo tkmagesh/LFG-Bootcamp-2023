@@ -153,3 +153,80 @@
         console.log(no)
     }
 ```
+## template Literals ##
+```
+    let x = 100, y = 200
+    let s2 = `Sum of ${x} and ${y} is ${x+y}`
+```
+## Object Literal Enhancements ##
+```
+    let id = 'P101', name = 'Pen'
+    let product = {
+        id, 
+        name,
+        display(){
+            console.log(`id = ${this.id}, name = ${this.name}`)
+        }
+    }
+```
+## Classes ##
+```
+    class Employee {
+        //instance attributes
+        //private attribute
+        #id = 0;
+
+        //accessor methods
+        get id(){
+            console.log('get[id] invoked');
+            return this.#id;
+        }
+        set id(value){
+            console.log('set[id] invoked');
+            if (value < 0) throw new Error('id cannot be negative')
+            this.#id = value
+        }
+
+        //public attributes
+        name = '';
+        city = '';
+
+        //constructor method
+        constructor(id, name, city){
+            this.id = id;
+            this.name = name;
+            this.city = city;
+        }
+
+        //intance methods
+        format(){
+            return `id = ${this.id}, name = ${this.name}, city = ${this.city}`
+        }
+
+        //static attribute
+        static version = '1.0'
+
+        //static method
+        static IsEmployee(obj){
+            return obj instanceof Employee;
+        }
+    }
+
+    // Class Inheritance
+    class FullTimeEmployee extends Employee {
+
+        benefits = '';
+
+        constructor(id, name, city, benefits){
+            super(id, name, city);
+            this.benefits = benefits;
+        }
+
+        format(){
+            return `${super.format()}, benefits = ${this.benefits}`
+        }
+    }
+```
+
+## For Reference ##
+http://es6-features.org
