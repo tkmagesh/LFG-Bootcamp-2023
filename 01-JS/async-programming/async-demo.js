@@ -79,7 +79,7 @@
                 console.log('   [@service] returing the result')
                 //communicate the result to the promise?
                 resolveFn(result)
-            }, 5000)
+            }, 3000)
         })
         return p;
     }
@@ -136,11 +136,45 @@
 
         //divide
         console.log('[@client] invoking the divide service');
-        var p2 = divideAsyncPromise(100,20)
+        var p2 = divideAsyncPromise(100,2)
         p2.then(function(result){
             console.log('[@client] result [divide]= ', result)
         })
     }
 
     window['asyncExperiments'] = asyncExperiments;
+
+    function asyncExperiments2(){
+        // add
+        console.log('[@client] invoking the add service');
+        var p1 = addAsyncPromise(100,200);
+        p1.then(function(addResult){
+            console.log('[@client] result [add] = ', addResult)
+            //divide
+            console.log('[@client] invoking the divide service');
+            var p2 = divideAsyncPromise(addResult,2)
+            p2.then(function(result){
+                console.log('[@client] result [divide]= ', result)
+            })
+        })        
+    }
+
+    window['asyncExperiments2'] = asyncExperiments2;
+
+    //conver the asyncExperiments to async-await
+    async function asyncExperiments_aw(){
+        // add
+        console.log('[@client] invoking the add service');
+        var addResult = await addAsyncPromise(100,200);
+        console.log('[@client] result [add] = ', addResult)
+        
+        //divide
+        console.log('[@client] invoking the divide service');
+        var divideResult = await divideAsyncPromise(100,2)
+        console.log('[@client] result [divide]= ', divideResult)
+        
+    }
+
+    window['asyncExperiments_aw'] = asyncExperiments_aw;
+
 })()

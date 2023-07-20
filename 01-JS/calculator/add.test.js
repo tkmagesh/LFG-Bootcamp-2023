@@ -22,6 +22,7 @@ function add(x,y){
 } 
 */
 
+/* 
 function add(x,y){
     function parseArg(n){
         if (typeof n === 'function') return parseArg(n());
@@ -29,7 +30,13 @@ function add(x,y){
         return isNaN(n) ? 0 : parseInt(n);
     }  
     return arguments.length <= 1 ? parseArg(arguments[0]) : parseArg(arguments[0]) + add(Array.prototype.slice.call(arguments, 1))
-} 
+}  
+*/
+
+//write the above function using the 'rest & spread' operators
+function add(/*  */){
+    /*  */
+}
 
 test('add(10,20) => 30', function(){
     //Arrange
