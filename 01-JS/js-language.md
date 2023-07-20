@@ -238,3 +238,7 @@ fn()
 ## Prototypal Inheritance ##
 - One object acts as a base object for a family of object instances
 ![image prototypal inheritance](./inheritance.png)
+
+## Aynchronous Programming ##
+- Async Operation
+    - An operation that is initiated but NOT waited for its completion
