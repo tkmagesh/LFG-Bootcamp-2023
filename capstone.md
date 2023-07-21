@@ -15,9 +15,9 @@ The Cloud Assistant should have the following Modules
     - User Management
         - Add / Remove / Update AWS services information
         - Screens for capturing all the required information data needed to map the infrastructure requirements between on-premise applications and cloud applications
-    - User Module with the following functionalities
+- User Module with the following functionalities
         - Screens using which the user can furnish details about the application that is under consideration for migration to cloud
         - Screens to list the required AWS services need to migrate the on-premise application
         - Screens for displaying the overall cost overhead
         - The user should also be able to customize the AWS infrastructural requirements (adding / removing / updating ) the services suggested to analyze the cost impact.
-    - The application should also generate the CloudFormation template that can be used for the on-premise application migration
+- The application should also generate the CloudFormation template that can be used for the on-premise application migration
