@@ -97,10 +97,26 @@ let e2 : EmployeeType = {
 2 - contract
 */
 
+/* 
+enum EmployementTypeEnum {
+    Fulltime, 
+    Parttime, 
+    Contract, 
+}  
+*/
+
+/* 
 enum EmployementTypeEnum {
     Fulltime = 0, 
     Parttime = 1, 
     Contract = 2, 
+} 
+*/
+
+enum EmployementTypeEnum {
+    Fulltime = 10, 
+    Parttime = 11, 
+    Contract = 12, 
 }
 
 // class
@@ -194,6 +210,7 @@ class Employee {
 }
 
  let emp = new Employee(100, 'Magesh', EmployementTypeEnum.Contract, 'Bangalore')
+ 
  console.log(emp.format())
 
 class FullTimeEmployee extends Employee {

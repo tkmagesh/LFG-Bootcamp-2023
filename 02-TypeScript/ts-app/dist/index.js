@@ -60,11 +60,25 @@ let e2 = {
 1 - parttime
 2 - contract
 */
+/*
+enum EmployementTypeEnum {
+    Fulltime,
+    Parttime,
+    Contract,
+}
+*/
+/*
+enum EmployementTypeEnum {
+    Fulltime = 0,
+    Parttime = 1,
+    Contract = 2,
+}
+*/
 var EmployementTypeEnum;
 (function (EmployementTypeEnum) {
-    EmployementTypeEnum[EmployementTypeEnum["Fulltime"] = 0] = "Fulltime";
-    EmployementTypeEnum[EmployementTypeEnum["Parttime"] = 1] = "Parttime";
-    EmployementTypeEnum[EmployementTypeEnum["Contract"] = 2] = "Contract";
+    EmployementTypeEnum[EmployementTypeEnum["Fulltime"] = 10] = "Fulltime";
+    EmployementTypeEnum[EmployementTypeEnum["Parttime"] = 11] = "Parttime";
+    EmployementTypeEnum[EmployementTypeEnum["Contract"] = 12] = "Contract";
 })(EmployementTypeEnum || (EmployementTypeEnum = {}));
 // class
 class Employee {
