@@ -21,35 +21,11 @@ function useCase(title : string, fn : () => void){
     console.groupEnd();
 }
 
+type Predicate<T> = (i1 : T) => boolean;
+
 useCase('Filter', function(){
-    useCase('Concrete Implementations', function(){
-        useCase('Filter stationary products [category = stationary]', function(){
-            function filterStationaryProducts(){
-                var result = [];
-                for (var i = 0;i < products.length; i++){
-                    if (products[i].category === 'stationary')
-                        result.push(products[i])
-                }
-                return result
-            }
-            var stationaryProducts = filterStationaryProducts()
-            console.table(stationaryProducts)
-        });
-        useCase('Filter costly products [cost > 50]', function(){
-            function filterCostlyProducts(){
-                var result = [];
-                for (var i = 0;i < products.length; i++){
-                    if (products[i].cost > 50)
-                        result.push(products[i])
-                }
-                return result
-            }
-            var costlyProducts = filterCostlyProducts()
-            console.table(costlyProducts)
-        })
-    })
     useCase('Abstract Implementation', function(){
-        function filter(list, predicate){
+        function filter<T>(list : T[], predicate : Predicate<T>){
              var result = [];
                 for (var i = 0;i < list.length; i++){
                     if (predicate(list[i]) === true)
@@ -57,21 +33,21 @@ useCase('Filter', function(){
                 }
                 return result
         }
-        function negate(predicateFn){
-            return function(){
-                return !predicateFn.apply(this, arguments)
+        function negate<T>(predicateFn : Predicate<T>) : Predicate<T>{
+            return function(item : T) : boolean{
+                return !predicateFn(item)
             }
         }
         useCase('Any list by any criteria', function(){
             useCase('Filter stationary products [category = stationary]', function(){
-                function stationaryProductPredicate(product){
+                function stationaryProductPredicate(product : Product){
                     return product.category === 'stationary'
                 }
                 var stationaryProducts = filter(products, stationaryProductPredicate)
                 console.table(stationaryProducts);
             });
             useCase("Products by Cost", function(){
-                function costlyProductPredicate(product){
+                function costlyProductPredicate(product : Product){
                     return product.cost > 50
                 }
                 /* 
@@ -87,19 +63,19 @@ useCase('Filter', function(){
                 var affordableProductPredicate = negate(costlyProductPredicate);
 
                 useCase('Filter costly products [cost > 50]', function(){
-                    var costlyProducts = filter(products, costlyProductPredicate)
+                    var costlyProducts = filter<Product>(products, costlyProductPredicate)
                     console.table(costlyProducts)
                 })
                 useCase('Filter affordable products [!costlyProduct]', function(){
-                    var affordableProducts = filter(products, affordableProductPredicate)
+                    var affordableProducts = filter<Product>(products, affordableProductPredicate)
                     console.table(affordableProducts)
                 })
             })
             useCase("Products by Units", function(){
-                function understockedProductPredicate(product){
+                function understockedProductPredicate(product : Product){
                     return product.units <= 60;
                 }
-                function wellstockedProductPredicate(product){
+                function wellstockedProductPredicate(product : Product){
                     return !understockedProductPredicate(product)
                 }
                 useCase('Filter understocked products [units <= 60]', function(){
