@@ -170,4 +170,4 @@ let fte = new FullTimeEmployee(200, 'Philip', EmployementTypeEnum.Contract, 'New
 console.log(fte.format());
 // console.log(fte.deptCode)
 // arrow functions
-let add = (x, y) => x + y;
+// let add = (x : number, y : number) : number =>  x + y ;
