@@ -45,7 +45,7 @@ function doSomething(z : any) : void {
 
 
 // Defining types
-type Countable = string | any[];
+type Countable = string | any[]; // (union of string and any[])
 
 function count(data : Countable ) {
     return data.length;
@@ -90,6 +90,19 @@ let e2 : EmployeeType = {
     name : 'John'
 }
 
+// Enum
+/* 
+0 - fulltime
+1 - parttime
+2 - contract
+*/
+
+enum EmployementTypeEnum {
+    Fulltime = 0, 
+    Parttime = 1, 
+    Contract = 2, 
+}
+
 // class
 class Employee {
     //instance attributes
@@ -108,16 +121,26 @@ class Employee {
         this._id = value
     }
 
+    private _salary : number = 0;
+
+    get salary() : number {
+        return this._salary;
+    }
+
     //public attributes
     name = '';
 
-    //readonly attribute
+    //readonly attribute (assigning a value can happen only in a constructor)
     readonly city : string = '';
+    
+    // readonly employmentType : number = 0;
+    readonly employmentType : EmployementTypeEnum;
 
     //constructor method
-    constructor(id : number, name : string, city? : string){
+    constructor(id : number, name : string, employmentType : EmployementTypeEnum, city? : string){
         this.id = id;
         this.name = name;
+        this.employmentType = employmentType
         if (city){
             this.city = city;
         }
@@ -126,7 +149,39 @@ class Employee {
 
     //intance methods
     format(){
-        return `id = ${this.id}, name = ${this.name}, city = ${this.city}`
+        return `id = ${this.id}, name = ${this.name}, employmentType = ${this.employmentType}, city = ${this.city}`
+    }
+
+    public calculateSalary(){
+        /* 
+        switch (this.employmentType) {
+            case 0: // 0 - fulltime
+                this._salary = 10000;
+                break;
+            case 1: // 1 - parttime
+                this._salary = 7000;
+                break;
+            case 2: // 2 - contract
+                this._salary = 9000;
+                break;
+            default:
+                break;
+        } 
+        */
+
+        switch (this.employmentType) {
+            case EmployementTypeEnum.Fulltime: // 0 - fulltime
+                this._salary = 10000;
+                break;
+            case EmployementTypeEnum.Parttime: // 1 - parttime
+                this._salary = 7000;
+                break;
+            case EmployementTypeEnum.Contract: // 2 - contract
+                this._salary = 9000;
+                break;
+            default:
+                break;
+        }
     }
 
     //static attribute
@@ -138,15 +193,15 @@ class Employee {
     }
 }
 
-let emp = new Employee(100, 'Magesh', 'Bangalore')
-
+ let emp = new Employee(100, 'Magesh', EmployementTypeEnum.Contract, 'Bangalore')
+ console.log(emp.format())
 
 class FullTimeEmployee extends Employee {
 
     benefits = '';
 
-    constructor(id : number, name : string, city : string, benefits : string){
-        super(id, name, city);
+    constructor(id : number, name : string, employmentType : EmployementTypeEnum, city : string, benefits : string){
+        super(id, name, employmentType, city);
         this.benefits = benefits;
     }
 
@@ -155,9 +210,11 @@ class FullTimeEmployee extends Employee {
     }
 }
 
-let fte = new FullTimeEmployee(200, 'Philip', 'New Delhi', 'Travel Allowance')
+let fte = new FullTimeEmployee(200, 'Philip', EmployementTypeEnum.Contract, 'New Delhi', 'Travel Allowance')
 console.log(fte.format())
 
 // console.log(fte.deptCode)
 // arrow functions
 let add = (x : number, y : number) : number =>  x + y ;
+
+
