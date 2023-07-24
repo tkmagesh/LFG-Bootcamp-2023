@@ -17,3 +17,5 @@ const nos1 = [3,1,4,2,5]
 
 const productNames1 = ['Pen', 'Pencil', 'Marker', 'ScribblePad', 'Notebook']
 console.log('6 letter product names => ', filter<string>(productNames1, pn => pn.length === 6))
+
+// typesafe negate function?
