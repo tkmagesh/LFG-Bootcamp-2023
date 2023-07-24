@@ -48,6 +48,7 @@ interface MathOperation {
 } 
 */
 
+//Math operation as a function contract
 type MathOperation = (x : number, y : number) => number
 
 function logOperation(x : number,y : number, operation : MathOperation /* any function with 2 numbers as parameters and a number as return result */){
