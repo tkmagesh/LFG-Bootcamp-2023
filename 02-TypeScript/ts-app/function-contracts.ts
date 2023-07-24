@@ -61,3 +61,31 @@ logOperation(100,200, add)
 logOperation(100,200, subtract)
 
 
+type NumberPredicate = (x : number) => boolean
+function filterNumbers(numbers :number[], predicate : NumberPredicate){
+    let result : number[] = []
+    for (let no of numbers){
+        if (predicate(no)){
+            result.push(no)
+        }
+    }
+    return result;
+}
+
+const nos = [3,1,4,2,5]
+const evenNos = filterNumbers(nos, x => x %2 === 0)
+console.log('even numbers => ', evenNos)
+
+const productNames = ['Pen', 'Pencil', 'Marker', 'ScribblePad', 'Notebook']
+
+type StringPredicate = (x : string) => boolean
+function filterStrings(strings :string[], predicate : StringPredicate){
+    let result : string[] = []
+    for (let str of strings){
+        if (predicate(str)){
+            result.push(str)
+        }
+    }
+    return result;
+}
+console.log('6 letter product names => ', filterStrings(productNames, pn => pn.length === 6))
