@@ -22,3 +22,8 @@
 - Enums
 - Generics
 
+## Modules ##
+- By default, everything defined in a file (ts/js) is considered PRIVATE
+- Any public entity has to be explicitly exported (using the "export" keyword)
+- To use any public entity from a different file, it has to be explicitly "imported" (using the "import" keyword)
+
