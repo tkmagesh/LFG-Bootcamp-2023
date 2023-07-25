@@ -25,9 +25,9 @@
             2. Refactoring the code to the respective files (.js, .css etc) is taken care by another team
      -->
     <script>
-        // NON UI
+        // NON UI (Model)
         // state & behavior 
-        class SalaryCalculator {
+        class SalaryCalculatorModel {
             //state
             basic = 0;
             hra = 0;
@@ -45,22 +45,22 @@
 
         // UI Responsibility
         $(() => {
-            const calculator = new SalaryCalculator();
+            const model = new SalaryCalculatorModel();
 
             $('#btnCalculate').click(() => {
 
-                calculator.basic = parseInt($('#txtBasic').val());
-                calculator.hra = parseInt($('#txtHra').val());
-                calculator.da = parseInt($('#txtDa').val());
-                calculator.tax = parseInt($('#rangeTax').val());
+                model.basic = parseInt($('#txtBasic').val());
+                model.hra = parseInt($('#txtHra').val());
+                model.da = parseInt($('#txtDa').val());
+                model.tax = parseInt($('#rangeTax').val());
                 
-                calculator.calculate()
+                model.calculate()
                 
-                $('#tdBasic').text(calculator.basic);
-                $('#tdHra').text(calculator.hra);
-                $('#tdDa').text(calculator.da);
-                $('#tdTax').text(calculator.tax);
-                $('#tdSalary').text(calculator.salary);
+                $('#tdBasic').text(model.basic);
+                $('#tdHra').text(model.hra);
+                $('#tdDa').text(model.da);
+                $('#tdTax').text(model.tax);
+                $('#tdSalary').text(model.salary);
             })
         })
     </script>
