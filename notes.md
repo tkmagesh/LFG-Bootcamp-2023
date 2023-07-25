@@ -27,3 +27,24 @@
 - Backend dev using Python/Flask (13 days)
 - AWS (13 days)
 - DevOps (Docker/Kubernetes/gitlabs) (8 days)
+
+## Recommended Books ##
+- Structure and Interpretation of Computer Programs (SICP)
+- Agile Principles Patterns & Practices 
+- Growing Object Oriented Software Guided By Tests
+- Head First Design Patterns
+- Refactoring
+- Refactoring to Patterns 
+
+
+
+## SOLID Principles ##
+    - SRP (Single Responsibility Principle)
+        There has to be ONLY one reason for the code to change
+
+    - OCP (Open Closed Principle)
+        Any code that is tested & released MUST be treated as 'closed' (frozen) for modification, but 'open' for extension (by adding new code)
+        
+    - LSP (Liskov's Substitution Principle)
+    - ISP (Interface Segregation Principle)
+    - DIP (Dependency Inversion Principle)

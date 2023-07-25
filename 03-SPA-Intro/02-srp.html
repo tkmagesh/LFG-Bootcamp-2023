@@ -25,21 +25,42 @@
             2. Refactoring the code to the respective files (.js, .css etc) is taken care by another team
      -->
     <script>
+        // NON UI
+        // state & behavior 
+        class SalaryCalculator {
+            //state
+            basic = 0;
+            hra = 0;
+            da = 0;
+            tax = 0;
+            salary = 0;
+
+            //behavior
+            calculate(){
+                const gross = this.basic + this.hra + this.da,
+                    net = gross * ((100-this.tax)/100);
+                this.salary = net;
+            }
+        }
+
+        // UI Responsibility
         $(() => {
+            const calculator = new SalaryCalculator();
+
             $('#btnCalculate').click(() => {
-                const basic = parseInt($('#txtBasic').val()),
-                    hra = parseInt($('#txtHra').val()),
-                    da = parseInt($('#txtDa').val()),
-                    tax = parseInt($('#rangeTax').val());
+
+                calculator.basic = parseInt($('#txtBasic').val());
+                calculator.hra = parseInt($('#txtHra').val());
+                calculator.da = parseInt($('#txtDa').val());
+                calculator.tax = parseInt($('#rangeTax').val());
                 
-                const gross = basic + hra + da,
-                    net = gross * ((100-tax)/100);
+                calculator.calculate()
                 
-                $('#tdBasic').text(basic);
-                $('#tdHra').text(hra);
-                $('#tdDa').text(da);
-                $('#tdTax').text(tax);
-                $('#tdSalary').text(net);
+                $('#tdBasic').text(calculator.basic);
+                $('#tdHra').text(calculator.hra);
+                $('#tdDa').text(calculator.da);
+                $('#tdTax').text(calculator.tax);
+                $('#tdSalary').text(calculator.salary);
             })
         })
     </script>
