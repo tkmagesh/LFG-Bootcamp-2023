@@ -15,3 +15,21 @@ console.log('even numbers => ', filter(nos1, x => x % 2 === 0));
 const productNames1 = ['Pen', 'Pencil', 'Marker', 'ScribblePad', 'Notebook'];
 console.log('6 letter product names => ', filter(productNames1, pn => pn.length === 6));
 // typesafe negate function?
+class MyCollection {
+    constructor() {
+        this._list = [];
+    }
+    add(item) {
+        this._list.push(item);
+    }
+    remove(item) {
+        this._list.splice(this._list.indexOf(item), 1);
+    }
+    list() {
+        return [...this._list];
+    }
+}
+const myNumbers = new MyCollection;
+myNumbers.add(100);
+const myStrings = new MyCollection();
+myStrings.add("asdfdsafas");
