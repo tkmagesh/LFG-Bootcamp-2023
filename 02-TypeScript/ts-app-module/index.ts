@@ -40,3 +40,8 @@ console.log(subtract(100,200))
 import calc from './utils.js'
 console.log(calc.add(100, 200) * calc.subtract(100,200))
 
+
+//importing a type
+import type { Person } from './utils.js'
+const p : Person = {firstName : "Magesh", lastName : "Kuppan"}
+console.log(p)

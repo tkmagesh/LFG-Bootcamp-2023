@@ -11,3 +11,9 @@ const calculator = { add, subtract }
 
 // Note : There can be ONLY ONE default export per file
 export default calculator;
+
+// exporting types
+export type Person = {
+    firstName : string,
+    lastName : string
+}

@@ -34,3 +34,5 @@ console.log(subtract(100,200))
 //step-5 (importing the default exported entity)
 import calc from './utils.js';
 console.log(calc.add(100, 200) * calc.subtract(100, 200));
+const p = { firstName: "Magesh", lastName: "Kuppan" };
+console.log(p);
