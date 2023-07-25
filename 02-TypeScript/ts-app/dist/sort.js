@@ -1,22 +1,11 @@
 "use strict";
-var products = [
-    { id: 6, name: 'Pen', cost: 50, units: 20, category: 'stationary' },
-    { id: 9, name: 'Ten', cost: 70, units: 70, category: 'stationary' },
-    { id: 3, name: 'Len', cost: 60, units: 60, category: 'grocery' },
-    { id: 5, name: 'Zen', cost: 30, units: 30, category: 'grocery' },
-    { id: 1, name: 'Ken', cost: 20, units: 80, category: 'utencil' },
-    { id: 7, name: 'Mouse', cost: 100, units: 20, category: 'electronics' }
-];
-function useCase(title, fn) {
-    console.group(title);
-    fn();
-    console.groupEnd();
-}
-useCase('Initial List', function () {
-    console.table(products);
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_js_1 = require("./utils.js");
+(0, utils_js_1.useCase)('Initial List', function () {
+    console.table(utils_js_1.products);
 });
-useCase('Sort', function () {
-    useCase('Genaralized Sort', function () {
+(0, utils_js_1.useCase)('Sort', function () {
+    (0, utils_js_1.useCase)('Genaralized Sort', function () {
         function sort(list, by) {
             var comparerFn;
             switch (typeof by) {
@@ -50,19 +39,19 @@ useCase('Sort', function () {
                 return comparer(i1, i2) * -1;
             };
         }
-        useCase('Any list by any attribute', function () {
-            useCase('Products by cost', function () {
+        (0, utils_js_1.useCase)('Any list by any attribute', function () {
+            (0, utils_js_1.useCase)('Products by cost', function () {
                 //sortByAttr(products, 'cost')
-                sort(products, 'cost');
-                console.table(products);
+                sort(utils_js_1.products, 'cost');
+                console.table(utils_js_1.products);
             });
-            useCase('Products by units', function () {
+            (0, utils_js_1.useCase)('Products by units', function () {
                 //sortByAttr(products, 'units')
-                sort(products, 'units');
-                console.table(products);
+                sort(utils_js_1.products, 'units');
+                console.table(utils_js_1.products);
             });
         });
-        useCase('Any list by any comparer', function () {
+        (0, utils_js_1.useCase)('Any list by any comparer', function () {
             /* const productsComparerByValue : Comparer<Product> = (p1, p2) => {
                 var p1Value = p1.cost * p1.units,
                     p2Value = p2.cost * p2.units;
@@ -78,20 +67,20 @@ useCase('Sort', function () {
                     return 0;
                 return 1;
             }
-            useCase('products by product value [cost * units]', function () {
+            (0, utils_js_1.useCase)('products by product value [cost * units]', function () {
                 // sortByComparer(products, productsComparerByValue)
-                sort(products, productsComparerByValue);
-                console.table(products);
+                sort(utils_js_1.products, productsComparerByValue);
+                console.table(utils_js_1.products);
             });
-            useCase('products by product value [cost * units][descending]', function () {
+            (0, utils_js_1.useCase)('products by product value [cost * units][descending]', function () {
                 /*
                 function productsComparerByValueDesc(p1, p2){
                     return productsComparerByValue(p1, p2) * -1;
                 }
                 */
                 var productsComparerByValueDesc = getDescComparer(productsComparerByValue);
-                sort(products, productsComparerByValueDesc);
-                console.table(products);
+                sort(utils_js_1.products, productsComparerByValueDesc);
+                console.table(utils_js_1.products);
             });
         });
     });
