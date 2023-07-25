@@ -26,6 +26,11 @@ console.log(add(100,200))
 console.log(subtract(100,200))
 */
 //step-4
-import { add, subtract } from './utils.js';
-console.log(add(100, 200));
-console.log(subtract(100, 200));
+/*
+import { add, subtract } from './utils.js'
+console.log(add(100,200))
+console.log(subtract(100,200))
+*/
+//step-5 (importing the default exported entity)
+import calc from './utils.js';
+console.log(calc.add(100, 200) * calc.subtract(100, 200));
