@@ -28,6 +28,7 @@ type KeySelector<T> = (item : T) => AttrType;
 useCase("GroupBy", function(){
 
     useCase("Generalized implementations", function(){
+        /* Record : represents an object  */
         function groupBy<T extends Record<string, AttrType>>(list : T[], keySelector : AttrType | KeySelector<T>){
             let result : Record<AttrType, T[]> = {}
             let key : AttrType;

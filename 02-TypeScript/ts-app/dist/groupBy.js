@@ -14,6 +14,7 @@ function useCase(title, fn) {
 }
 useCase("GroupBy", function () {
     useCase("Generalized implementations", function () {
+        /* Record : represents an object  */
         function groupBy(list, keySelector) {
             let result = {};
             let key;
