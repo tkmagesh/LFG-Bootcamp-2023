@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculatort</title>
+    <style>
+        body{
+            margin-left: 50px;
+        }
+        .field{
+            margin-bottom: 10px;
+        }
+        label{
+            display: block;
+        }
+        td{
+            padding-right: 10px;
+        }
+    </style>
+    <script src="jquery-3.7.0.js"></script>
+    <!-- 
+        Assumptions:
+            1. This implementation is 100% functionally correct (no validations are required)
+            2. Refactoring the code to the respective files (.js, .css etc) is taken care by another team
+     -->
+    <script>
+        // NON UI (Model)
+        // state & behavior 
+        class SalaryCalculatorModel {
+            //state
+            #data = {
+                basic : 0,
+                hra : 0,
+                da : 0,
+                tax : 0,
+                salary : 0
+            }
+
+            #changeListeners = {
+                basic: [],
+                hra: [],
+                da: [],
+                tax: [],
+                salary: []
+            }
+
+            subscribe(attrName, listenerFn){
+                this.#changeListeners[attrName].push(listenerFn);
+            }
+
+            get(attrName){
+                return this.#data[attrName]
+            }
+
+            set(attrName, val){
+                if (this.#data[attrName] === val) return
+                this.#data[attrName] = val;
+                this.#changeListeners[attrName].forEach(listenerFn => {
+                    if (typeof listenerFn === 'function')
+                        listenerFn()
+                })
+            }
+            //behavior
+            calculate(){
+                const gross = this.get('basic') + this.get('hra') + this.get('da'),
+                    net = gross * ((100-this.get('tax'))/100);
+                this.set('salary', net);
+                
+            }
+        }
+
+        // UI Responsibility
+        /*
+            Presentation = what should be displayed when the view is rendered
+            UI Behavior 
+                = What need to happen when the user interacts (reacting to user actions)
+                = Reflecting the state of the model whenever the model changes (reacting to model changes)
+        */
+        class SalaryCalculator{
+            #template = `
+                <section>
+                    <div class="field">
+                        <label for="">Basic :</label>
+                        <input type="number" name="" id="txtBasic">
+                    </div>
+                    <div class="field">
+                        <label for="">HRA :</label>
+                        <input type="number" name="" id="txtHra">
+                    </div>
+                    <div class="field">
+                        <label for="">DA :</label>
+                        <input type="number" name="" id="txtDa">
+                    </div>
+                    <div class="field">
+                        <label for="">Tax :</label>
+                        <input type="range" name="" id="rangeTax" min="0" max="30" value="0">
+                    </div>
+                    <div class="field">
+                        <button id="btnCalculate">Calculate</button>
+                    </div>
+                    <div class="field">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Basic</th>
+                                    <th>HRA</th>
+                                    <th>DA</th>
+                                    <th>Tax</th>
+                                    <th>Salary</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="tdBasic">[basic]</td>
+                                    <td id="tdHra">[hra]</td>
+                                    <td id="tdDa">[da]</td>
+                                    <td id="tdTax">[tax]</td>
+                                    <td id="tdSalary">[salary]</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            `
+            
+            $viewEl = $('<div></div>');
+
+            render(){
+                this.$viewEl.html(this.#template);
+            }
+            
+            constructor(model){
+                const $viewEl = this.$viewEl;
+
+                //reacting to user actions
+                this.$viewEl.on('input', '#txtBasic', function () {
+                    model.set('basic', parseInt($(this).val()));
+                })
+
+                this.$viewEl.on('input', '#txtHra', function () {
+                    model.set('hra', parseInt($(this).val()));
+                })
+
+                this.$viewEl.on('input', '#txtDa', function () {
+                    model.set('da', parseInt($(this).val()));
+                })
+
+                this.$viewEl.on('input', '#rangeTax', function () {
+                    model.set('tax', parseInt($(this).val()));
+                })
+
+                this.$viewEl.on('click', '#btnCalculate', () => {
+                    model.calculate()
+                })
+
+                //Reacting to model changes            
+                model.subscribe('salary', function () {
+                    $('#tdSalary', $viewEl).text(model.get('salary'));
+                })
+
+                model.subscribe('basic', function () {
+                    $('#tdBasic', $viewEl).text(model.get('basic'));
+                })
+
+                model.subscribe('hra', function () {
+                    $('#tdHra', $viewEl).text(model.get('hra'));
+                })
+
+                model.subscribe('da', function () {
+                    $('#tdDa', $viewEl).text(model.get('da'));
+                })
+
+                model.subscribe('tax', function () {
+                    $('#tdTax', $viewEl).text(model.get('tax'));
+                })
+            }
+        }
+
+        /*
+            //try the following in the console
+
+            //create a model instance
+            model = new SalaryCalculatorModel()
+            
+            // create one view instance and render
+            let v1 = new SalaryCalculator(model)
+            v1.$viewEl.appendTo(document.body)
+            v1.render()
+            
+            // create another view instance and render
+            let v2 = new SalaryCalculator(model)
+            v2.$viewEl.appendTo(document.body)
+            v2.render()
+        */
+        
+    </script>
+</head>
+<body>
+    <h1>Salary Calculator</h1>
+    <hr>
+    
+</body>
+</html>
