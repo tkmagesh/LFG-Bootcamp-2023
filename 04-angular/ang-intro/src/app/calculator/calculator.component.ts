@@ -27,8 +27,16 @@ export class CalculatorComponent{
         this._n1 = parseInt(val)
     }
 
+    get n1() : string {
+        return this._n1.toString()
+    }
+ 
     set n2(val : string){
         this._n2 = parseInt(val)
+    }
+
+    get n2() : string {
+        return this._n2.toString()
     }
 
     onAddClick() {

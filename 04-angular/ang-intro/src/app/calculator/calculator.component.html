@@ -4,7 +4,9 @@
     <input type="number" #txtN2 (input)="setN2(txtN2.value)"> 
 -->
 <input type="number" #txtN1 (input)="n1 = txtN1.value">
+<span> [ {{n1}} ] </span>
 <input type="number" #txtN2 (input)="n2 = txtN2.value">
+<span> [ {{n2}} ] </span>
 <br>
 <button (click)="onAddClick()">Add</button>
 <button (click)="onSubtractClick()">Subtract</button>
