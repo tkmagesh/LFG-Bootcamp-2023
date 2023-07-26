@@ -15,6 +15,18 @@
     - State (data for UI)
 - Composable
 
+- How to create a component?
+    - Create the following files (better to be in a folder dedicated for the component)
+        - [**componentName**].component.ts"
+            - contains the component class
+                - data to be displayed (state)
+                - UI event logic
+        - [**componentName**].component.html
+            - contains the HTML template that need to be displayed with the component is rendered
+        - [**componentName**].component.css
+            - contain the styles for the HTML template
+    - Register the component in the module (in the "declarations" section)
+
 ### Directive ###
 - Encapsulate any DOM manipulation logic
 - Examples
