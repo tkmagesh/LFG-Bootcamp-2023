@@ -1,7 +1,11 @@
 <h3>Products</h3>
 <label for="">Product Name :</label>
-<input type="text" #txtNewProductName>
-<button (click)="onBtnAddProductClick(txtNewProductName.value)">Add New</button>
+<input type="text" #txtNewProductName 
+    [value]="newProductName" 
+    (input)="newProductName = txtNewProductName.value"
+>
+
+<button (click)="onBtnAddProductClick()">Add New</button>
 <ul>
     <li *ngFor="let productName of productNames; index as idx">
         {{productName}} - <button (click)="onBtnRemoveClick(idx)">X</button>

@@ -9,9 +9,11 @@ import { Component } from "@angular/core";
 export class ProductsComponent {
 
     productNames : string[] = [];
+    newProductName : string = '';
 
-    onBtnAddProductClick(newProductName : string){
-        this.productNames.push(newProductName);
+    onBtnAddProductClick(){
+        this.productNames.push(this.newProductName);
+        this.newProductName = '';
     }
 
     onBtnRemoveClick(idx : number) {

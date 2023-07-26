@@ -9,7 +9,8 @@ export class AppComponent {
 
   //state (data)
   title = 'ang-intro';
-
+  userChoice : string = '';
+  
   constructor(){
     setTimeout(() => {
       this.title = 'New-Ang-Intro'
