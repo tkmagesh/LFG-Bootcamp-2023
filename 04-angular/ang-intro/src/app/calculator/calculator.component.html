@@ -12,4 +12,4 @@
 <button (click)="onSubtractClick()">Subtract</button>
 <button (click)="onMultiplyClick()">Multiply</button>
 <button (click)="onDivideClick()">Divide</button>
-<div>{{result}}</div>
+<div [ngClass]="{ positive : result >= 0, negative : result < 0}">{{result}}</div>

@@ -33,6 +33,9 @@
     - add a new style / remove an existing style
     - Create / Remove dom nodes
 - In other words, a directive is a component without a template
+- Types of Directives
+    - Attribute directive
+    - Structural directive
 
 ### Pipe ###
 - Encapsulate any logic that involves data transformation for presention
