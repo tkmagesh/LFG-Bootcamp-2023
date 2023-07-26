@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { GreeterComponent } from "./greeter/greeter.component";
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
   declarations: [
     AppComponent,
-    GreeterComponent
+    GreeterComponent,
+    CalculatorComponent
   ],
   /* All the dependency modules  */
   imports: [
