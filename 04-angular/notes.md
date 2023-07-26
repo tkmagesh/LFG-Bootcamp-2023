@@ -35,7 +35,13 @@
 - In other words, a directive is a component without a template
 - Types of Directives
     - Attribute directive
+        - manipulates the attribute values of an existing dom node
+        - DOES NOT change the structure of the DOM tree
+        - used with '[]'
+
     - Structural directive
+        - Changes the structure of the DOM tree by adding new DOM nodes or removing existing DOM nodes
+        - used with '*'
 
 ### Pipe ###
 - Encapsulate any logic that involves data transformation for presention

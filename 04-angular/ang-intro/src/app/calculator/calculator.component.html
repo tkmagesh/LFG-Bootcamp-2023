@@ -12,4 +12,9 @@
 <button (click)="onSubtractClick()">Subtract</button>
 <button (click)="onMultiplyClick()">Multiply</button>
 <button (click)="onDivideClick()">Divide</button>
-<div [ngClass]="{ positive : result >= 0, negative : result < 0}">{{result}}</div>
+<div 
+    *ngIf="!(n1 == '0' || n1 == 'NaN') && !(n2 == '0' || n2 == 'NaN')"
+    [ngClass]="{ positive : result >= 0, negative : result < 0}"
+>
+        {{result | currency:'USD':'symbol':'2.2-4'}}
+</div>

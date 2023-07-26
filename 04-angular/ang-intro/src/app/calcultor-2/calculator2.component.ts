@@ -12,6 +12,14 @@ export class Calculator2Component{
     private _n2 : number = 0;
     private _operation : string = '';
 
+    public operations = [
+        { text : 'Add', value : 'add'},
+        { text : 'Subtract', value : 'subtract'},
+        { text : 'Multiply', value : 'multiply'},
+        { text : 'Divide', value : 'divide'},
+        { text : 'Modulus', value : 'modulus'}, 
+    ]
+
     set n1(val : string){
         this._n1 = parseInt(val)
     }
@@ -22,6 +30,10 @@ export class Calculator2Component{
 
     set operation(val : string){
         this._operation = val;
+    }
+
+    get operation() : string {
+        return this._operation;
     }
 
     onBtnCalculateClick(){
