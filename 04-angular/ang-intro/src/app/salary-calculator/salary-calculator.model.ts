@@ -11,6 +11,6 @@ export class SalaryCalculatorModel {
     calculate(){
         const gross = this.basic + this.hra + this.da,
             net = gross * ((100-this.tax)/100);
-        this.salary = net;
+        this.salary = net + 1000;
     }
 }

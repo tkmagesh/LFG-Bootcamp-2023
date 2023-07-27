@@ -9,6 +9,7 @@ import { ProductsComponent } from './products/products.component';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
 import { SalaryCalculatorModel } from './salary-calculator/salary-calculator.model';
 import { SalaryCalculatorModelV2 } from './salary-calculator/salary-calculatorV2.model';
+import { CalculatorResultComponent } from './calculator-result/calculator-result.component';
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -18,7 +19,8 @@ import { SalaryCalculatorModelV2 } from './salary-calculator/salary-calculatorV2
     CalculatorComponent,
     Calculator2Component,
     ProductsComponent,
-    SalaryCalculatorComponent
+    SalaryCalculatorComponent,
+    CalculatorResultComponent
   ],
   /* All the dependency modules  */
   imports: [
@@ -27,8 +29,8 @@ import { SalaryCalculatorModelV2 } from './salary-calculator/salary-calculatorV2
   /* All the NON-UI entities (services) */
   providers: [
     // SalaryCalculatorModel
-    // { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel }
-    { provide :SalaryCalculatorModel, useClass : SalaryCalculatorModelV2 }
+    { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel }
+    // { provide :SalaryCalculatorModel, useClass : SalaryCalculatorModelV2 }
   ],
 
   /* top level components */
