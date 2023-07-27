@@ -7,10 +7,10 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { Calculator2Component } from './calcultor-2/calculator2.component';
 import { ProductsComponent } from './products/products.component';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
-import { SalaryCalculatorModel } from './salary-calculator/salary-calculator.model';
-import { SalaryCalculatorModelV2 } from './salary-calculator/salary-calculatorV2.model';
+import { SalaryCalculatorModel } from './salary-calculator/models/salary-calculator.model';
+import { SalaryCalculatorModelV2 } from './salary-calculator/models/salary-calculatorV2.model';
 import { CalculatorResultComponent } from './calculator-result/calculator-result.component';
-import { SalaryCalculatorResultComponent } from './salary-calculator-result/salary-calculator-result.component';
+import { SalaryCalculatorResultComponent } from './salary-calculator/salary-calculator-result/salary-calculator-result.component';
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */

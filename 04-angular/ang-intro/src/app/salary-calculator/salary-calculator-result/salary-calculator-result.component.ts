@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { SalaryCalculatorViewModel } from "../salary-calculator/salary-calculator-view.model";
+import { SalaryCalculatorViewModel } from "../models/salary-calculator-view.model";
 
 @Component({
     selector : 'app-salary-calculator-result',
