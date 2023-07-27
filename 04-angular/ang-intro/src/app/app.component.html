@@ -12,5 +12,8 @@
     <app-calculator *ngSwitchCase="'Calculator'"></app-calculator>
     <app-calculator-2 *ngSwitchCase="'Calculator-2'"></app-calculator-2>
     <app-products *ngSwitchCase="'Products'"></app-products>
-    <app-salary-calculator *ngSwitchCase="'SalaryCalculator'"></app-salary-calculator>
+    <div *ngSwitchCase="'SalaryCalculator'">
+        <app-salary-calculator></app-salary-calculator>
+        <app-salary-calculator></app-salary-calculator>
+    </div>
 </div>

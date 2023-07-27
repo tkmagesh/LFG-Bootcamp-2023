@@ -8,7 +8,21 @@ import { SalaryCalculatorModel } from "./salary-calculator.model";
 })
 export class SalaryCalculatorComponent{
 
-    model : SalaryCalculatorModel = new SalaryCalculatorModel();
+    // Violation of Dependency Inversion Principle (DIP)
+    // public model : SalaryCalculatorModel = new SalaryCalculatorModel();
+
+    //adhering to Dependency Inversion Principle
+    /* 
+    public model : SalaryCalculatorModel;
+
+    constructor(model : SalaryCalculatorModel){
+        this.model = model;
+    } 
+    */
+
+    constructor(public model : SalaryCalculatorModel){
+
+    }
 
     set basic(val : string){
         this.model.basic = parseInt(val);
