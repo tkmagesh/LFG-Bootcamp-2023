@@ -1,3 +1,4 @@
+import { SalaryCalculatorViewModel } from "./salary-calculator-view.model";
 
 export class SalaryCalculatorModel {
     //state
@@ -12,5 +13,15 @@ export class SalaryCalculatorModel {
         const gross = this.basic + this.hra + this.da,
             net = gross * ((100-this.tax)/100);
         this.salary = net + 1000;
+    }
+
+    get view () : SalaryCalculatorViewModel {
+        return {
+            basic : this.basic,
+            hra : this.hra,
+            da : this.da,
+            tax : this.tax,
+            salary : this.salary
+        } 
     }
 }
