@@ -1,0 +1,45 @@
+<h3>Salary Calculator</h3>
+<hr>
+<section>
+    <div class="field">
+        <label for="">Basic :</label>
+        <input type="number"  #txtBasic (input)="basic = txtBasic.value">
+    </div>
+    <div class="field">
+        <label for="">HRA :</label>
+        <input type="number"  #txtHra (input)="hra = txtHra.value">
+    </div>
+    <div class="field">
+        <label for="">DA :</label>
+        <input type="number"  #txtDa (input)="da = txtDa.value">
+    </div>
+    <div class="field">
+        <label for="">Tax :</label>
+        <input type="range"  #rangeTax (input)="tax = rangeTax.value" min="0" max="30" value="0">
+    </div>
+    <div class="field">
+        <button id="btnCalculate" (click)="onBtnCalculateClick()">Calculate</button>
+    </div>
+    <div class="field">
+        <table>
+            <thead>
+                <tr>
+                    <th>Basic</th>
+                    <th>HRA</th>
+                    <th>DA</th>
+                    <th>Tax</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="tdBasic">{{model.basic}}</td>
+                    <td id="tdHra">{{model.hra}}</td>
+                    <td id="tdDa">{{model.da}}</td>
+                    <td id="tdTax">{{model.tax}}</td>
+                    <td id="tdSalary">{{model.salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
