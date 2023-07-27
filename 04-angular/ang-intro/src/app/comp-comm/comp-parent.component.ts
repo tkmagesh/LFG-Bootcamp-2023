@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
     template : `
         <h3>Parent</h3>
         <div>X : {{x}}</div>
-        <app-child [data]="x" (reset)="onTest()"></app-child>
+        <app-child [data]="x" (reset)="onClear()"></app-child>
     `
 })
 export class ComponentParent{
@@ -14,8 +14,5 @@ export class ComponentParent{
     onClear(){
         this.x = 0;
     }
-
-    onTest(){
-        this.x = 1000;
-    }
+    
 }
