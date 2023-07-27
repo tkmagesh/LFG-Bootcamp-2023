@@ -2,11 +2,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector: 'app-child',
-    template: `
-        <h3>Child</h3>
-        <div>Data From Parent : {{data}}</div>
-        <button (click)="onClearClick()">Clear</button>
-    `
+    templateUrl : 'comp-child.component.html'
 })
 export class ComponentChild {
     @Input()
