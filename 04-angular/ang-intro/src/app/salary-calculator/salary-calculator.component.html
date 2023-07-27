@@ -3,22 +3,26 @@
 <section>
     <div class="field">
         <label for="">Basic :</label>
-        <input type="number"  #txtBasic (input)="basic = txtBasic.value">
+        <input type="number"  #txtBasic [value]="model.basic"  (input)="basic = txtBasic.value">
     </div>
     <div class="field">
         <label for="">HRA :</label>
-        <input type="number"  #txtHra (input)="hra = txtHra.value">
+        <input type="number"  #txtHra [value]="model.hra" (input)="hra = txtHra.value">
     </div>
     <div class="field">
         <label for="">DA :</label>
-        <input type="number"  #txtDa (input)="da = txtDa.value">
+        <input type="number"  #txtDa [value]="model.da" (input)="da = txtDa.value">
     </div>
     <div class="field">
         <label for="">Tax :</label>
-        <input type="range"  #rangeTax (input)="tax = rangeTax.value" min="0" max="30" value="0">
+        <input type="range"  #rangeTax [value]="model.tax" (input)="tax = rangeTax.value" min="0" max="30" value="0">
     </div>
     <div class="field">
         <button id="btnCalculate" (click)="onBtnCalculateClick()">Calculate</button>
     </div>
-    <app-salary-calculator-result [data]="model.view"></app-salary-calculator-result>
+    <app-salary-calculator-result 
+        [data]="model.view"
+        (reset)="onClear()"
+    >
+    </app-salary-calculator-result>
 </section>

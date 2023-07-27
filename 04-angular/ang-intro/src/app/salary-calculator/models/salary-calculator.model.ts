@@ -1,6 +1,7 @@
 import { SalaryCalculatorViewModel } from "./salary-calculator-view.model";
 
 export class SalaryCalculatorModel {
+    
     //state
     basic = 0;
     hra = 0;
@@ -23,5 +24,9 @@ export class SalaryCalculatorModel {
             tax : this.tax,
             salary : this.salary
         } 
+    }
+
+    reset() {
+        this.basic = this.hra = this.da = this.tax = this.salary = 0;
     }
 }

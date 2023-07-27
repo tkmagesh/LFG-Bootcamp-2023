@@ -2,13 +2,14 @@ import { Component } from "@angular/core";
 import { SalaryCalculatorModel } from "./models/salary-calculator.model";
 
 @Component({
-    selector : 'app-salary-calculator',
-    templateUrl : 'salary-calculator.component.html',
-    styleUrls : ['salary-calculator.component.css'],
+    selector: 'app-salary-calculator',
+    templateUrl: 'salary-calculator.component.html',
+    styleUrls: ['salary-calculator.component.css'],
     // providers : [ SalaryCalculatorModel ]
 
 })
-export class SalaryCalculatorComponent{
+export class SalaryCalculatorComponent {
+    
 
     // Violation of Dependency Inversion Principle (DIP)
     // public model : SalaryCalculatorModel = new SalaryCalculatorModel();
@@ -22,27 +23,31 @@ export class SalaryCalculatorComponent{
     } 
     */
 
-    constructor(public model : SalaryCalculatorModel){
+    constructor(public model: SalaryCalculatorModel) {
 
     }
 
-    set basic(val : string){
+    set basic(val: string) {
         this.model.basic = parseInt(val);
     }
 
-    set hra(val : string){
+    set hra(val: string) {
         this.model.hra = parseInt(val);
     }
 
-    set da(val : string){
+    set da(val: string) {
         this.model.da = parseInt(val);
     }
 
-    set tax(val : string){
+    set tax(val: string) {
         this.model.tax = parseInt(val);
     }
 
-    onBtnCalculateClick(){
+    onBtnCalculateClick() {
         this.model.calculate()
+    }
+
+    onClear() {
+        this.model.reset()
     }
 }

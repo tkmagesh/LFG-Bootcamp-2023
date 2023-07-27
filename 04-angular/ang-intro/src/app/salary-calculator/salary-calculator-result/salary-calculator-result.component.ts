@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SalaryCalculatorViewModel } from "../models/salary-calculator-view.model";
 
 @Component({
@@ -12,11 +12,15 @@ export class SalaryCalculatorResultComponent {
     @Input('data')
     model! : SalaryCalculatorViewModel;
 
-    onBtnChangeSomethingClick() {
+    @Output()
+    reset : EventEmitter<void> = new EventEmitter<void>()
+
+    onBtnClearClick() {
         /* 
         this.model.basic = 20000
         this.model.calculate() 
         */
+        this.reset.emit()
     }
 
 }

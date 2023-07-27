@@ -13,7 +13,7 @@ import { SalaryCalculatorModel } from "./salary-calculator.model";
 
 // the above can be dynamically created using the ReadOnly type in TS
 
-export type SalaryCalculatorViewModel = Readonly<Omit<SalaryCalculatorModel, "calculate" | "view">>
+export type SalaryCalculatorViewModel = Readonly<Omit<SalaryCalculatorModel, "calculate" | "view" | "reset">>
 
 
 
