@@ -13,6 +13,8 @@ import { CalculatorResultComponent } from './calculator-result/calculator-result
 import { SalaryCalculatorResultComponent } from './salary-calculator/salary-calculator-result/salary-calculator-result.component';
 import { ComponentParent } from './comp-comm/comp-parent.component';
 import { ComponentChild } from './comp-comm/comp-child.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductsService } from './shopping-cart/services/products.service';
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -26,7 +28,8 @@ import { ComponentChild } from './comp-comm/comp-child.component';
     CalculatorResultComponent,
     SalaryCalculatorResultComponent,
     ComponentParent,
-    ComponentChild
+    ComponentChild,
+    ShoppingCartComponent
 
   ],
   /* All the dependency modules  */
@@ -36,8 +39,9 @@ import { ComponentChild } from './comp-comm/comp-child.component';
   /* All the NON-UI entities (services) */
   providers: [
     // SalaryCalculatorModel
-    { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel }
+    { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel },
     // { provide :SalaryCalculatorModel, useClass : SalaryCalculatorModelV2 }
+    ProductsService
   ],
 
   /* top level components */

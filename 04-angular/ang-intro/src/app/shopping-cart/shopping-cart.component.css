@@ -1,0 +1,15 @@
+
+section{
+    padding : 10px;
+    border : 1px solid gray;
+    margin-bottom: 10px;
+}
+.shopping-cart {
+    width: 800px;
+}
+span{
+    margin-right: 10px;
+}
+th, td{
+    padding-right: 10px;
+}

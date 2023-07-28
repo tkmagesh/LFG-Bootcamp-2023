@@ -1,19 +1,21 @@
 <h1>Angular App</h1>
-<div>
-    <button (click)="userChoice = 'Greeter'">Greeter</button>
-    <button (click)="userChoice = 'Calculator'">Calculator</button>
-    <button (click)="userChoice = 'Calculator-2'">Calculator-2</button>
-    <button (click)="userChoice = 'Products'">Products</button>
-    <button (click)="userChoice = 'SalaryCalculator'">Salary Calculator</button>
-</div>
-<div>User Choice : {{userChoice}}</div>
-<div [ngSwitch]="userChoice">
-    <app-greeter *ngSwitchCase="'Greeter'"></app-greeter>
-    <app-calculator *ngSwitchCase="'Calculator'"></app-calculator>
-    <app-calculator-2 *ngSwitchCase="'Calculator-2'"></app-calculator-2>
-    <app-products *ngSwitchCase="'Products'"></app-products>
-    <div *ngSwitchCase="'SalaryCalculator'">
-        <app-salary-calculator></app-salary-calculator>
+<div class="shopping-cart">
+    <div>
+        <button (click)="userChoice = 'Greeter'">Greeter</button>
+        <button (click)="userChoice = 'Calculator'">Calculator</button>
+        <button (click)="userChoice = 'Calculator-2'">Calculator-2</button>
+        <button (click)="userChoice = 'Products'">Products</button>
+        <button (click)="userChoice = 'SalaryCalculator'">Salary Calculator</button>
     </div>
+    <div>User Choice : {{userChoice}}</div>
+    <div [ngSwitch]="userChoice">
+        <app-greeter *ngSwitchCase="'Greeter'"></app-greeter>
+        <app-calculator *ngSwitchCase="'Calculator'"></app-calculator>
+        <app-calculator-2 *ngSwitchCase="'Calculator-2'"></app-calculator-2>
+        <app-products *ngSwitchCase="'Products'"></app-products>
+        <div *ngSwitchCase="'SalaryCalculator'">
+            <app-salary-calculator></app-salary-calculator>
+        </div>
+    </div>
+    <app-shopping-cart></app-shopping-cart>
 </div>
-<app-parent></app-parent>

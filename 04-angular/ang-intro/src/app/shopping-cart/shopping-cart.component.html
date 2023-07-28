@@ -1,0 +1,45 @@
+<h3>Shopping Cart</h3>
+<div class="shopping-cart">
+    <section class="stats">
+        <span>Count :</span>
+        <span>[products count]</span>
+        <span>Value :</span><span>[cart value]</span>
+    </section>
+    <section class="action">
+        <select #selectProduct (change)="chooseProduct(selectProduct.value)">
+            <option value="">---Select---</option>
+            <option *ngFor="let product of productsService.products" [value]="product.id">
+                {{product.name}}
+            </option>
+        </select>
+        <span>Category :</span>
+        <span>{{selectedProduct.category}}</span>
+        <span>Cost :</span>
+        <span>{{selectedProduct.cost}}</span>
+        <label for="">Units :</label>
+        <input type="number" name="" id="">
+        <button>Add</button>
+        <div *ngIf="selectedProduct === productsService.nullProduct">Choose a product</div>
+    </section>
+    <section class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Cost</th>
+                    <th>Units</th>
+                    <th>Product Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>[Name]</td>
+                    <td>[Category]</td>
+                    <td>[Cost]</td>
+                    <td>[Units]</td>
+                    <td>[Product Value]</td>
+            </tbody>
+        </table>
+    </section>
+</div>
