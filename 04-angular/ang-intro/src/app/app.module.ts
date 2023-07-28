@@ -15,6 +15,8 @@ import { ComponentParent } from './comp-comm/comp-parent.component';
 import { ComponentChild } from './comp-comm/comp-child.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductsService } from './shopping-cart/services/products.service';
+import { CartService } from './shopping-cart/services/cart.service';
+import { CartStatsComponent } from './shopping-cart/components/cart-stats/cart-stats.component';
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -29,8 +31,8 @@ import { ProductsService } from './shopping-cart/services/products.service';
     SalaryCalculatorResultComponent,
     ComponentParent,
     ComponentChild,
-    ShoppingCartComponent
-
+    ShoppingCartComponent,
+    CartStatsComponent
   ],
   /* All the dependency modules  */
   imports: [
@@ -41,7 +43,8 @@ import { ProductsService } from './shopping-cart/services/products.service';
     // SalaryCalculatorModel
     { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel },
     // { provide :SalaryCalculatorModel, useClass : SalaryCalculatorModelV2 }
-    ProductsService
+    ProductsService,
+    CartService
   ],
 
   /* top level components */

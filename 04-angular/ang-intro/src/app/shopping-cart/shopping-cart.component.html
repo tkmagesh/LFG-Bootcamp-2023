@@ -1,10 +1,8 @@
 <h3>Shopping Cart</h3>
 <div class="shopping-cart">
-    <section class="stats">
-        <span>Count :</span>
-        <span>[products count]</span>
-        <span>Value :</span><span>[cart value]</span>
-    </section>
+    <!-- CartStats component -->
+    <app-cart-stats [ItemsCount]="cartService.items.length" [Total]="cartService.total"></app-cart-stats>
+    <!-- CartAction component -->
     <section class="action">
         <select #selectProduct (change)="chooseProduct(selectProduct.value)">
             <option value="">---Select---</option>
@@ -17,10 +15,11 @@
         <span>Cost :</span>
         <span>{{selectedProduct.cost}}</span>
         <label for="">Units :</label>
-        <input type="number" name="" id="">
-        <button>Add</button>
+        <input type="number" #txtUnits (input)="selectedProductUnits = txtUnits.value">
+        <button (click)="onBtnAddClick()">Add</button>
         <div *ngIf="selectedProduct === productsService.nullProduct">Choose a product</div>
     </section>
+    <!-- CartItemList component -->
     <section class="list">
         <table>
             <thead>
@@ -33,12 +32,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>[Name]</td>
-                    <td>[Category]</td>
-                    <td>[Cost]</td>
-                    <td>[Units]</td>
-                    <td>[Product Value]</td>
+                <tr *ngFor="let cartItem of cartService.items">
+                    <td>{{cartItem.name}}</td>
+                    <td>{{cartItem.category}}</td>
+                    <td>{{cartItem.cost}}</td>
+                    <td>{{cartItem.units}}</td>
+                    <td>{{cartItem.value}}</td>
             </tbody>
         </table>
     </section>
