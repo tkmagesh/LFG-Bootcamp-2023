@@ -6,12 +6,14 @@ import { BugsComponent } from './bugs/bugs.component';
 import { BugOperationService } from './bugs/services/bugOperation.service';
 import { BugsService } from './bugs/services/bugs.service';
 import { TrimTextPipe } from './bugs/pipes/trimText.pipe';
+import { SortPipe } from './bugs/pipes/sort.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BugsComponent,
-    TrimTextPipe
+    TrimTextPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule

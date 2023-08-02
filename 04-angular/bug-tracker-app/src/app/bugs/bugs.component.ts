@@ -10,6 +10,9 @@ import { BugsService } from "./services/bugs.service";
 })
 export class BugsComponent {
 
+    sortAttr: string = "id";
+    sortDesc : boolean = false;
+
     constructor(public bugsService: BugsService) {
 
     }
