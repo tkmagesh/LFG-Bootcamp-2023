@@ -8,9 +8,11 @@ export class BugsService {
     
     // initialize the bugs array with dummy data to start with
     bugs: Bug[] = [
+        /* 
         { id: 1, title: 'Server communcation failure', isClosed: false, createdAt: new Date(2023,6,1) },
         { id: 2, title: 'User access denied', isClosed: true, createdAt: new Date(2023, 4, 1) },
-        { id: 3, title: 'Application not responding', isClosed: false, createdAt: new Date(2023, 5, 1) },
+        { id: 3, title: 'Application not responding', isClosed: false, createdAt: new Date(2023, 5, 1) }, 
+        */
     ];
 
     constructor(private bugOperations: BugOperationService) {

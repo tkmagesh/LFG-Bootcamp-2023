@@ -18,8 +18,32 @@
             5. Remove all the 'closed' bugs (done)
             6. Display the stats (# of closed bugs / total $ of bugs) (done)
             7. Improvise bug display (truncate the title to 30 chars + '...') (done)
-            8. Sort the bugs (done)
+            8. Sort the bugs (done) (to be continued...)
             9. Persist the bugs in the browser local storage
+                window.localStorage (object)
+                ===================
+                    * key/value store
+                    * key has to be unique
+                    * both key & value must be strings
+                        Use JSON.stringify & JSON.parse for serialization and deserialization respectively
+                    * Advisable NOT to be used for any sensitive data and data that you can't afford to loose
+                    * Security is taken care Same Origin Policy of the browser
+                    * ~10 MB storage limit per origin (depends on the browser)
+                    * APIs
+                    ======
+                        - setItem(key, value) [insert / update]
+                        - getItem(key) => value
+                        - removeItem(key)
+                        - key(index) => key @ index
+                        - clear() [ remove all the items from the storage ]
+                        - length 
+                - Notes
+                    - load all the bugs from the storage when the bugs component is shown
+                    - Persit the bug in the storage whenever it is created & upated
+                    - Remove the bug from the storage whenever it is to be removed
+                    - Perform the I/O operation for individual bug
+
+
             10. Improvise 'createdAt' display
             11. Persist the bugs in the server
             12. Implement data validations
