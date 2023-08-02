@@ -1,0 +1,37 @@
+<section>
+    <section class="stats">
+        <span class="closed">{{getClosedCount()}}</span>
+        <span> / </span>
+        <span>{{bugsService.bugs.length}}</span>
+    </section>
+    <section class="sort">
+        <label for="">Order By :</label>
+        <select name="" id="">
+            <option value="">---Select---</option>
+            <option value="">Title</option>
+            <option value="">Status</option>
+            <option value="">Created</option>
+        </select>
+        <label for="">Descending ?:</label>
+        <input type="checkbox" name="" id="">
+    </section>
+    <section class="edit">
+        <label for="">Bug Title :</label>
+        <input type="text" #txtNewBugTitle>
+        <button (click)="onBtnAddNewClick(txtNewBugTitle.value)">Add New</button>
+    </section>
+    <section class="list">
+        <ul>
+            <li *ngFor="let bug of bugsService.bugs">
+                <span 
+                    class="bugname" 
+                    [ngClass]="{closed : bug.isClosed}"
+                    (click)="onBugTitleClick(bug)"
+                >{{bug.title}}</span>
+                <div class="datetime">[{{bug.createdAt}}]</div>
+                <button (click)="onBtnRemoveClick(bug)">Remove</button>
+            </li>
+        </ul>
+        <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
+    </section>
+</section>
