@@ -47,6 +47,13 @@
 - Encapsulate any logic that involves data transformation for presention
 - Doesn't change any state
 
+- Custom Pipe Creation
+    - Create a class implementing the PipeTransform interface
+    - Decorate the class with the 'Pipe' decorator
+    - Register the pipe in the module
+    - Use the pipe
+
+
 ### Service ###
 - Encapsulates any non-ui responsibility
 
