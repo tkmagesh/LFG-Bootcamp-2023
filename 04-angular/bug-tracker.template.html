@@ -14,10 +14,10 @@
             1. Add new bugs
             2. List the added bugs
             3. Remove any bug
-            4. Toggle the 'closed' of any bug
+            4. Toggle the 'closed' status of any bug
             5. Remove all the 'closed' bugs
             6. Display the stats (# of closed bugs / total $ of bugs)
-            7. Improvise bug display
+            7. Improvise bug display (truncate to 30 chars + '...')
             7. Sort the bugs
             8. Persist the bugs in the browser local storage
             9. Improvise 'createdAt' display
@@ -29,6 +29,7 @@
             15. Package & Deploy the application
             16. Implement the 'Projects' module (adding, listing & routing)
      -->
+
      <style>
         body{
             margin-left: 20px;
@@ -77,8 +78,10 @@
         <section class="sort">
             <label for="">Order By :</label>
             <select name="" id="">
-                <option value=""></option>
-                <option value=""></option>
+                <option value="">---Select---</option>
+                <option value="">Title</option>
+                <option value="">Status</option>
+                <option value="">Created</option>
             </select>
             <label for="">Descending ?:</label>
             <input type="checkbox" name="" id="">
@@ -97,6 +100,11 @@
                 </li>
                 <li>
                     <span class="bugname">Bug - 2</span>
+                    <div class="datetime">[createdAt]</div>
+                    <button>Remove</button>
+                </li>
+                <li>
+                    <span class="bugname">Do quis occaecat Lorem ut... </span>
                     <div class="datetime">[createdAt]</div>
                     <button>Remove</button>
                 </li>
