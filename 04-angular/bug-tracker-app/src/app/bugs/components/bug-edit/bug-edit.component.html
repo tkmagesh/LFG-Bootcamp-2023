@@ -1,0 +1,6 @@
+<section class="edit">
+    <label for="">Bug Title :</label>
+    <input type="text" #txtNewBugTitle (input)="newBugTitle = txtNewBugTitle.value">
+    <span> [ {{newBugTitle.length}} ] </span>
+    <button (click)="onBtnAddNewClick()">Add New</button>
+</section>

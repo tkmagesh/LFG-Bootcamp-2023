@@ -71,3 +71,12 @@
     - > ng new <app_name>
 
 
+## Component Categories ##
+### Container / Smart Components ###
+- Interact with other services
+- Avoid user interface responsibility
+
+### Presentation / Dumb Components ###
+- Receive the data from the "Container" component and display
+- Accept input from the user and pass them back to the "Container" component
+- DO NOT interact with other services

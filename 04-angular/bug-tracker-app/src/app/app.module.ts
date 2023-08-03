@@ -10,16 +10,22 @@ import { SortPipe } from './bugs/pipes/sort.pipe';
 import { BugsHeaderComponent } from './bugs/header.component';
 import { ClosedCountPipe } from './bugs/pipes/closedCount.pipe';
 import { ElapsedPipe } from './bugs/pipes/elapsed.pipe';
+import { BugStatsComponent } from './bugs/components/bug-stats/bug-stats.component';
+import { BugEditComponent } from './bugs/components/bug-edit/bug-edit.component';
+import { BugSortComponent } from './bugs/components/bug-sort/bug-sort.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BugsComponent,
     BugsHeaderComponent,
+    BugStatsComponent,
     ClosedCountPipe,
     TrimTextPipe,
     SortPipe,
-    ElapsedPipe
+    ElapsedPipe,
+    BugEditComponent,
+    BugSortComponent
   ],
   imports: [
     BrowserModule

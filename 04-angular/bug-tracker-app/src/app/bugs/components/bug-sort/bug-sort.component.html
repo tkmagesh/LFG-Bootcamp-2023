@@ -1,0 +1,11 @@
+<section class="sort">
+    <label for="">Order By :</label>
+    <select #selectSortAttr (change)="onChangeAttr(selectSortAttr.value)">
+        <option value="">---Select---</option>
+        <option value="title">Title</option>
+        <option value="isClosed">Status</option>
+        <option value="createdAt">Created</option>
+    </select>
+    <label for="">Descending ?:</label>
+    <input type="checkbox" #chkDesc (change)="onChangeDesc(chkDesc.checked)">
+</section>

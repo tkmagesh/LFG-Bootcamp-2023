@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Bug } from "./models/bug";
 import { BugOperationService } from "./services/bugOperation.service";
 import { BugsService } from "./services/bugs.service";
+import { SortParams } from "./components/bug-sort/bug-sort.component";
 
 @Component({
     selector: 'app-bugs',
@@ -10,10 +11,11 @@ import { BugsService } from "./services/bugs.service";
 })
 export class BugsComponent implements OnInit {
     
-    sortAttr: string = "id";
-    sortDesc: boolean = false;
+    sortAttr : string = '';
+    sortDesc : boolean = false;
+
     showHeader : boolean = true;
-    newBugTitle : string = '';
+    
 
     constructor(public bugsService: BugsService) {
         console.log('bugsComponent - instance created')
@@ -25,9 +27,17 @@ export class BugsComponent implements OnInit {
         this.bugsService.load()
     }
 
-    onBtnAddNewClick() {
-        this.bugsService.addNew(this.newBugTitle)
+    // event handler for the onNewBug event (bug-edit component)
+    onNewBugCreate(newBugTitle : string){
+        this.bugsService.addNew(newBugTitle)
     }
+
+    // event handler for the 
+    onSortChange(sortData : SortParams){
+        this.sortAttr = sortData.attrName;
+        this.sortDesc = sortData.isDesc;
+    }
+    
 
     onBtnRemoveClick(bugToRemove: Bug) {
         this.bugsService.remove(bugToRemove)

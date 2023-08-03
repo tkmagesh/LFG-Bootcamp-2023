@@ -7,32 +7,13 @@
 
 <section>
     <!-- bugStats -->
-    <section class="stats">
-        <span class="closed">{{bugsService.bugs | closedCount}}</span>
-        <span> / </span>
-        <span>{{bugsService.bugs.length}}</span>
-    </section>
+    <app-bug-stats [data]="bugsService.bugs"></app-bug-stats>
 
     <!-- bugSort -->
-    <section class="sort">
-        <label for="">Order By :</label>
-        <select #selectSortAttr (change)="sortAttr = selectSortAttr.value">
-            <option value="">---Select---</option>
-            <option value="title">Title</option>
-            <option value="isClosed">Status</option>
-            <option value="createdAt">Created</option>
-        </select>
-        <label for="">Descending ?:</label>
-        <input type="checkbox" #chkDesc (change)="sortDesc = chkDesc.checked">
-    </section>
+    <app-bug-sort (sortChange)="onSortChange($event)"></app-bug-sort>
 
     <!-- bugEdit -->
-    <section class="edit">
-        <label for="">Bug Title :</label>
-        <input type="text" #txtNewBugTitle (input)="newBugTitle = txtNewBugTitle.value">
-        <span> [ {{newBugTitle.length}} ] </span>
-        <button (click)="onBtnAddNewClick()">Add New</button>
-    </section>
+    <app-bug-edit (onNewBug)="onNewBugCreate($event)"></app-bug-edit>
 
     <!-- bugList -->
     <section class="list">
