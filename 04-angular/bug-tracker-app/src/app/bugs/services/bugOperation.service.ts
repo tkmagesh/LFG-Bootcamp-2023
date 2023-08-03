@@ -11,7 +11,12 @@ export class BugOperationService{
         return newBug;
     }
     
-    toggle(bugToToggle : Bug){
-        bugToToggle.isClosed = !bugToToggle.isClosed;
+    toggle(bugToToggle : Bug) : Bug {
+        // mutable
+        // bugToToggle.isClosed = !bugToToggle.isClosed;
+
+        // immutable version of the above
+        const toggledBug = { ...bugToToggle, isClosed : !bugToToggle.isClosed }
+        return toggledBug;
     }
 }
