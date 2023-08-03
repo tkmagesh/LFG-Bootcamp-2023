@@ -1,22 +1,25 @@
 import { Injectable } from "@angular/core";
 import { Bug } from "../models/bug";
 import { BugOperationService } from "./bugOperation.service";
+import { BugStorageService } from "./bugStorage.service";
 
 // When a service expects its dependencies to be injected
 @Injectable()
 export class BugsService {
     
-    // initialize the bugs array with dummy data to start with
-    bugs: Bug[] = [
-        /* 
-        { id: 1, title: 'Server communcation failure', isClosed: false, createdAt: new Date(2023,6,1) },
-        { id: 2, title: 'User access denied', isClosed: true, createdAt: new Date(2023, 4, 1) },
-        { id: 3, title: 'Application not responding', isClosed: false, createdAt: new Date(2023, 5, 1) }, 
-        */
-    ];
+    public bugs: Bug[] = [];
 
-    constructor(private bugOperations: BugOperationService) {
+    constructor(
+        private bugOperations: BugOperationService, 
+        private bugStorage : BugStorageService
+    ) {
 
+    }
+
+    load(): void {
+
+        // populate the bugs from the storage
+        this.bugs = this.bugStorage.getAll()
     }
 
     addNew(newBugTitle: string) {
@@ -29,6 +32,9 @@ export class BugsService {
         // create a new bug object
         const newBug = this.bugOperations.createNew(newBugId, newBugTitle)
 
+        // persist the newly created bug in the storage
+        this.bugStorage.save(newBug);
+
         // append the new bug object to the array
         this.bugs.push(newBug);
     }
@@ -37,15 +43,25 @@ export class BugsService {
         // find the index of the bug to remove
         const bugIdxToRemove = this.bugs.indexOf(bugToRemove);
 
+        // remove the bug from the storage
+        this.bugStorage.remove(bugToRemove);
+
         // remove the bug from the array
         this.bugs.splice(bugIdxToRemove, 1)
     }
 
     removeClosed() {
-        this.bugs = this.bugs.filter(bug => !bug.isClosed)
+        this.bugs
+            .filter(bug => bug.isClosed) // filter all the closed bugs
+            .forEach(closedBug => this.remove(closedBug)) // for each closed bug, remove it
     }
 
     toggle(bugToToggle: Bug) {
+
+        // toggle the 'closed' status of the given bug
         this.bugOperations.toggle(bugToToggle)
+
+        // persist the changes in the storage
+        this.bugStorage.save(bugToToggle);
     }
 }

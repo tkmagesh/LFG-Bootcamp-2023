@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Bug } from "./models/bug";
 import { BugOperationService } from "./services/bugOperation.service";
 import { BugsService } from "./services/bugs.service";
@@ -8,13 +8,18 @@ import { BugsService } from "./services/bugs.service";
     templateUrl: 'bugs.component.html',
     styleUrls: ['bugs.component.css']
 })
-export class BugsComponent {
-
+export class BugsComponent implements OnInit {
+    
     sortAttr: string = "id";
-    sortDesc : boolean = false;
+    sortDesc: boolean = false;
 
     constructor(public bugsService: BugsService) {
+        
+    }
 
+    // lifecycle method invoked when the component is initialized
+    ngOnInit(): void {
+        this.bugsService.load()
     }
 
     onBtnAddNewClick(newBugTitle: string) {
@@ -40,7 +45,7 @@ export class BugsComponent {
 }
 
 // before introducing bugsService
-/* 
+/*
 export class BugsComponent {
 
     // initialize the bugs array with dummy data to start with
@@ -90,7 +95,7 @@ export class BugsComponent {
         // for(let idx = this.bugs.length-1; idx >= 0; idx--){
         //     if (this.bugs[idx].isClosed)
         //         this.bugs.splice(idx, 1)
-        // } 
+        // }
 
     }
 
