@@ -36,7 +36,11 @@ export class BugsService {
         this.bugStorage.save(newBug);
 
         // append the new bug object to the array
-        this.bugs.push(newBug);
+        // mutable
+        // this.bugs.push(newBug);
+
+        // immutable version of the above
+        this.bugs = [...this.bugs, newBug];
     }
 
     remove(bugToRemove: Bug) {

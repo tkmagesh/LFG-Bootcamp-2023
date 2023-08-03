@@ -12,18 +12,21 @@ export class BugsComponent implements OnInit {
     
     sortAttr: string = "id";
     sortDesc: boolean = false;
+    showHeader : boolean = true;
+    newBugTitle : string = '';
 
     constructor(public bugsService: BugsService) {
-        
+        console.log('bugsComponent - instance created')
     }
 
     // lifecycle method invoked when the component is initialized
     ngOnInit(): void {
+        console.log('bugsComponent - initialized')
         this.bugsService.load()
     }
 
-    onBtnAddNewClick(newBugTitle: string) {
-        this.bugsService.addNew(newBugTitle)
+    onBtnAddNewClick() {
+        this.bugsService.addNew(this.newBugTitle)
     }
 
     onBtnRemoveClick(bugToRemove: Bug) {

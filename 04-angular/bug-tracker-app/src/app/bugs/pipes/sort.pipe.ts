@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 export type Comparer<T> = (i1 : T, i2 : T) => number;
 @Pipe({
-    name : 'sort'
+    name : 'sort',
+    // pure : false // instructing angular to process the pipe even if none of the input to the pipe is changing
 })
 export class SortPipe<T> implements PipeTransform{
 
@@ -21,7 +22,7 @@ export class SortPipe<T> implements PipeTransform{
     }
 
     transform(list: T[], attrName : keyof T, desc : boolean = false) {
-        console.log('sort.transform - ', attrName);
+        console.log('sort.transform triggered');
         if (!list.length || !attrName) return list;
         let comparer : Comparer<T> = this.getComparerFor(attrName)
         if (desc)

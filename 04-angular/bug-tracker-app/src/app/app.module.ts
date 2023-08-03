@@ -7,11 +7,13 @@ import { BugOperationService } from './bugs/services/bugOperation.service';
 import { BugsService } from './bugs/services/bugs.service';
 import { TrimTextPipe } from './bugs/pipes/trimText.pipe';
 import { SortPipe } from './bugs/pipes/sort.pipe';
+import { BugsHeaderComponent } from './bugs/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BugsComponent,
+    BugsHeaderComponent,
     TrimTextPipe,
     SortPipe
   ],

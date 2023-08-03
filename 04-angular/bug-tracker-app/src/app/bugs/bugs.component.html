@@ -1,10 +1,19 @@
 
+<!-- 
+    <label for="">Show Header : </label>
+    <input type="checkbox" #chkShowHeader (change)="showHeader = chkShowHeader.checked"> 
+    <app-bugs-header *ngIf="showHeader"></app-bugs-header>
+ -->
+ 
 <section>
+    <!-- bugStats -->
     <section class="stats">
         <span class="closed">{{getClosedCount()}}</span>
         <span> / </span>
         <span>{{bugsService.bugs.length}}</span>
     </section>
+
+    <!-- bugSort -->
     <section class="sort">
         <label for="">Order By :</label>
         <select #selectSortAttr (change)="sortAttr = selectSortAttr.value">
@@ -16,11 +25,16 @@
         <label for="">Descending ?:</label>
         <input type="checkbox" #chkDesc (change)="sortDesc = chkDesc.checked">
     </section>
+
+    <!-- bugEdit -->
     <section class="edit">
         <label for="">Bug Title :</label>
-        <input type="text" #txtNewBugTitle>
-        <button (click)="onBtnAddNewClick(txtNewBugTitle.value)">Add New</button>
+        <input type="text" #txtNewBugTitle (input)="newBugTitle = txtNewBugTitle.value">
+        <span> [ {{newBugTitle.length}} ] </span>
+        <button (click)="onBtnAddNewClick()">Add New</button>
     </section>
+
+    <!-- bugList -->
     <section class="list">
         <ul>
             <li *ngFor="let bug of ( bugsService.bugs | sort:sortAttr:sortDesc)">
