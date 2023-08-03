@@ -52,10 +52,10 @@ export class BugsService {
 
         // remove the bug from the array
         // mutation
-        this.bugs.splice(bugIdxToRemove, 1)
+        // this.bugs.splice(bugIdxToRemove, 1)
 
         // immutable version of the above
-        // this.bugs = this.bugs.filter(bug => bug.id !== bugToRemove.id)
+        this.bugs = this.bugs.filter(bug => bug.id !== bugToRemove.id)
     }
 
     removeClosed() {
@@ -70,7 +70,7 @@ export class BugsService {
         const toggledBug = this.bugOperations.toggle(bugToToggle)
 
         // persist the changes in the storage
-        this.bugStorage.save(bugToToggle);
+        this.bugStorage.save(toggledBug);
 
         // create a new bugs array by replacing the old bug with the toggled bug (immutability)
         this.bugs = this.bugs.map(bug => bug.id === bugToToggle.id ? toggledBug : bug)

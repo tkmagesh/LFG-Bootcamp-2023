@@ -4,11 +4,11 @@
     <input type="checkbox" #chkShowHeader (change)="showHeader = chkShowHeader.checked"> 
     <app-bugs-header *ngIf="showHeader"></app-bugs-header>
  -->
- 
+
 <section>
     <!-- bugStats -->
     <section class="stats">
-        <span class="closed">{{getClosedCount()}}</span>
+        <span class="closed">{{bugsService.bugs | closedCount}}</span>
         <span> / </span>
         <span>{{bugsService.bugs.length}}</span>
     </section>

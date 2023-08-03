@@ -43,6 +43,7 @@ export class BugsComponent implements OnInit {
     }
 
     getClosedCount(): number {
+        console.log('getClosedCount triggered')
         return this.bugsService.bugs.reduce((prevResult, bug) => bug.isClosed ? prevResult + 1 : prevResult, 0)
     }
 }
