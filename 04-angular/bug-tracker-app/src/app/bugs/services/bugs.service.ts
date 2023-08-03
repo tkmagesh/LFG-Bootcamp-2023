@@ -59,9 +59,12 @@ export class BugsService {
     }
 
     removeClosed() {
+
         this.bugs
             .filter(bug => bug.isClosed) // filter all the closed bugs
-            .forEach(closedBug => this.remove(closedBug)) // for each closed bug, remove it
+            .forEach(closedBug => this.bugStorage.remove(closedBug)) // for each closed bug, remove it
+
+        this.bugs = this.bugs.filter(bug => !bug.isClosed); //retain only the open bugs
     }
 
     toggle(bugToToggle: Bug) {
