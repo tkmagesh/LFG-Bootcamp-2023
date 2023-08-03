@@ -37,6 +37,7 @@
     <!-- bugList -->
     <section class="list">
         <ul>
+            <!-- bugItem -->
             <li *ngFor="let bug of ( bugsService.bugs | sort:sortAttr:sortDesc)">
                 <span 
                     class="bugname" 
@@ -44,7 +45,7 @@
                     (click)="onBugTitleClick(bug)"
                     [title]="bug.title"
                 >{{bug.title | trimtext:40}}</span>
-                <div class="datetime">[{{bug.createdAt}}]</div>
+                <div class="datetime">[{{bug.createdAt | elapsed }}]</div>
                 <button (click)="onBtnRemoveClick(bug)">Remove</button>
             </li>
         </ul>
