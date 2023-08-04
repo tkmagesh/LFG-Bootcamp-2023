@@ -8,7 +8,7 @@ import { Bug } from '../../models/bug';
 })
 export class BugItemComponent {
   
-
+  // receive the "bug" to be displayed as input
   @Input('data')
   bug!: Bug;
 
@@ -19,10 +19,12 @@ export class BugItemComponent {
   remove : EventEmitter<Bug> = new EventEmitter<Bug>()
 
   onBtnRemoveClick(bugToRemove: Bug) {
+    // emit the "remove" event so that the parent component can be notified 
     this.remove.emit(bugToRemove);
   }
 
   onBugTitleClick(bugToToggle: Bug) {
+    // emit the "toggle" event so that the parent component can be notified 
     this.toggle.emit(bugToToggle);
   }
 
