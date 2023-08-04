@@ -32,24 +32,10 @@ export class BugsComponent implements OnInit {
         this.bugsService.addNew(newBugTitle)
     }
 
-    // event handler for the 
+    // event handler for the bug-sort component
     onSortChange(sortData : SortParams){
         this.sortAttr = sortData.attrName;
         this.sortDesc = sortData.isDesc;
-    }
-    
-
-    onBtnRemoveClick(bugToRemove: Bug) {
-        this.bugsService.remove(bugToRemove)
-    }
-
-    onBugTitleClick(bugToToggle: Bug) {
-        // toggle the 'closed' status of the give bug
-        this.bugsService.toggle(bugToToggle)
-    }
-
-    onBtnRemoveClosedClick() {
-        this.bugsService.removeClosed()
     }
 
     getClosedCount(): number {

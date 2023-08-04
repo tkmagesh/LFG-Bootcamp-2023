@@ -16,20 +16,5 @@
     <app-bug-edit (onNewBug)="onNewBugCreate($event)"></app-bug-edit>
 
     <!-- bugList -->
-    <section class="list">
-        <ul>
-            <!-- bugItem -->
-            <li *ngFor="let bug of ( bugsService.bugs | sort:sortAttr:sortDesc)">
-                <span 
-                    class="bugname" 
-                    [ngClass]="{closed : bug.isClosed}"
-                    (click)="onBugTitleClick(bug)"
-                    [title]="bug.title"
-                >{{bug.title | trimtext:40}}</span>
-                <div class="datetime">[{{bug.createdAt | elapsed }}]</div>
-                <button (click)="onBtnRemoveClick(bug)">Remove</button>
-            </li>
-        </ul>
-        <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
-    </section>
+    <app-bug-list [sortAttr]="sortAttr" [sortDesc]="sortDesc"></app-bug-list>
 </section>
