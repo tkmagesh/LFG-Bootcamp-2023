@@ -1,0 +1,25 @@
+
+
+.bugname {
+    font-size: 18pt;
+    cursor: pointer;
+}
+
+.closed {
+    font-style: italic;
+    font-weight: bold;
+    color: red;
+    text-decoration: line-through;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: #e7e7e7;
+}
+
+.datetime {
+    font-style: italic;
+}

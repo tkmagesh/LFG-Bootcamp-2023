@@ -14,6 +14,7 @@ import { BugStatsComponent } from './bugs/components/bug-stats/bug-stats.compone
 import { BugEditComponent } from './bugs/components/bug-edit/bug-edit.component';
 import { BugSortComponent } from './bugs/components/bug-sort/bug-sort.component';
 import { BugListComponent } from './bugs/components/bug-list/bug-list.component';
+import { BugItemComponent } from './bugs/components/bug-item/bug-item.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BugListComponent } from './bugs/components/bug-list/bug-list.component'
     ElapsedPipe,
     BugEditComponent,
     BugSortComponent,
-    BugListComponent
+    BugListComponent,
+    BugItemComponent
   ],
   imports: [
     BrowserModule

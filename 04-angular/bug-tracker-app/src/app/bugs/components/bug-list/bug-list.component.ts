@@ -9,17 +9,18 @@ import { Bug } from '../../models/bug';
 })
 export class BugListComponent {
 
-  @Input()
-  sortAttr : string = '';
 
   @Input()
-  sortDesc : boolean = false;
+  sortAttr: string = '';
 
-  constructor(public bugsService : BugsService){
+  @Input()
+  sortDesc: boolean = false;
+
+  constructor(public bugsService: BugsService) {
 
   }
 
-  onBtnRemoveClick(bugToRemove: Bug) {
+  onBugRemove(bugToRemove: Bug) {
     this.bugsService.remove(bugToRemove)
   }
 
@@ -27,7 +28,7 @@ export class BugListComponent {
     this.bugsService.removeClosed()
   }
 
-  onBugTitleClick(bugToToggle: Bug) {
+  onBugToggle(bugToToggle: Bug) {
     // toggle the 'closed' status of the give bug
     this.bugsService.toggle(bugToToggle)
   }
