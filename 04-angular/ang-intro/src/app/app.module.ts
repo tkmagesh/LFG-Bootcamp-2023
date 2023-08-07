@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+//for server communication using "HttpClient" service
+import { HttpClientModule } from "@angular/common/http";
+
 import { AppComponent } from './app.component';
 import { GreeterComponent } from "./greeter/greeter.component";
 import { CalculatorComponent } from './calculator/calculator.component';
@@ -17,6 +20,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductsService } from './shopping-cart/services/products.service';
 import { CartService } from './shopping-cart/services/cart.service';
 import { CartStatsComponent } from './shopping-cart/components/cart-stats/cart-stats.component';
+import { BugsComponent } from './bugs/bugs.component';
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -32,11 +36,13 @@ import { CartStatsComponent } from './shopping-cart/components/cart-stats/cart-s
     ComponentParent,
     ComponentChild,
     ShoppingCartComponent,
-    CartStatsComponent
+    CartStatsComponent,
+    BugsComponent
   ],
   /* All the dependency modules  */
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   /* All the NON-UI entities (services) */
   providers: [

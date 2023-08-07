@@ -6,6 +6,7 @@
         <button (click)="userChoice = 'Calculator-2'">Calculator-2</button>
         <button (click)="userChoice = 'Products'">Products</button>
         <button (click)="userChoice = 'SalaryCalculator'">Salary Calculator</button>
+        <button (click)="userChoice = 'Bugs'">Bugs</button>
     </div>
     <div>User Choice : {{userChoice}}</div>
     <div [ngSwitch]="userChoice">
@@ -13,9 +14,10 @@
         <app-calculator *ngSwitchCase="'Calculator'"></app-calculator>
         <app-calculator-2 *ngSwitchCase="'Calculator-2'"></app-calculator-2>
         <app-products *ngSwitchCase="'Products'"></app-products>
+        <app-bugs *ngSwitchCase="'Bugs'"></app-bugs>
         <div *ngSwitchCase="'SalaryCalculator'">
             <app-salary-calculator></app-salary-calculator>
         </div>
     </div>
-    <app-shopping-cart></app-shopping-cart>
+    <!-- <app-shopping-cart></app-shopping-cart> -->
 </div>

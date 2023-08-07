@@ -23,6 +23,18 @@
       "name": "Router is not routing",
       "isClosed": false,
       "createdAt": "2023-06-14T11:35:29.279Z"
+    },
+    {
+      "id": 6,
+      "name": "Updated Bug - 50",
+      "isClosed": false,
+      "createdAt": "2023-08-07T18:04:04.122Z"
+    },
+    {
+      "name": "Dummy Data - 6",
+      "createdAt": "2023-08-07T17:59:46.054Z",
+      "isClosed": false,
+      "id": 7
     }
   ],
   "projects": [
