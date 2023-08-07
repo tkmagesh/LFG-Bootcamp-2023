@@ -20,6 +20,7 @@ function addAsyncPromise(x,y){
     })
     return p;
 }
+
 console.log('from Promise:')
 let add$ = from(addAsyncPromise(100,200))
 add$.subscribe(result => console.log('add result :', result))
