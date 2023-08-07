@@ -4,3 +4,5 @@ export interface Bug {
     isClosed : boolean,
     createdAt : Date
 }
+
+export type NewBug = Omit<Bug, "id">

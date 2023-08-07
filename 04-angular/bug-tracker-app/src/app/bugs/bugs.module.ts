@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
 
 import { UtilsModule } from "../utils/utils.module";
 import { CommonModule } from "@angular/common";
@@ -31,7 +32,8 @@ import { BugOperationService } from "./services/bugOperation.service";
     ],
     imports : [
         CommonModule,
-        UtilsModule
+        UtilsModule,
+        HttpClientModule
     ],
     exports : [
         BugsComponent
