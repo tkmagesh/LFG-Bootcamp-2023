@@ -80,3 +80,14 @@
 - Receive the data from the "Container" component and display
 - Accept input from the user and pass them back to the "Container" component
 - DO NOT interact with other services
+
+## Observables ##
+- Observables = inverse of lazy iterables
+- Represent a stream of data generated across a time line one after another
+
+### Source of Async in Browser ###
+- User Actions (stream)
+- Ajax (singular)
+- Timer Events (stream)
+- Web Sockets (stream)
+- Server Sent Events (stream)

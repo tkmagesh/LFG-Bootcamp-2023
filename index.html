@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function onBtnDoWorkClick(){
+            for(let i = 0; i < 10000; i++)
+                for(let j = 0; j < 2000; j++)
+                    for(let k = 0; k < 2000; k++){
+                        
+                    }
+        }
+        function onDocumentLoad(){
+            let btnDoWork = document.getElementById('doWork');
+            btnDoWork.addEventListener('click', onBtnDoWorkClick)
+        }
+        window.addEventListener('load', onDocumentLoad)
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <button id="doWork">Do Work</button>
+
+</body>
+</html>
