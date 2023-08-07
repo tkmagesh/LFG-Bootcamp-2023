@@ -1,8 +1,7 @@
-import { Subject } from "rxjs";
+import { ReplaySubject, Subject } from "rxjs";
 
-// A subject can be used to externalize the data generation logic from the observable
-let subject = new Subject()
-
+// A replay subject can remember the past (n) results and emit them to the new subscribers
+let subject = new ReplaySubject(5)
 /* 
 // subscribing to the subject
 subject.subscribe(val => console.log(val))
@@ -28,3 +27,9 @@ setTimeout(() => {
     console.log('subscriber-2 subscribes')
     subject.subscribe(val => console.log(`[subscriber - 2] - ${val}`))
 }, 5000);
+
+// subscriber-3 (subscribes after 10 seconds)
+setTimeout(() => {
+    console.log('subscriber-3 subscribes')
+    subject.subscribe(val => console.log(`[subscriber - 3] - ${val}`))
+}, 10000);
