@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 //for server communication using "HttpClient" service
 import { HttpClientModule } from "@angular/common/http";
 
+/* for implementing the routing capabilities */
+import { RouterModule, Routes } from "@angular/router";
+
 import { AppComponent } from './app.component';
 import { GreeterComponent } from "./greeter/greeter.component";
 import { CalculatorComponent } from './calculator/calculator.component';
@@ -21,6 +24,19 @@ import { ProductsService } from './shopping-cart/services/products.service';
 import { CartService } from './shopping-cart/services/cart.service';
 import { CartStatsComponent } from './shopping-cart/components/cart-stats/cart-stats.component';
 import { BugsComponent } from './bugs/bugs.component';
+import { PathNotFoundCompnent } from './path-not-found.component';
+import { HomeComponent } from './home.component';
+
+/* define the routes */
+const routes : Routes = [
+  { path: "", component: HomeComponent },
+  { path: "greeter", component : GreeterComponent},
+  { path: "calculator", component: CalculatorComponent },
+  { path: "calculator-2", component: Calculator2Component },
+  { path: "salary-calculator", component: SalaryCalculatorComponent },
+  /* { path: "**", component: PathNotFoundCompnent } */
+  {path : "**", redirectTo : ""}
+]
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -37,12 +53,15 @@ import { BugsComponent } from './bugs/bugs.component';
     ComponentChild,
     ShoppingCartComponent,
     CartStatsComponent,
-    BugsComponent
+    BugsComponent,
+    PathNotFoundCompnent,
+    HomeComponent
   ],
   /* All the dependency modules  */
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   /* All the NON-UI entities (services) */
   providers: [

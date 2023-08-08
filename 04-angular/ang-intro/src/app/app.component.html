@@ -1,5 +1,20 @@
 <h1>Angular App</h1>
-<div class="shopping-cart">
+
+<!-- links for the routes -->
+<div>
+    <span> [ <a [routerLink]="['/']">Home</a> ] </span>
+    <span> [ <a [routerLink]="['/greeter']">Greeter</a> ] </span>
+    <span> [ <a [routerLink]="['/calculator']">Calculator</a> ] </span>
+    <span> [ <a [routerLink]="['/calculator-2']">Calculator-2</a> ] </span>
+    <span> [ <a [routerLink]="['/salary-calculator']">Salary Calculator</a> ] </span>
+    <span> [ <a [routerLink]="['/dummy']">Non existant</a> ] </span>
+</div>
+
+
+<!-- the components will be displayed in router-outlet based on the active route -->
+<router-outlet></router-outlet>
+
+<!-- <div class="shopping-cart">
     <div>
         <button (click)="userChoice = 'Greeter'">Greeter</button>
         <button (click)="userChoice = 'Calculator'">Calculator</button>
@@ -19,5 +34,4 @@
             <app-salary-calculator></app-salary-calculator>
         </div>
     </div>
-    <!-- <app-shopping-cart></app-shopping-cart> -->
-</div>
+</div> -->
