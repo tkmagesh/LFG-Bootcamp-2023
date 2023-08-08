@@ -15,6 +15,8 @@ import { BugItemComponent } from "./components/bug-item/bug-item.component";
 import { BugsService } from "./services/bugs.service";
 import { BugOperationService } from "./services/bugOperation.service";
 
+import { BugsRoutingModule } from "./bugs-router.module";
+
 @NgModule({
     declarations : [
         BugsComponent,
@@ -33,7 +35,8 @@ import { BugOperationService } from "./services/bugOperation.service";
     imports : [
         CommonModule,
         UtilsModule,
-        HttpClientModule
+        HttpClientModule,
+        BugsRoutingModule
     ],
     exports : [
         BugsComponent

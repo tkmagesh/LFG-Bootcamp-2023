@@ -1,6 +1,14 @@
 <h1>Bug Tracker</h1>
 <hr>
+<div>
+    <span> [ <a [routerLink]="['']">Home</a> ] </span>
+    <span> [ <a [routerLink]="['bugs']">Bugs</a> ] </span>
+    <span> [ <a [routerLink]="['projects']">Projects</a> ] </span>
+</div>
+<!-- 
 <div class="container">
     <app-bugs></app-bugs>
     <app-projects></app-projects>
-</div>
+</div> 
+-->
+<router-outlet></router-outlet>
