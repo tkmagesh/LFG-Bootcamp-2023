@@ -1,19 +1,17 @@
 
-<!-- 
-    <label for="">Show Header : </label>
-    <input type="checkbox" #chkShowHeader (change)="showHeader = chkShowHeader.checked"> 
-    <app-bugs-header *ngIf="showHeader"></app-bugs-header>
- -->
+<section class="container">
+    <div class="bugs-main">
+        <app-bug-stats [data]="bugsService.bugs"></app-bug-stats>
 
-<section>
+        <app-bug-sort (sortChange)="onSortChange($event)"></app-bug-sort>
 
-    <app-bug-stats [data]="bugsService.bugs"></app-bug-stats>
-
-    <app-bug-sort (sortChange)="onSortChange($event)"></app-bug-sort>
-
-    <app-bug-edit (onNewBug)="onNewBugCreate($event)" [projects]="projectsService.projects"></app-bug-edit>
-    
-    <app-bug-list [sortAttr]="sortAttr" [sortDesc]="sortDesc"></app-bug-list>
+        <app-bug-edit (onNewBug)="onNewBugCreate($event)" [projects]="projectsService.projects"></app-bug-edit>
+        
+        <app-bug-list [sortAttr]="sortAttr" [sortDesc]="sortDesc"></app-bug-list>
+    </div>
+    <div class="bug-details">
+        <router-outlet></router-outlet>
+    </div>
 </section>
 <!-- Using the "stateless service" --> 
 <!-- 

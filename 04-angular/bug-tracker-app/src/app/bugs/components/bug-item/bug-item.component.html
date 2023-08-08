@@ -11,4 +11,6 @@
     </div>
     <div class="datetime">[{{bug.createdAt | elapsed }}]</div>
     <button (click)="onBtnRemoveClick(bug)">Remove</button>
+    <br/>
+    <a [routerLink]="['details', bug.id]">More...</a>
 </li>

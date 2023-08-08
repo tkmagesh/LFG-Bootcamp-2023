@@ -2,7 +2,7 @@
   "bugs": [
     {
       "title": "Data integrity checks failed",
-      "isClosed": false,
+      "isClosed": true,
       "createdAt": "2023-08-08T16:26:11.649Z",
       "projectId": 1,
       "id": 1

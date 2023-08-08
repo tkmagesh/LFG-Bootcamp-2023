@@ -21,6 +21,11 @@ export class BugApiService {
         return bugs$;
     }
 
+    get(id : number) : Observable<Bug>{
+        return this.httpClient
+            .get<Bug>(`${this.endPoint}/${id}`)
+    }
+
     save(newBugData : NewBug) : Observable<Bug> {
         return this.httpClient
             .post<Bug>(this.endPoint, newBugData)

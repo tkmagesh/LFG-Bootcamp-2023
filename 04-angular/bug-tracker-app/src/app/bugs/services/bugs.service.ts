@@ -10,11 +10,16 @@ export class BugsService {
 
     public bugs: Bug[] = [];
 
+    
     constructor(
         private bugOperations: BugOperationService,
         private bugApi : BugApiService
     ) {
 
+    }
+
+    get(id : number) : Bug | undefined {
+        return this.bugs.find(bug => bug.id === id)
     }
 
     load(): void {

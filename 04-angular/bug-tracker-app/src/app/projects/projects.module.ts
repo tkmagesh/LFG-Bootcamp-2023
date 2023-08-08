@@ -4,6 +4,7 @@ import { ProjectsComponent } from './projects.component';
 import { ProjectEditComponent } from './components/project-edit/project-edit.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectsRoutingModule } from './projects-router.module';
 
 
 
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ProjectsRoutingModule
   ],
   exports : [
     ProjectsComponent
