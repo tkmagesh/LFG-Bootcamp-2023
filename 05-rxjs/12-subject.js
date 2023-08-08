@@ -21,10 +21,11 @@ setInterval(() => {
 }, 500);
 
 // subscriber-1
-subject.subscribe(val => console.log(`[subscriber - 1] - ${val}`))
+let obs$ = subject.asObservable()
+obs$.subscribe(val => console.log(`[subscriber - 1] - ${val}`))
 
 // subscriber-2 (subscribes after 5 seconds)
-setTimeout(() => {
+/* setTimeout(() => {
     console.log('subscriber-2 subscribes')
     subject.subscribe(val => console.log(`[subscriber - 2] - ${val}`))
-}, 5000);
+}, 5000); */

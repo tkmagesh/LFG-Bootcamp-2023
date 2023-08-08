@@ -1,12 +1,6 @@
 {
   "bugs": [
     {
-      "id": 1,
-      "title": "User access denied",
-      "isClosed": true,
-      "createdAt": "2022-10-09T09:19:26.660Z"
-    },
-    {
       "id": 3,
       "title": "Data integrity checks failed",
       "isClosed": false,
@@ -21,14 +15,14 @@
     {
       "id": 5,
       "title": "Router is not routing",
-      "isClosed": false,
+      "isClosed": true,
       "createdAt": "2023-06-14T11:35:29.279Z"
     },
     {
-      "title": "Dummy bug to the server",
-      "isClosed": true,
-      "createdAt": "2023-08-07T19:58:42.144Z",
-      "id": 8
+      "title": "User actions not recognized",
+      "isClosed": false,
+      "createdAt": "2023-08-08T13:26:10.810Z",
+      "id": 6
     }
   ],
   "projects": [
@@ -43,6 +37,16 @@
     {
       "name": "Explore CURL",
       "id": 6
+    }
+  ],
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$my14J1h6T7Ncqo.qoR8DguQ2EPlKgZo.rdIQh4GcYIvV9BpIB1HNi",
+      "firstname": "Olivier",
+      "lastname": "Monge",
+      "age": 32,
+      "id": 1
     }
   ]
 }

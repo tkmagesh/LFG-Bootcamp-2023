@@ -1,4 +1,5 @@
-import { HttpClient } from "@angular/common/http";
+
+import { HttpClient } from "@angular/common/http"; /* API for server communication */
 import { Injectable } from "@angular/core";
 import { Bug, NewBug } from "../models/bug";
 import { Observable } from "rxjs";

@@ -12,7 +12,6 @@ export class BugsService {
 
     constructor(
         private bugOperations: BugOperationService,
-        private bugStorage: BugStorageService,
         private bugApi : BugApiService
     ) {
 
@@ -22,31 +21,27 @@ export class BugsService {
 
         // populate the bugs from the storage
         this.bugApi
-            .getAll()
+            .getAll() // returning an observable
             .subscribe(bugs => this.bugs = bugs)
     }
 
     addNew(newBugTitle: string) {
         const newBugData : NewBug = this.bugOperations.createNew(newBugTitle);
         this.bugApi
-            .save(newBugData)
+            .save(newBugData) // returning an observable
             .subscribe(newBug => this.bugs = [...this.bugs, newBug])
     }
 
     remove(bugToRemove: Bug) {
         this.bugApi
-            .remove(bugToRemove)
+            .remove(bugToRemove) // returning an observable
             .subscribe(() => this.bugs = this.bugs.filter(bug => bug.id !== bugToRemove.id))
-        
     }
 
     removeClosed() {
-
         this.bugs
             .filter(bug => bug.isClosed) // filter all the closed bugs
-            .forEach(closedBug => this.bugStorage.remove(closedBug)) // for each closed bug, remove it
-
-        this.bugs = this.bugs.filter(bug => !bug.isClosed); //retain only the open bugs
+            .forEach(closedBug => this.remove(closedBug))
     }
 
     toggle(bugToToggle: Bug) {

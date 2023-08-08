@@ -1,8 +1,20 @@
+
 <section class="list">
     <ul>
-        <!-- bugItem -->
+        <app-bug-item *ngFor="let bug of ( bugsService.bugs | sort:sortAttr:sortDesc)" [data]="bug" (remove)="onBugRemove($event)"
+            (toggle)="onBugToggle($event)">
+
+        </app-bug-item>
+    </ul>
+    <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
+</section>
+
+<!-- using the stateless service -->
+<!-- 
+<section class="list" *ngIf="(bugsService.bugs$ | async) as bugs; else noBugsTemplate">
+    <ul>
         <app-bug-item 
-            *ngFor="let bug of ( bugsService.bugs | sort:sortAttr:sortDesc)"
+            *ngFor="let bug of ( bugs | sort:sortAttr:sortDesc)"
             [data]="bug"
             (remove)="onBugRemove($event)"
             (toggle)="onBugToggle($event)"
@@ -12,3 +24,7 @@
     </ul>
     <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
 </section>
+<ng-template #noBugsTemplate>
+    Loading bugs...
+</ng-template> 
+-->

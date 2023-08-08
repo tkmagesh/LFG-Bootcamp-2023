@@ -6,15 +6,34 @@
  -->
 
 <section>
-    <!-- bugStats -->
+
     <app-bug-stats [data]="bugsService.bugs"></app-bug-stats>
 
-    <!-- bugSort -->
+
     <app-bug-sort (sortChange)="onSortChange($event)"></app-bug-sort>
 
-    <!-- bugEdit -->
+
     <app-bug-edit (onNewBug)="onNewBugCreate($event)"></app-bug-edit>
 
-    <!-- bugList -->
+
     <app-bug-list [sortAttr]="sortAttr" [sortDesc]="sortDesc"></app-bug-list>
 </section>
+<!-- Using the "stateless service" --> 
+<!-- 
+<section *ngIf="(bugsService.bugs$ | async) as bugs; else noBugsTemplate">
+
+    <app-bug-stats [data]="bugs"></app-bug-stats>
+
+
+    <app-bug-sort (sortChange)="onSortChange($event)"></app-bug-sort>
+
+
+    <app-bug-edit (onNewBug)="onNewBugCreate($event)"></app-bug-edit>
+
+
+    <app-bug-list  [sortAttr]="sortAttr" [sortDesc]="sortDesc"></app-bug-list>
+</section>
+<ng-template #noBugsTemplate>
+    Loading data...
+</ng-template> 
+-->
