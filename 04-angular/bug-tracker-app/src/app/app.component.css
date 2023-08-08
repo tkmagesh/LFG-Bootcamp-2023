@@ -1,0 +1,8 @@
+
+.container{
+    display: flex;
+}
+app-bugs, app-projects {
+    flex: 1;
+    margin: 10px;
+}

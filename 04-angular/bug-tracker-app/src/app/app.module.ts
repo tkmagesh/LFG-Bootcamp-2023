@@ -3,15 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BugsModule } from './bugs/bugs.module';
 
 import { AppComponent } from './app.component';
+import { ProjectsModule } from './projects/projects.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
-    BugsModule
+    BugsModule,
+    ProjectsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,11 +9,10 @@
 
     <app-bug-stats [data]="bugsService.bugs"></app-bug-stats>
 
-
     <app-bug-sort (sortChange)="onSortChange($event)"></app-bug-sort>
 
 
-    <app-bug-edit (onNewBug)="onNewBugCreate($event)"></app-bug-edit>
+    <app-bug-edit (onNewBug)="onNewBugCreate($event)" [projects]="projectsService.projects"></app-bug-edit>
 
 
     <app-bug-list [sortAttr]="sortAttr" [sortDesc]="sortDesc"></app-bug-list>

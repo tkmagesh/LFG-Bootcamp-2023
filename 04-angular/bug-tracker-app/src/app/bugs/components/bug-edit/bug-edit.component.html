@@ -2,9 +2,11 @@
     <label for="">Bug Title : </label>
     <input type="text" #txtNewBugTitle (input)="newBugTitle = txtNewBugTitle.value">
     <label for="">Project : </label>
-    <select name="" id="">
-        <option value="">Expense Tracker</option>
-        <option value="">Bug Tracker</option>
+    <select #selectProject (change)="selectedProjectId = selectProject.value">
+        <option value="">---Select---</option>
+        <option *ngFor="let project of projects" [value]="project.id">
+            {{project.name}}
+        </option>
     </select>
     <button (click)="onBtnAddNewClick()">Add New</button>
 </section>

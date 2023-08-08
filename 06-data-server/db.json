@@ -1,28 +1,18 @@
 {
   "bugs": [
     {
-      "id": 3,
       "title": "Data integrity checks failed",
       "isClosed": false,
-      "createdAt": "2022-10-09T09:19:33.517Z"
+      "createdAt": "2023-08-08T16:26:11.649Z",
+      "projectId": 1,
+      "id": 1
     },
     {
-      "id": 4,
-      "title": "Server communication failure",
-      "createdAt": "2023-06-14T11:10:10.067Z",
-      "isClosed": false
-    },
-    {
-      "id": 5,
-      "title": "Router is not routing",
-      "isClosed": true,
-      "createdAt": "2023-06-14T11:35:29.279Z"
-    },
-    {
-      "title": "User actions not recognized",
+      "title": "User actions not recognised",
       "isClosed": false,
-      "createdAt": "2023-08-08T13:26:10.810Z",
-      "id": 6
+      "createdAt": "2023-08-08T16:26:27.581Z",
+      "projectId": 7,
+      "id": 2
     }
   ],
   "projects": [
@@ -37,6 +27,14 @@
     {
       "name": "Explore CURL",
       "id": 6
+    },
+    {
+      "id": 7,
+      "name": "Cloud Assistant"
+    },
+    {
+      "id": 8,
+      "name": "Angular Capstone"
     }
   ],
   "users": [

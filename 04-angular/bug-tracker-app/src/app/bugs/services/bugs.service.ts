@@ -25,8 +25,8 @@ export class BugsService {
             .subscribe(bugs => this.bugs = bugs)
     }
 
-    addNew(newBugTitle: string) {
-        const newBugData : NewBug = this.bugOperations.createNew(newBugTitle);
+    addNew(newBugTitle: string, projectId : number) {
+        const newBugData : NewBug = this.bugOperations.createNew(newBugTitle, projectId);
         this.bugApi
             .save(newBugData) // returning an observable
             .subscribe(newBug => this.bugs = [...this.bugs, newBug])

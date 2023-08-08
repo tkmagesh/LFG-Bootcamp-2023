@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { BugsService } from '../../services/bugs.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Project } from 'src/app/projects/models/project';
+import { NewBugOutput } from '../../models/bug';
 
 @Component({
   selector: 'app-bug-edit',
@@ -20,10 +21,19 @@ export class BugEditComponent {
   */
 
   @Output()
-  onNewBug : EventEmitter<string> = new EventEmitter<string>()
+  onNewBug: EventEmitter<NewBugOutput> = new EventEmitter<NewBugOutput>()
   
+  @Input('projects')
+  projects : Project[] = []
+  
+  selectedProjectId : string = '';
+
   onBtnAddNewClick(){
-    this.onNewBug.emit(this.newBugTitle)
+    const newBug : NewBugOutput = {
+      title : this.newBugTitle,
+      projectId : parseInt(this.selectedProjectId)
+    }
+    this.onNewBug.emit(newBug)
   }
   
 }

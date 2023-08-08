@@ -7,7 +7,7 @@
         >
             {{bug.title | trimtext:40}}
         </span>
-        <small>[ Expense Tracker ]</small>
+        <small>[ {{bug.projectId}} ]</small>
     </div>
     <div class="datetime">[{{bug.createdAt | elapsed }}]</div>
     <button (click)="onBtnRemoveClick(bug)">Remove</button>

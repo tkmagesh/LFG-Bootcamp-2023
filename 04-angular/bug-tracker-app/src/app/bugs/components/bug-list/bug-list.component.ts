@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { BugsService } from '../../services/bugs.service';
 import { Bug } from '../../models/bug';
-import { BugsStatelessService } from '../../services/bugsStateless.service';
+
 
 // Using the "stateless" service
 @Component({

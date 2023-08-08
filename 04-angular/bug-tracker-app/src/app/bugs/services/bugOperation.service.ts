@@ -12,11 +12,12 @@ export class BugOperationService{
         return newBug;
     } */
 
-    createNew(title: string): NewBug {
+    createNew(title: string, projectId : number): NewBug {
         const newBug: NewBug = {
             title: title,
             isClosed: false,
-            createdAt: new Date()
+            createdAt: new Date(),
+            projectId : projectId
         }
         return newBug;
     }

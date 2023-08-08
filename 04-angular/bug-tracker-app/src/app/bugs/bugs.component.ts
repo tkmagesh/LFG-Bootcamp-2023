@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Bug } from "./models/bug";
+import { Bug, NewBugOutput } from "./models/bug";
 import { BugOperationService } from "./services/bugOperation.service";
 import { BugsService } from "./services/bugs.service";
 import { SortParams } from "./components/bug-sort/bug-sort.component";
-import { BugsStatelessService } from "./services/bugsStateless.service";
+import { ProjectsService } from "../projects/services/projects.service";
 
 // using the bugs"Stateless" service
 @Component({
@@ -19,7 +19,10 @@ export class BugsComponent implements OnInit {
     showHeader: boolean = true;
 
 
-    constructor(public bugsService: BugsService) {
+    constructor(
+        public bugsService: BugsService,
+        public projectsService : ProjectsService
+    ) {
         console.log('bugsComponent - instance created')
     }
 
@@ -27,11 +30,12 @@ export class BugsComponent implements OnInit {
     ngOnInit(): void {
         console.log('bugsComponent - initialized')
         this.bugsService.load()
+        this.projectsService.load()
     }
 
     // event handler for the onNewBug event (bug-edit component)
-    onNewBugCreate(newBugTitle: string) {
-        this.bugsService.addNew(newBugTitle)
+    onNewBugCreate(newBug : NewBugOutput) {
+        this.bugsService.addNew(newBug.title, newBug.projectId)
     }
 
     // event handler for the bug-sort component
