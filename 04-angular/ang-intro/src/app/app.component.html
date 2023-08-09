@@ -1,13 +1,28 @@
 <h1>Angular App</h1>
 
+
+<!-- the following has to be displayed only if the user is logged in -->
+<div *ngIf="authService.IsLoggedIn">
+    <div>Welcome {{authService.CurrentUser.lastname}} {{authService.CurrentUser.firstname}}!</div>
+    <div>Access Token : {{authService.AccessToken}}</div>
+</div>
+
 <!-- links for the routes -->
 <div>
+    <div *ngIf="!authService.IsLoggedIn; else logout">
+        <span> [ <a [routerLink]="['/login']">Login</a> ] </span>
+    </div>
+    <ng-template #logout>
+        <button (click)="onBtnLogoutClick()">Logout</button>
+    </ng-template>
     <span> [ <a [routerLink]="['/']">Home</a> ] </span>
-    <span> [ <a [routerLink]="['/greeter']">Greeter</a> ] </span>
-    <span> [ <a [routerLink]="['/calculator']">Calculator</a> ] </span>
-    <span> [ <a [routerLink]="['/calculator-2']">Calculator-2</a> ] </span>
-    <span> [ <a [routerLink]="['/salary-calculator']">Salary Calculator</a> ] </span>
-    <span> [ <a [routerLink]="['/dummy']">Non existant</a> ] </span>
+    <div *ngIf="authService.IsLoggedIn">
+        <span> [ <a [routerLink]="['/greeter']">Greeter</a> ] </span>
+        <span> [ <a [routerLink]="['/calculator']">Calculator</a> ] </span>
+        <span> [ <a [routerLink]="['/calculator-2']">Calculator-2</a> ] </span>
+        <span> [ <a [routerLink]="['/salary-calculator']">Salary Calculator</a> ] </span>
+        <span> [ <a [routerLink]="['/dummy']">Non existant</a> ] </span>
+    </div>
 </div>
 
 
