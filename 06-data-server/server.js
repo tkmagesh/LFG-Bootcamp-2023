@@ -17,7 +17,7 @@ app.db = router.db
 
 //to support cors
 const middlewares = jsonServer.defaults()
-server.use(middlewares)
+app.use(middlewares)
 
 // You must apply the auth middleware before the router
 app.use(rules)
