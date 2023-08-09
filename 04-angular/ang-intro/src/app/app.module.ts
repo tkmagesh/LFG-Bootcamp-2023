@@ -27,15 +27,17 @@ import { BugsComponent } from './bugs/bugs.component';
 import { PathNotFoundCompnent } from './path-not-found.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './auth/login.component';
+import { LogInGuard } from './auth/login-guard';
 
 /* define the routes */
 const routes : Routes = [
   { path: "", component: HomeComponent },
-  {path : "login", component : LoginComponent},
-  { path: "greeter", component : GreeterComponent},
-  { path: "calculator", component: CalculatorComponent },
-  { path: "calculator-2", component: Calculator2Component },
-  { path: "salary-calculator", component: SalaryCalculatorComponent },
+  { path : "login", component : LoginComponent},
+  { path: "greeter", component : GreeterComponent, canActivate : [LogInGuard] /* canActivate guard is used to check if the route can be activated */},
+  { path: "calculator", component: CalculatorComponent , canActivate : [LogInGuard]},
+  { path: "calculator-2", component: Calculator2Component , canActivate : [LogInGuard]},
+  { path: "salary-calculator", component: SalaryCalculatorComponent , canActivate : [LogInGuard]},
+  { path: "bugs", component: BugsComponent, canActivate: [LogInGuard] },
   /* { path: "**", component: PathNotFoundCompnent } */
   {path : "**", redirectTo : ""}
 ]

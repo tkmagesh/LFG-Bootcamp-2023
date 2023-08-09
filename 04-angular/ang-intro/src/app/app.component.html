@@ -4,7 +4,7 @@
 <!-- the following has to be displayed only if the user is logged in -->
 <div *ngIf="authService.IsLoggedIn">
     <div>Welcome {{authService.CurrentUser.lastname}} {{authService.CurrentUser.firstname}}!</div>
-    <div>Access Token : {{authService.AccessToken}}</div>
+    <!-- <div>Access Token : {{authService.AccessToken}}</div> -->
 </div>
 
 <!-- links for the routes -->
@@ -21,6 +21,7 @@
         <span> [ <a [routerLink]="['/calculator']">Calculator</a> ] </span>
         <span> [ <a [routerLink]="['/calculator-2']">Calculator-2</a> ] </span>
         <span> [ <a [routerLink]="['/salary-calculator']">Salary Calculator</a> ] </span>
+        <span> [ <a [routerLink]="['/bugs']">Bugs</a> ] </span>
         <span> [ <a [routerLink]="['/dummy']">Non existant</a> ] </span>
     </div>
 </div>
