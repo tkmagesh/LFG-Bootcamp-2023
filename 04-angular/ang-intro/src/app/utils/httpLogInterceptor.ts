@@ -11,6 +11,7 @@ export class HttpLogInterceptor implements HttpInterceptor {
     /* when configured (in the module), every http request will go through the intercept function */
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+            
             // process the request
             console.log(req.url)
 

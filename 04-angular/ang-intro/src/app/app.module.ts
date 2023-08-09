@@ -29,6 +29,7 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from './auth/login.component';
 import { LogInGuard } from './auth/login-guard';
 import { HttpLogInterceptor } from './utils/httpLogInterceptor';
+import { HttpAuthorizeInterceptor } from './utils/httpAuthroizeInterceptor';
 
 /* define the routes */
 const routes : Routes = [
@@ -42,6 +43,11 @@ const routes : Routes = [
   /* { path: "**", component: PathNotFoundCompnent } */
   {path : "**", redirectTo : ""}
 ]
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: HttpLogInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: HttpAuthorizeInterceptor, multi: true },
+];
 
 @NgModule({
   /* All the UI entities (component, directive, pipe) */
@@ -77,7 +83,7 @@ const routes : Routes = [
     ProductsService,
     CartService,
     // register the http interceptors
-    { provide : HTTP_INTERCEPTORS, useClass : HttpLogInterceptor, multi : true}
+    httpInterceptorProviders
   ],
 
   /* top level components */

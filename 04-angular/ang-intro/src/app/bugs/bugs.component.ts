@@ -26,35 +26,34 @@ export class BugsComponent {
   }
 
   onBtnGetBugsClick() {
+    // No need to add the header in each and every request as the interceptor (HttpAuthorizeInterceptor) will take care of it.
+    /*
     // get the access token from the service
     const accessToken = this.authService.AccessToken
 
     // create the header object to be passed with the http request
     const headers = new HttpHeaders({
       "authorization" : `Bearer ${accessToken}`
-    });
-
+    }); 
     const bugs$ = this.httpClient
-      .get<Bug[]>('http://localhost:3000/bugs', { headers : headers } /* passing the headers with the request */)  
+      .get<Bug[]>('http://localhost:3000/bugs', { headers : headers }) // passing the headers with the request
     bugs$.subscribe(bugs => console.table(bugs))
+    */
+
+    this.httpClient
+      .get<Bug[]>('http://localhost:3000/bugs')
+      .subscribe(bugs => console.table(bugs))
   }
   
   onBtnCreateNewClick() {
-    // get the access token from the service
-    const accessToken = this.authService.AccessToken
-
-    // create the header object to be passed with the http request
-    const headers = new HttpHeaders({
-      "authorization": `Bearer ${accessToken}`
-    });
-
+   
     const newBugData : NewBug  = {
       title : 'Dummy Data - ' + Math.round(Math.random() * 100),
       createdAt : new Date(),
       isClosed : false
     }
     this.httpClient
-      .post<Bug>('http://localhost:3000/bugs', newBugData, { headers : headers})
+      .post<Bug>('http://localhost:3000/bugs', newBugData)
       .subscribe(newBug => console.log(newBug))
   }
 
