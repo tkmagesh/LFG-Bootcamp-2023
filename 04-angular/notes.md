@@ -129,4 +129,6 @@
             Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRrbWFnZXNoNzdAZ21haWwuY29tIiwiaWF0IjoxNjkxNTg4OTQ4LCJleHAiOjE2OTE1OTI1NDgsInN1YiI6IjIifQ.4DK52ULeFP014uTG5CAoUWAciGfNAYBgIb2F38mRir8
         ```
 
+## Implement the following routing with authentication ##
+![image routing](./bugtracker-routing.png)
 
