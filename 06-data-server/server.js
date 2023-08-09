@@ -15,6 +15,10 @@ const rules = auth.rewriter({
 // /!\ Bind the router db to the app
 app.db = router.db
 
+//to support cors
+const middlewares = jsonServer.defaults()
+server.use(middlewares)
+
 // You must apply the auth middleware before the router
 app.use(rules)
 app.use(auth)
