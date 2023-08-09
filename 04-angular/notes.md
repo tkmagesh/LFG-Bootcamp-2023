@@ -112,5 +112,21 @@
                 "password": "adminpwd",
             }
         ```
+- Login to get the authorization token
+    - make a POST request to 'http://localhost:3000/login' with the following body (Choose 'raw' and 'JSON')
+    - 
+        ```
+            {
+                "email": "tkmagesh77@gmail.com",
+                "password": "adminpwd",
+            }
+        ```
+    - Copy the "accessToken" value from the response
+
+- Access the APIs using the access-token
+    - Make any request with "Authorization" Header with the value as below:
+        ```
+            Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRrbWFnZXNoNzdAZ21haWwuY29tIiwiaWF0IjoxNjkxNTg4OTQ4LCJleHAiOjE2OTE1OTI1NDgsInN1YiI6IjIifQ.4DK52ULeFP014uTG5CAoUWAciGfNAYBgIb2F38mRir8
+        ```
 
 

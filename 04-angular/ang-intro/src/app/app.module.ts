@@ -26,10 +26,12 @@ import { CartStatsComponent } from './shopping-cart/components/cart-stats/cart-s
 import { BugsComponent } from './bugs/bugs.component';
 import { PathNotFoundCompnent } from './path-not-found.component';
 import { HomeComponent } from './home.component';
+import { LoginComponent } from './auth/login.component';
 
 /* define the routes */
 const routes : Routes = [
   { path: "", component: HomeComponent },
+  {path : "login", component : LoginComponent},
   { path: "greeter", component : GreeterComponent},
   { path: "calculator", component: CalculatorComponent },
   { path: "calculator-2", component: Calculator2Component },
@@ -55,7 +57,8 @@ const routes : Routes = [
     CartStatsComponent,
     BugsComponent,
     PathNotFoundCompnent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   /* All the dependency modules  */
   imports: [
