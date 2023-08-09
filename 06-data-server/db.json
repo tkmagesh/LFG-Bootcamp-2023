@@ -13,6 +13,20 @@
       "createdAt": "2023-08-08T16:26:27.581Z",
       "projectId": 7,
       "id": 2
+    },
+    {
+      "title": "Server communication failure",
+      "isClosed": false,
+      "createdAt": "2023-08-09T13:15:01.646Z",
+      "projectId": 6,
+      "id": 3
+    },
+    {
+      "title": "Hacked bug",
+      "isClosed": false,
+      "createdAt": "2023-08-09T13:15:01.646Z",
+      "projectId": 6,
+      "id": 4
     }
   ],
   "projects": [
@@ -45,6 +59,14 @@
       "lastname": "Monge",
       "age": 32,
       "id": 1
+    },
+    {
+      "email": "tkmagesh77@gmail.com",
+      "password": "$2a$10$mmCAN1FJBhTjF.qHfwpWeeecqrbpJUpq3jtzGmP7mW8/UVMWr2YSS",
+      "firstname": "Magesh",
+      "lastname": "Kuppan",
+      "age": 45,
+      "id": 2
     }
   ]
 }

@@ -93,3 +93,24 @@
 - Server Sent Events (stream)
 
 ## Routing ##
+
+
+## Authentication & Authorization ##
+### Preparating the server ###
+- > git pull 
+- > cd 06-data-server
+- > npm install
+- > npm start
+
+### Testing Using Postman ###
+- Register a new user
+    - make a POST request to 'http://localhost:3000/register' with the following body (Choose 'raw' and 'JSON')
+    - 
+        ```
+            {
+                "email": "tkmagesh77@gmail.com",
+                "password": "adminpwd",
+            }
+        ```
+
+

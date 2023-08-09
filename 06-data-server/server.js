@@ -6,8 +6,8 @@ const router = jsonServer.router('db.json')
 const rules = auth.rewriter({
   // Permission rules
   users: 666,
-  bugs: 666,
-  projects : 666,
+  bugs: 660,
+  projects : 660,
 })
 
 // You must apply the middlewares in the following order
