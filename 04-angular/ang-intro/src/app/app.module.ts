@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //for server communication using "HttpClient" service
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 /* for implementing the routing capabilities */
 import { RouterModule, Routes } from "@angular/router";
@@ -28,6 +28,7 @@ import { PathNotFoundCompnent } from './path-not-found.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './auth/login.component';
 import { LogInGuard } from './auth/login-guard';
+import { HttpLogInterceptor } from './utils/httpLogInterceptor';
 
 /* define the routes */
 const routes : Routes = [
@@ -74,7 +75,9 @@ const routes : Routes = [
     { provide : SalaryCalculatorModel, useClass : SalaryCalculatorModel },
     // { provide :SalaryCalculatorModel, useClass : SalaryCalculatorModelV2 }
     ProductsService,
-    CartService
+    CartService,
+    // register the http interceptors
+    { provide : HTTP_INTERCEPTORS, useClass : HttpLogInterceptor, multi : true}
   ],
 
   /* top level components */
