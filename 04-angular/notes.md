@@ -132,3 +132,7 @@
 ## Implement the following routing with authentication ##
 ![image routing](./bugtracker-routing.png)
 
+## Unit Testing ##
+- Testing the functionality of an entity isolating it from all ites dependencies
+- Use "Mocks" for isolating the dependencies
+- In Jasmine, Mocks are called as "Spy"

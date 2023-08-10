@@ -52,6 +52,6 @@ export class CalculatorComponent{
 
     onCalculateClick(){
         
-        console.log(this.calculatorForm.value)
+        console.log(this.calculatorForm.errors)
     }
 }

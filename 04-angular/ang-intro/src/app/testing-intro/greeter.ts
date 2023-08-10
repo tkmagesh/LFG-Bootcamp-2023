@@ -3,7 +3,7 @@ export interface IDateService {
     getCurrent() : Date
 }
 
-class DateService {
+export class DateService {
     getCurrent() {
         return new Date()
     }
