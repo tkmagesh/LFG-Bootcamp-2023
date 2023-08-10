@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GreeterComponent } from "./greeter.component";
+import { By } from '@angular/platform-browser';
 
 fdescribe('Greeter Component', () => {
 
@@ -34,20 +35,41 @@ fdescribe('Greeter Component', () => {
         expect(compiled.querySelector('#divMessage')?.textContent).toBe(greeter.message);
     })
 
-    /* it('should display the greet message when greet button clicked', () => {
+    it('should display the greet message when greet button clicked', () => {
         let fixture: ComponentFixture<GreeterComponent> = TestBed.createComponent(GreeterComponent);
-        let greeter: GreeterComponent = fixture.componentInstance;
+        
+        // debug wrapper of the underlying dom node for testing
+        const debugElement = fixture.debugElement; 
 
-        const compiled = fixture.nativeElement as HTMLElement;
-        const txtName = compiled.querySelector('input[type="text"]') as HTMLInputElement
+        //locate the text box
+        const txtNameDebugEle = debugElement.query(By.css('input[type="text"]'))
+
+        //get the underlying dom node
+        const txtName = txtNameDebugEle.nativeElement;
+
+        //set the value in the text
         txtName.value = "Magesh"
 
-        compiled.querySelector('#btnGreet')
+        //locate the button
+        const btnGreetDebugEle = debugElement.query(By.css('#btnGreet'))
+
+        // trigger the 'click' event on the button
+        btnGreetDebugEle.triggerEventHandler("click");
+
+
         //force rendering
         fixture.detectChanges();
 
-        
-        expect(compiled.querySelector('#divMessage')?.textContent).toBe(greeter.message);
-    }) */
+        const expectedResult = 'Hi Magesh! Good Morning!!'
+
+        //locate the debug wrapper for the divMessage div
+        const divMessageDebugEle = debugElement.query(By.css('#divMessage'))
+
+        //get the underlying DOM Node from the debug wrapper
+        const divMessage = divMessageDebugEle.nativeElement;
+
+        // assert if the div has the greet message
+        expect(divMessage?.textContent).toBe(expectedResult);
+    })
 
 })
