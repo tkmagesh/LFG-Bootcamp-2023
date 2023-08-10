@@ -1,25 +1,43 @@
+<input type="text" name="" id="">
 <h3>Calculator</h3>
-<!-- 
-    <input type="number" #txtN1 (input)="setN1(txtN1.value)">
-    <input type="number" #txtN2 (input)="setN2(txtN2.value)"> 
--->
-<input type="number" #txtN1 (input)="n1 = txtN1.value">
-<span> [ {{n1}} ] </span>
-<input type="number" #txtN2 (input)="n2 = txtN2.value">
-<span> [ {{n2}} ] </span>
+<div>
+    <input type="number" name="n1" [formControl]="n1">
+    <span 
+        style="color : red"
+        *ngIf="n1.touched && n1.invalid && n1.errors?.['min']"    
+    > 
+        * Value must be minimum of {{n1.errors?.['min'].min}} but actual is {{n1.errors?.['min'].actual}}
+    </span>
+    <span style="color : red" *ngIf="n1.touched && n1.invalid && n1.errors?.['max']">
+        * Value must be maximum of {{n1.errors?.['max'].max}} but actual is {{n1.errors?.['max'].actual}}
+    </span>
+    <span style="color : red" *ngIf="n1.touched && n1.invalid && n1.errors?.['required']">
+        * Value is required
+    </span>
+</div>
+<div>
+    <input type="number" name="n2" [formControl]="n2">
+    <span style="color : red" *ngIf="n2.touched && n2.invalid && n2.errors?.['min']">
+        * Value must be minimum of {{n2.errors?.['min'].min}} but actual is {{n2.errors?.['min'].actual}}
+    </span>
+    <span style="color : red" *ngIf="n2.touched && n2.invalid && n2.errors?.['max']">
+        * Value must be maximum of {{n2.errors?.['max'].max}} but actual is {{n2.errors?.['max'].actual}}
+    </span>
+    <span style="color : red" *ngIf="n2.touched && n2.invalid && n2.errors?.['required']">
+        * Value is required
+    </span>
+</div>
 <br>
-<button (click)="onAddClick()">Add</button>
-<button (click)="onSubtractClick()">Subtract</button>
-<button (click)="onMultiplyClick()">Multiply</button>
-<button (click)="onDivideClick()">Divide</button>
-<app-calculator-result 
-    *ngIf="!(n1 == '0' || n1 == 'NaN') && !(n2 == '0' || n2 == 'NaN')"
-    [data]="result"></app-calculator-result>
+<button 
+    [disabled]="n1.invalid || n2.invalid"
+    (click)="onCalculateClick()">Calculate</button>
+
 <!-- 
-    <div 
-    *ngIf="!(n1 == '0' || n1 == 'NaN') && !(n2 == '0' || n2 == 'NaN')"
-    [ngClass]="{ positive : result >= 0, negative : result < 0}"
->
-        {{result | currency:'USD':'symbol':'2.2-4'}}
-</div> 
+    <div>n1 : {{n1.value}}</div>
+    <div>valid : {{n1.valid}}</div>
+    <div>invalid : {{n1.invalid}}</div>
+    <div>dirty : {{n1.dirty}} </div>
+    <div>pristine : {{n1.pristine}}</div>
+    <div>touched : {{n1.touched}}</div>
+    <div>untouched : {{n1.untouched}}</div> 
 -->

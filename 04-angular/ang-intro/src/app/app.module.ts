@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// 2023-08-10
+// Forms & Validation
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 //for server communication using "HttpClient" service
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
@@ -36,7 +41,7 @@ const routes : Routes = [
   { path: "", component: HomeComponent },
   { path : "login", component : LoginComponent},
   { path: "greeter", component : GreeterComponent, canActivate : [LogInGuard] /* canActivate guard is used to check if the route can be activated */},
-  { path: "calculator", component: CalculatorComponent , canActivate : [LogInGuard]},
+  { path: "calculator", component: CalculatorComponent },
   { path: "calculator-2", component: Calculator2Component , canActivate : [LogInGuard]},
   { path: "salary-calculator", component: SalaryCalculatorComponent , canActivate : [LogInGuard]},
   { path: "bugs", component: BugsComponent, canActivate: [LogInGuard] },
@@ -73,6 +78,7 @@ export const httpInterceptorProviders = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule, //2023-08-10 Forms & Validation
     RouterModule.forRoot(routes)
   ],
   /* All the NON-UI entities (services) */
