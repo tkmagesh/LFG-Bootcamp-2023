@@ -1,5 +1,7 @@
 import { DateService, Greeter, IDateService } from "./greeter"
 
+// used to create a mini angular runtime for testing
+import { TestBed } from "@angular/core/testing";
 
 /* 
 class FakeDateServiceForMorning implements IDateService{
@@ -26,8 +28,18 @@ fdescribe('greeter', () => {
             getCurrent: new Date(2023, 6, 27, 9, 0, 0)
         })
        
-        
-        const greeter = new Greeter(morningDateService);
+        //replace the below to use the angular DI 
+        // const greeter = new Greeter(morningDateService);
+
+        //using angular testbed
+        TestBed.configureTestingModule({
+            providers : [
+                Greeter /* sut */,
+                { provide : DateService, useValue : morningDateService }
+            ]
+        })
+        const greeter = TestBed.inject(Greeter) // A new instance of the Greeter will be returned with the morningDateService injected
+
         const userName = 'Magesh';
         const expectedResult = 'Hi Magesh, Good Morning!';
 
@@ -42,7 +54,18 @@ fdescribe('greeter', () => {
         const eveningDateService = jasmine.createSpyObj("DateService", {
             getCurrent: new Date(2023, 6, 27, 15, 0, 0)
         });
-        const greeter = new Greeter(eveningDateService);
+        
+        //replace the below to use the angular DI 
+        // const greeter = new Greeter(eveningDateService);
+
+        //using angular testbed
+        TestBed.configureTestingModule({
+            providers: [
+                Greeter /* sut */,
+                { provide: DateService, useValue: eveningDateService }
+            ]
+        })
+        const greeter = TestBed.inject(Greeter) // A new instance of the Greeter will be returned with the morningDateService injected
         const userName = 'Magesh';
         const expectedResult = 'Hi Magesh, Good Day!';
 

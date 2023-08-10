@@ -1,24 +1,29 @@
+import { Injectable } from "@angular/core";
 
 export interface IDateService {
     getCurrent() : Date
 }
 
+@Injectable({
+    providedIn : 'root'
+})
 export class DateService {
     getCurrent() {
         return new Date()
     }
 }
 
+@Injectable({
+    providedIn : 'root'
+})
 export class Greeter{
-    _dateService : IDateService;
-
-    constructor(dateService : IDateService){
-        this._dateService = dateService;
+    constructor(private dateService : DateService){
+        
     }
 
     greet(userName : string) : string {
         // const currentHour = new Date().getHours()
-        const currentHour = this._dateService.getCurrent().getHours()
+        const currentHour = this.dateService.getCurrent().getHours()
         if (currentHour < 12 ) {
             return `Hi ${userName}, Good Morning!`
         } 
