@@ -46,6 +46,13 @@
             10. Improvise 'createdAt' display (done)
             11. Persist the bugs in the server (done)
             12. Implement data validations
+                Bug Model
+                    - Title (required, 10-40 characters)
+                    - Description (0 - 200 characters)
+                    - Severity (1-5) (required)
+                    - ProjectId (required)
+                    - ReportedOn (required, "mm/dd/yyyy", on or before the current date [custom validator])
+
             13. Make the bugs accessible using unique URLs (done)
             14. Implement Authentication & Authorization (done)
             15. Test the application (unit & UAT)
