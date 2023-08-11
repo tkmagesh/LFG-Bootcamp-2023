@@ -1,4 +1,4 @@
-fdescribe("mocks study", () => {
+describe("mocks study", () => {
     it("should return the configured value", () => {
         // create a mock function and configure it to return a constant ("test result") when invoked
         const mockFn = jasmine.createSpy("MyMockFn").and.returnValue("test result")
