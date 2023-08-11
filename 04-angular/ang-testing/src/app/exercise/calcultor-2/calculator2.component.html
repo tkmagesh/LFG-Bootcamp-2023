@@ -1,0 +1,16 @@
+<h3>Calculator-2</h3>
+<input type="number" #txtN1 (input)="n1 = txtN1.value">
+<select #selectOperation (change)="operation = selectOperation.value">
+    <option value="">---Select---</option>
+    <option *ngFor="let op of operations" [value]="op.value">{{op.text}}</option>
+</select>
+<input type="number" #txtN2 (input)="n2 = txtN2.value">
+<button 
+    (click)="onBtnCalculateClick()"
+    [disabled]="operation === ''"
+>Calculate</button>
+<div>{{result}}</div>
+<!-- <app-calculator-result 
+    *ngIf="!(n1 == '0' || n1 == 'NaN') && !(n2 == '0' || n2 == 'NaN')"
+    [data]="result"
+></app-calculator-result> -->
