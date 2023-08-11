@@ -136,3 +136,18 @@
 - Testing the functionality of an entity isolating it from all ites dependencies
 - Use "Mocks" for isolating the dependencies
 - In Jasmine, Mocks are called as "Spy"
+
+## Final Assessment ##
+- Create a registration screen for the bugtracker application
+    - User
+        - email id
+        - firstName
+        - lastName
+        - phone
+        - password
+        - confirm password
+    - Routing
+        (the menu for "register" is not shown when the user logged in)
+    - Validations
+    - Server communications
+    - Testing
