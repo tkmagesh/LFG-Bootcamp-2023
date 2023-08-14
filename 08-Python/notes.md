@@ -34,3 +34,6 @@
     - if the user choice is 1 to 4, accept 2 number from the user and perform the corresponding operation
     - Else print "invalid choice"
     - Display the menu again (until the user choice is 5)
+
+## Assignment-02 ##
+- Program to check if the input number from the user is a prime number or not
