@@ -92,3 +92,31 @@ White: 9
 
 From the example above: brown-green should return 15 brown-green-violet should return 15 too, ignoring the third color.
 ```
+
+### Assignment ###
+```
+Write a function to convert from normal numbers to Roman Numerals.
+The Romans wrote numbers using letters - I, V, X, L, C, D, M.
+    1  => I
+    2 => II
+    3 => III
+    4 => IV
+    5  => V
+    6 => VI
+    7  => VII
+    8 => VIII
+    9  => IX
+    10 => X
+    For more info - http://www.novaroma.org/via_romana/numbers.html
+
+To see this in practice, consider the example of 1990.
+
+In Roman numerals 1990 is MCMXC:
+
+1000=M 900=CM 90=XC
+
+2008 is written as MMVIII:
+
+2000=MM 8=VIII
+
+```
