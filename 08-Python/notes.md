@@ -18,6 +18,27 @@
 - String
 - None
 
+## Operators ##
+### Arithmatic operators ###
+- + (addition)
+- - (subtraction)
+- * (multiplication)
+- / (divistion)
+- % (modulus)
+- // (floor division)
+- ** (exponentiation)
+
+### Assignment Operators ###
+- = 
+- +=, -=, *=, /=, %=, //= etc
+
+### Comparison Operators ###
+- ==, !=, >, <, >=, <=
+
+### Logical Operators ###
+- and (a > 5 and b < 3)
+- or (a > 5 or b < 3)
+- not (a > 5 and b < 3)
 
 ## Assignment-01 ##
 - Build an interactive calculator
@@ -37,3 +58,10 @@
 
 ## Assignment-02 ##
 - Program to check if the input number from the user is a prime number or not
+
+## Collections in Python ##
+- List
+- Tuple
+- Dictionary
+- Set
+
