@@ -1,6 +1,7 @@
 #Dictionary
 #Creating a dictionary
 product_ranks = {'Pen': 4, 'Pencil': 1, 'Marker': 2, 'Charger': 3}
+product_ranks = dict({'Pen': 4, 'Pencil': 1, 'Marker': 2, 'Charger': 3})
 type(product_ranks)
 
 #Accessing the values
