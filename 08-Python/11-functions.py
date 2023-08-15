@@ -59,3 +59,39 @@ def fn():
     pass
     
 fn()
+
+#variadic function
+def sum(*nos):
+    result = 0
+    for no in nos:
+        result += no
+    return result
+    
+print(sum(10,20,30,40,50))
+
+#keyword arguments
+def myFun(**kwargs):
+    for (key,val) in kwargs.items():
+        print(f"key-[{key}] = {val}")
+    
+myFun(key1=100, key2="Magesh", key3=[10,20,30])
+
+#anonymous functions
+def sqr(x): return x ** 2
+print(sqr(9))
+
+#lambda
+#def cube(x): return x * x * x
+cube = lambda x : x * x * x
+print(cube(9))
+
+def filter(list, predicate):
+    result = []
+    for item in list:
+        if predicate(item):
+            result.append(item)
+    return result
+
+nos_list = [3,1,4,2,5]
+even_nos = filter(nos_list, lambda no : no % 2 == 0)
+print(even_nos)
