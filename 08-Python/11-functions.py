@@ -85,13 +85,27 @@ print(sqr(9))
 cube = lambda x : x * x * x
 print(cube(9))
 
+""" 
 def filter(list, predicate):
     result = []
     for item in list:
         if predicate(item):
             result.append(item)
-    return result
+    return result 
+"""
+
+# Functional APIs in python
 
 nos_list = [3,1,4,2,5]
-even_nos = filter(nos_list, lambda no : no % 2 == 0)
+# builtin filter
+even_nos = list(filter(lambda no : no % 2 == 0, nos_list))
 print(even_nos)
+
+# builtin map
+print(list(map(lambda x : x * 2, nos_list)))
+
+# builtin reduce
+import functools
+print(functools.reduce(lambda x,y: x + y, nos_list, 0))
+
+# Find the number of odd & even numbers from nos_list using reduce
