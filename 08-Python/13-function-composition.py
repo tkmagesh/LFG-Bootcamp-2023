@@ -1,55 +1,53 @@
+
 import functools
+import time
 
-def logFn(fn):
-    def log_wrapper():
-        print("invocation started")
-        fn()
-        print("invocation completed")
-    return log_wrapper
 
-""" 
 def fn():
-    print("fn invoked!")
+    print("fn invoked")
     
-loggedFn = logFn(fn)
-loggedFn() 
-"""
+# A wrapper which will wrap the given function with "log" capabilities
 
-# using the decorator syntax of the above is below:
-@logFn
-def fn():
-    print("fn invoked!")
-    
-fn()
-
-""" 
-def logFn_With_Args(fn):
-    @functools.wraps(fn) # to retain the metadata of the given function
-    def log_wrapper(*args):
-        print(f"[{fn.__name__}]invocation started")
-        fn(*args)
-        print(f"[{fn.__name__}]invocation completed")
+#fn => function to be wrapped with
+def log( fn ):
+    def log_wrapper(*args, **kwargs):
+        #log before the given function execution
+        print(f"{fn.__name__} - invocation started")
+        
+        #execute the given function
+        fn(*args, **kwargs)
+        
+        #log after the given function execution
+        print(f"{fn.__name__} - invocation started")
     return log_wrapper
 
-def add(x,y):
-    print(f"add result = {x + y}")
-    
-logged_add = logFn_With_Args(add)
-logged_add(100,200)
+# manual function composition
+logFn = log(fn)
+logFn()
 
-print(logged_add.__name__) 
-"""
+# function composition using decorator
+@log # decorator
+def f1():
+    print("f1 invoked")
 
-def logFn_With_Args(fn):
-    @functools.wraps(fn) # to retain the metadata of the given function
-    def log_wrapper(*args):
-        print(f"[{fn.__name__}]invocation started")
-        fn(*args)
-        print(f"[{fn.__name__}]invocation completed")
-    return log_wrapper
+f1()
 
-@logFn_With_Args
-def add(x,y):
-    print(f"add result = {x + y}")
-    
-add(100,200)
+# decorator for profiling functions
+def record_time(fn):  
+    @functools.wraps(fn) #retails the metadata of "fn" in the "time_wrapper"
+    def time_wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = fn(*args, **kwargs)
+        end = time.perf_counter()
+        time_taken = end - start
+        print(f"{fn.__name__} Time taken :{time_taken:.4f} seconds")
+        return result
+    return time_wrapper
+
+@log
+@record_time
+def do_something(no_times):
+    for _ in range(no_times):
+        sum([i ** 2 for i in range(10000)])
+
+do_something(1000)
