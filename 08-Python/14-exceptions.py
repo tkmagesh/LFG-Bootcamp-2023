@@ -29,13 +29,13 @@ def do_something():
 divisor = 7
 try:
     result = divide(100,divisor)
-    # print("abc" / 5)
+    # print("abc" * 5)
     do_something()
-except ZeroDivisionError:
+except ZeroDivisionError: #catch ZeroDivisionError exception
     print("do not attempt to divide by 0")
-except MyCustomError:
+except MyCustomError: #catch MyCustomError exception
     print("our custom exception was raised")
-except:
+except: # catch unknown exceptions
     print("something went wrong")
 else:
     print(f"result = {result}")
