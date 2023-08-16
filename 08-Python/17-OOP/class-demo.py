@@ -5,9 +5,19 @@ class Employee:
     instance_count = 0
     
     # a static method - accessible using the the 'class' reference itself
+    # any logic related to the Employee type but NOT specific to any instance of Employee
     @staticmethod
     def get_type():
         return type(Employee)
+    
+    """ 
+        from_dict() method usage
+        emp_dict = { "id" : 100, "firstName" : "Magesh", "lastName" : "Kuppan" }
+        e = Employee.from_dict(emp_dict)
+    """
+    @staticmethod
+    def from_dict(data_dict):
+        return Employee(data_dict["id"], data_dict["firstName"], data_dict["lastName"])
     
     # constructor method that gets invoked whenever a new instance of Employee is created
     
