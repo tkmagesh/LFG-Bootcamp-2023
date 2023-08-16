@@ -1,6 +1,14 @@
 
 class Employee:
     
+    # attribute shared by all the instances of the class
+    instance_count = 0
+    
+    # a static method - accessible using the the 'class' reference itself
+    @staticmethod
+    def get_type():
+        return type(Employee)
+    
     # constructor method that gets invoked whenever a new instance of Employee is created
     
     #first_name & last_name are hardcoded
@@ -22,10 +30,13 @@ class Employee:
     #first_name & last_name can be passed by the user, and optional.
     # __init__ is invoked whenever a new instance of this class is created
     def __init__(self, id, fName="", lName=""): # self => reference of the newly created object
-        print("A new employee instance is being created")
+        
+        #track the number of instances created
+        Employee.instance_count += 1
+        
         # prefixing the attribute with "_" is a CONVENTION to denote that it is a private attribute
         self._id = id 
-        self._first_name = fName
+        self.firstName = fName
         self._last_name = lName 
         self.days_worked = 0
     
@@ -38,7 +49,7 @@ class Employee:
     # "f{obj!r}"
     # use the repr()
     def __repr__(self):
-        return f"firstName = {self.first_name}, lastName = {self.last_name}, daysWorked = {self.days_worked}"
+        return f"firstName = {self.firstName}, lastName = {self.lastName}, daysWorked = {self.days_worked}"
     
     def mark_attendance(self):
         self.days_worked += 1
@@ -57,10 +68,17 @@ class Employee:
     
     @firstName.setter
     def firstName(self, value):
-        print("firstname setter invoked")
+        if value == "":
+            raise Exception()
         self._first_name = value
-        
-"""         
-When an Employee object is created
-Ensure that the firstName and lastName are not empty strings 
-"""
+    
+    # getter & setter for "lastName"
+    @property
+    def lastName(self):
+        return self._last_name
+    
+    @lastName.setter
+    def lastName(self, value):
+        if value == "":
+            raise Exception()
+        self._last_name = value
