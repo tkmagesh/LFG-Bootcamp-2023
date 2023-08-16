@@ -49,7 +49,6 @@ def load_operations():
     operations['7'] = {'menu' : 'Check Even', 'operation': lambda: do_operation(is_even)}
     operations['8'] = {'menu' : 'Check Odd', 'operation': lambda: do_operation(is_odd)} 
     operations['9'] = {'menu' : 'Multi Add', 'operation': lambda: do_operation(multi_add)} 
-   
     operations['10'] = {'menu' :'Exit', 'operation' : op_exit}
 
 def get_user_choice():
