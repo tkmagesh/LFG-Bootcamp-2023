@@ -100,7 +100,7 @@ class FullTimeEmployee(Employee):
         self.benefits = benefits
 
     def __repr__(self):
-        return f"FullTimeEmployee({self.id}, '{self.firstName}', '{self.lastName}'m'{self.benefits}')"
+        return f"FullTimeEmployee({self.id}, '{self.firstName}', '{self.lastName}', '{self.benefits}')"
     
     def __str__(self):
         return f"{super().__str__()}, benefits={self.benefits}"
