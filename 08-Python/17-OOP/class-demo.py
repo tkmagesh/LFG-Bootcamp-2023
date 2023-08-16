@@ -59,7 +59,7 @@ class Employee:
     # "f{obj!r}"
     # use the repr()
     def __repr__(self):
-        return f"firstName = {self.firstName}, lastName = {self.lastName}, daysWorked = {self.days_worked}"
+        return f"Employee({self.id}, '{self.firstName}', '{self.lastName}')"
     
     def mark_attendance(self):
         self.days_worked += 1
@@ -92,3 +92,6 @@ class Employee:
         if value == "":
             raise Exception()
         self._last_name = value
+
+
+
