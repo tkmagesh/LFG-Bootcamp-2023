@@ -129,7 +129,7 @@ In Roman numerals 1990 is MCMXC:
 - Powershell
     - <venv>\Scripts\Activate.ps1
 - CMD
-    - <venv>\Scripts\activate.bat
+    - .venv\Scripts\activate.bat
 
 ### To deactivate
 - deactivate
