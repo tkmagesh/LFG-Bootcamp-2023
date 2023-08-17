@@ -120,3 +120,16 @@ In Roman numerals 1990 is MCMXC:
 2000=MM 8=VIII
 
 ```
+
+## Virtual Environment ##
+### To create
+- python -m venv .venv
+
+### To activate the virtual environment
+- Powershell
+    - <venv>\Scripts\Activate.ps1
+- CMD
+    - <venv>\Scripts\activate.bat
+
+### To deactivate
+- deactivate
