@@ -33,4 +33,27 @@ def post_index():
     data = {"req-method" : "POST", "name" : "Magesh"}
     return jsonify(data)
 
+# how to handling the request payload
+@app.route("/greet", methods=["POST"])
+def greet():
+    # expected request payload = {"name" : "magesh"}
+    # response = { "message" : "Hi magesh, Have a nice day!"}
+    req_payload = request.get_json() # req_payload -> a dictionary with the data
+    res_payload = { "message" : f"Hi {req_payload['name']}, Have a nice day!"}
+    return jsonify(res_payload)
+
+# how to handle route params
+# req url example : http://localhost:8080/greet/magesh
+
+@app.route('/greet/<string:username>', methods=['GET'])
+def param_greet(username): 
+    res_payload = { "message" : f"Hi {username}, Have a nice day!"}
+    return jsonify(res_payload)
+
+@app.route("/bugs/<int:id>/<string:name>", methods=["GET"])
+def get_Bug_By_Id(id, name):
+    print(id, name)
+    return "thank you"
+    
+
 app.run(port=8080, debug=True)
