@@ -20,12 +20,12 @@ _project_parser.add_argument('created_at',
 
 class Project(Resource):
 
-    # @jwt_required()
+    @jwt_required()
     def get(self, id):
         project_from_db = ProjectModel.get_by_id(id)  # data from db
         return jsonify(project_from_db.to_json())
 
-    # @jwt_required()
+    @jwt_required()
     def put(self, id):
         project_to_update = _project_parser.parse_args()  # data from user (postman)
         project_from_db = ProjectModel.get_by_id(id)  # data from db
@@ -36,7 +36,7 @@ class Project(Resource):
         project_from_db.save()  # save the data back to the db
         return jsonify(project_from_db.to_json())
 
-    # @jwt_required()
+    @jwt_required()
     def delete(self, id):
         #get the user info from the claim
         """ 

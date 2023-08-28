@@ -23,7 +23,7 @@ jwt = JWTManager(app)
 
 @jwt.additional_claims_loader
 def add_claims_to_jwt(identity):
-    if identity == 1:
+    if identity["is_admin"] == True:
         return { 'is_admin' : True }
     return { 'is_admin' : False }
 
@@ -35,12 +35,14 @@ def invalid_token_callback(error):
     }), 401
 
 #customizing the standard error when no token in the request
+
 @jwt.unauthorized_loader
 def missing_token_callback(error):
     return jsonify({
         'description' : 'Request does not contain an access token',
         'error' : 'authorizatin_required'
-    }), 401
+    }), 401 
+
 
 
 

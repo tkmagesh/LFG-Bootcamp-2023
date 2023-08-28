@@ -23,7 +23,7 @@ class UserLogin(Resource):
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user and user.password == data['password']:
-            access_token = create_access_token(identity=user.id, fresh=True)
+            access_token = create_access_token(identity={"username" : user.username, "is_admin" : True }, fresh=True)
             return { 'access_token' : access_token }
 
         return {'message' : 'Invalid Credentials'}, 401

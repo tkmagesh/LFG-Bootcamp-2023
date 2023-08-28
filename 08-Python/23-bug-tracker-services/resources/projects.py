@@ -23,7 +23,7 @@ new_project_parser.add_argument('start_date',
 
 class Projects(Resource):
 
-    # @jwt_required()
+    @jwt_required()
     def get(self):  # <- will be invoked when a GET request is made for '/bugs'
         """ 
         identity = get_jwt_identity()
@@ -32,7 +32,7 @@ class Projects(Resource):
         
         return jsonify([project.to_json() for project in ProjectModel.get_all()])
 
-    # @jwt_required()
+    @jwt_required()
     def post(self):
         new_bug = new_project_parser.parse_args()
         new_bug_model = ProjectModel(**new_bug)
