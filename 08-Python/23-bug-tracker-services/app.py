@@ -9,6 +9,7 @@ from flask_jwt_extended import JWTManager
 from db import db
 
 app = Flask(__name__)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./bug-tracker.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

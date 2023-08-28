@@ -13,3 +13,4 @@ six==1.16.0
 SQLAlchemy==1.4.40
 Werkzeug==2.2.2
 zipp==3.8.1
+flask_jwt_extended==4.5.2

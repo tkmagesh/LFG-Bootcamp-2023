@@ -18,14 +18,16 @@ new_bug_parser.add_argument('is_closed',
 
 class Bugs(Resource):
 
-    @jwt_required()
+    # @jwt_required()
     def get(self):  # <- will be invoked when a GET request is made for '/bugs'
+        """ 
         identity = get_jwt_identity()
-        print(identity) # => user id
+        print(identity) # => user id 
+        """
         
         return jsonify([bug.to_json() for bug in BugModel.get_all()])
 
-    @jwt_required()
+    # @jwt_required()
     def post(self):
         new_bug = new_bug_parser.parse_args()
         #new_bug_model = BugModel(name = new_bug['name'], is_closed = new_bug['is_closed'])
