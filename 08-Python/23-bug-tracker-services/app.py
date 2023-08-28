@@ -3,6 +3,8 @@ from flask import Flask, jsonify
 from flask_restful import Api
 from resources.bugs import Bugs
 from resources.bug import Bug
+from resources.projects import Projects
+from resources.project import Project
 from resources.users import UserRegister, UserLogin
 from flask_jwt_extended import JWTManager
 
@@ -44,6 +46,8 @@ def missing_token_callback(error):
 
 api.add_resource(Bugs, '/bugs')
 api.add_resource(Bug, '/bugs/<int:id>')
+api.add_resource(Projects, '/projects')
+api.add_resource(Project, '/projects/<int:id>')
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
 
