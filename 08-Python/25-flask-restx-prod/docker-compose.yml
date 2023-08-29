@@ -9,7 +9,7 @@ services:
     volumes:
       - "./server:/usr/src"
     ports:
-      - 5000:5000
+      - 8000:5000
     environment:
       - APP_SETTINGS=app.config.DevelopmentConfig
       - DATABASE_URL=postgresql://postgres:postgres@api-db:5432/api_dev

@@ -1,7 +1,7 @@
-Flask==2.0.2
-Flask-Cors==3.0.10
-flask-restx==0.5.1
-Flask-SQLAlchemy==2.5.1
-gunicorn==20.1.0
+Flask==2.3.3
+Flask-Cors==4.0.0
+flask-restx==1.1.0
+gunicorn==21.2.0
+Flask-SQLAlchemy==3.0.2
 psycopg2-binary==2.8.6
-structlog==21.5.0
+structlog==23.1.0
