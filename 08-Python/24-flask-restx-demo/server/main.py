@@ -39,5 +39,5 @@ api.add_namespace(api_namespace, path="/api/v1")
             -- Resource
             
 to start the server
-gunicon -b 0.0.0.0:8000 server.main:app
+waitress-serve --listen=127.0.0.1:5000 server.main:app
 """
