@@ -133,3 +133,8 @@ In Roman numerals 1990 is MCMXC:
 
 ### To deactivate
 - deactivate
+
+- API documentation ?
+- ViewModel (OUPUT) ?
+- Namespacing APIs?
+- logging
