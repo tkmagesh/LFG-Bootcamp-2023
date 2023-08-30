@@ -34,6 +34,29 @@
 - docker build -t <image_name:tag> .
     - create a new image
 
-    
 
+
+
+- Volumes
+```
+docker build -t myubuntu .
+
+Create a container
+docker run -it -v demo_volume:/data myubuntu bash
+cd /data
+touch test.txt
+exit
+
+Create another container
+docker run -it -v demo_volume:/data myubuntu bash
+cd /data
+ls -l // => should see the test.txt file created earlier
+
+docker run -it -v "$(pwd)":/data  myubuntu bash
+```
+
+- Mount
+```
+docker run -it  --mount type=bind,source="$(pwd)",target=/code  myubuntu bash
+```
 

@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.5-labs
+##### syntax=docker/dockerfile:1.5-labs
 
 FROM ubuntu
 
@@ -10,7 +10,8 @@ WORKDIR /usr/magesh
 
 COPY ./notes.md .
 
-ADD https://github.com/tkmagesh/lfg-bootcamp-2023.git .
+# ADD https://github.com/tkmagesh/lfg-bootcamp-2023.git .
+# VOLUME [ "/data" ]
 
 # CMD - the commands to execute when the CONTAINER is created
 CMD [ "echo", "Hello World!" ]
