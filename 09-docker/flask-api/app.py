@@ -56,4 +56,4 @@ def get_Bug_By_Id(id, name):
     return "thank you"
     
 
-app.run(port=8080, debug=True)
+app.run(port=8080, debug=True, host="0.0.0.0")
