@@ -1,0 +1,12 @@
+Create a REST API using flask-restx for user registration (no authentication)
+    - Data validations
+        - email
+        - password & confirm password are the same
+        - etc
+Implement the functionality for "confirm email" as well
+
+(Optional)
+http://localhost/register
+Response:
+    the link (url) for confirming the registration
+    the user is considered to be "registered" only when the above url is visited
