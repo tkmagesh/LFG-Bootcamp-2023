@@ -39,7 +39,7 @@
 - Create an instance
 - Create a secondary volume
 - Attach the secondary volume to the instance
-- Mount the volume in the instance
+- Mount the volume in the instance (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html)
     - To list the volumes
         - > lsblk
     - To determine the filesystem in the volume
