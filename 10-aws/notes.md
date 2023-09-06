@@ -70,3 +70,12 @@
 - Storage Classes (tiers)
 - Host static websites
 - Even though a bucket is created in a specific region, one can access it from anywhere
+
+### AWS CLI - S3 ###
+- aws s3 ls
+- aws s3 ls s3://magesh-s3-website
+- aws s3 cp ./index.html s3://magesh-s3-website-original
+- aws s3 cp ./ s3://magesh-s3-website-original --recursive
+- aws s3 sync . s3://magesh-s3-website-original
+- aws s3 sync . s3://magesh-s3-website-original --delete 
+- aws s3 mb s3://magesh-test-cli-bucket
