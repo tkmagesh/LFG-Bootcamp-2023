@@ -56,3 +56,17 @@
 - Mount the volume in the new instance
 - Check for the existence of the file
 
+## IAM (Identity & Access Management) ##
+- User
+- Group
+- Policy (JSON)
+- Role (Assumed by an AWS Serviec eg EC2, S3 etc)
+
+## S3 (Simple Storage Service) (Managed Service) ##
+- Buckets (synonymous to folders)
+- Objects (files)
+- Versioned
+- Replicated across regions
+- Storage Classes (tiers)
+- Host static websites
+- Even though a bucket is created in a specific region, one can access it from anywhere
