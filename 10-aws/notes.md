@@ -79,3 +79,5 @@
 - aws s3 sync . s3://magesh-s3-website-original
 - aws s3 sync . s3://magesh-s3-website-original --delete 
 - aws s3 mb s3://magesh-test-cli-bucket
+
+## CloudFront ##
