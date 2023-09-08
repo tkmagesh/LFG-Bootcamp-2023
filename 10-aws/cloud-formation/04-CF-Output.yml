@@ -1,0 +1,75 @@
+# Parameterise the instance types (t2.micro, t2.nano, t2.small)
+
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  CFAvailabilityZone:
+    Description: Select the AZ
+    Type: String
+    Default: ap-south-1a
+    AllowedValues:
+      - ap-south-1a
+      - ap-south-1b
+      - ap-south-1c
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+  CFKeyName:
+    Description: Select the key name
+    Type: AWS::EC2::KeyPair::KeyName
+  CFInstanceType:
+    Description: Select the instance type
+    Type: String
+    Default: t2.nano
+    AllowedValues:
+      - t2.nano
+      - t2.micro
+      - t2.small
+Mappings:
+  ImageByRegionMap:
+    ap-south-1:
+      HVM64: ami-0700df939e7249d03
+    us-east-1:
+      HVM64: ami-0f409bae3775dc8e5
+
+Resources:
+  CFServiceInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: !FindInMap
+        - ImageByRegionMap
+        - !Ref 'AWS::Region'
+        - HVM64
+      InstanceType: 't2.small'
+      KeyName: !Ref CFKeyName
+      SecurityGroups:
+        - !Ref WebServerSecurityGroup
+      AvailabilityZone: !Ref CFAvailabilityZone
+  WebServerSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Security group for web server
+      SecurityGroupIngress:
+        - IpProtocol : tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol : tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+  WebServerElasticIp:
+    Type: 'AWS::EC2::EIP'
+    Properties:
+      InstanceId: !Ref CFServiceInstance
+
+Outputs:
+  WebServerInstanceId:
+    Description: The instance id of the web server
+    Value: !Ref CFServiceInstance
+  WebServerPublicDNSName:
+    Description: The dns name of the web server
+    Value: !GetAtt CFServiceInstance.PublicDnsName
+
+  
+
