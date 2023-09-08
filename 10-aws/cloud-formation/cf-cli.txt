@@ -1,0 +1,5 @@
+aws cloudformation create-stack --stack-name cf-cli-demo-2 --template-body file://04-CF-Output.yml --parameters ParameterKey=CFAvailabilityZone,ParameterValue=ap-south-1a ParameterKey=CFKeyName,ParameterValue=Magesh-Mumbai-kp ParameterKey=CFInstanceType,ParameterValue=t2.micro --region ap-south-1
+
+aws cloudformation delete-stack --stack-name cf-cli-demo --region ap-south-1
+
+aws cloudformation describe-stacks --stack-name cf-cli-demo-2 --region ap-south-1

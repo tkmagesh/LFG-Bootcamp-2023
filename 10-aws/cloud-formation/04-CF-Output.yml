@@ -70,6 +70,6 @@ Outputs:
   WebServerPublicDNSName:
     Description: The dns name of the web server
     Value: !GetAtt CFServiceInstance.PublicDnsName
-
+  
   
 
