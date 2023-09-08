@@ -1,0 +1,48 @@
+# Parameterise the instance types (t2.micro, t2.nano, t2.small)
+
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  CFAvailabilityZone:
+    Description: Select the AZ
+    Type: String
+    Default: ap-south-1a
+    AllowedValues:
+      - ap-south-1a
+      - ap-south-1b
+      - ap-south-1c
+  CFKeyName:
+    Description: Select the key name
+    Type: AWS::EC2::KeyPair::KeyName
+Resources:
+  CFServiceInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: 'ami-06f621d90fa29f6d0'
+      InstanceType: 't2.small'
+      KeyName: 'Magesh-Mumbai-kp-2'
+      SecurityGroups:
+        - !Ref WebServerSecurityGroup
+      AvailabilityZone: !Ref CFAvailabilityZone
+  WebServerSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Security group for web server
+      SecurityGroupIngress:
+        - IpProtocol : tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol : tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+  WebServerElasticIp:
+    Type: 'AWS::EC2::EIP'
+    Properties:
+      InstanceId: !Ref CFServiceInstance
+
+      
+
+  
+
