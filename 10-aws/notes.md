@@ -114,3 +114,6 @@ CREATE TABLE
 insert into users (firstname, lastname) values ('','')
 
 ```
+
+## Cloud Formation ##
+### Infrastructure as code (IaC) ###

@@ -4,4 +4,29 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties:
       ImageId: 'ami-06f621d90fa29f6d0'
-      InstanceType: 't2.micro'
+      InstanceType: 't2.small'
+      KeyName: 'Magesh-Mumbai-kp-2'
+      SecurityGroups:
+        - !Ref WebServerSecurityGroup
+  WebServerSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Security group for web server
+      SecurityGroupIngress:
+        - IpProtocol : tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol : tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+  WebServerElasticIp:
+    Type: 'AWS::EC2::EIP'
+    Properties:
+      InstanceId: !Ref CFServiceInstance
+
+      
+
+  
+
