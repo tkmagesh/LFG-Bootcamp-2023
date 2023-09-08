@@ -1,0 +1,8 @@
+Create an Angular application and deploy in S3 with a cloud front distribution
+Important:
+    Make sure that the S3 bucket is NOT publicly accessible
+
+Mail me the following
+    1. Cloud Front DNS
+    2. S3 bucket name
+    
