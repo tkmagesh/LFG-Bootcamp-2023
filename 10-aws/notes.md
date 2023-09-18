@@ -175,4 +175,17 @@ aws dynamodb scan --table-name projects_table --page-size=1
 
 aws dynamodb scan --table-name projects_table --max-items 1 --starting-token eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3VudCI6IDF9
 
+aws dynamodb put-item --table-name projects_table --item '{"project_name": { "S": "AWS Migration"},"created_at": { "S": "2023-09-08T09:15:40Z"},"project_id": { "N": "4"}}
+
+aws dynamodb update-item --table-name projects_table --key '{ "project_id" : { "N" : "2"}}' --update-expression "SET project_name = :data" --expression-attribute-values '{ ":data" : { "S" : "Server AWS Migration"}}'
+
+aws dynamodb delete-item --table-name projects_table --key '{"project_id" : {"N" : "2"}}'
 ```
+## Conditional Writes ##
+- attribute_exists
+- attribute_not_exists
+- attribute_type
+- contains
+- begins_with
+- In
+
