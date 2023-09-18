@@ -117,3 +117,62 @@ insert into users (firstname, lastname) values ('','')
 
 ## Cloud Formation ##
 ### Infrastructure as code (IaC) ###
+
+## Serverless 
+- DynamoDB
+- AWS Lambda
+- API Gateway
+- SQS
+- SNS
+- CloudWatch
+- S3
+
+### Framework
+- SAM
+
+## DynamoDB
+- Traditional Solution (RDBMS)
+    - SQL
+    - Schema First
+    - Aggregate, Joins, etc
+    - ONLY vertical scaling
+    - Horizontal scaling is only for Read Replicas (not for transactions)
+- NoSQL
+    - non-relational databases
+    - scale horizontally
+    - ex:
+        - Redis (key/value)
+        - MongoDB, CouchDB, RavenDB (document)
+        - Cassandra (column)
+        - Neo4j (graph)
+        - Hybrid
+    - No aggregations, Join, transactions
+- AWS DynamoDB
+    - Fully managed service
+    - High availability with replication across multiple AZs
+    - Distributed
+    - Schema-less
+    - Data is organized in terms of Tables
+    - Keys
+        - Primary key / Partition key (mandatory)
+        - Sort key (optional)
+    - Rows (also Items)
+    - Fields can be dynamic
+    - Cost? (Usage)
+        - Read Capacity Units
+        - Write Capacity Units
+    - Read Modes
+        - Eventual Consistent Read 
+        - Strongly Consistent Read (twice costly)
+```
+aws dynamodb scan --table-name projects_table
+
+aws dynamodb scan --table-name projects_table --projection-expression "project_id,project_name"
+
+aws dynamodb scan --table-name projects_table --filter-expression "project_id = :data" --expression-attribute-values '{ ":data" : { "N" : "2" }}'
+
+aws dynamodb scan --table-name projects_table --page-size=1
+
+aws dynamodb scan --table-name projects_table --max-items 1 --starting-token eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3VudCI6IDF9
+
+```
