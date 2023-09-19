@@ -189,3 +189,39 @@ aws dynamodb delete-item --table-name projects_table --key '{"project_id" : {"N"
 - begins_with
 - In
 
+## Reference 
+- https://dynobase.dev/dynamodb-cli-query-examples/
+
+## SQS (Simple Queue Service)
+- Managed Service
+- Enable asynchronous communication between application services
+- Unlimited throughput
+- Unlimited number of messages
+- 60 seconds to 14 days retention days (default = 4 days)
+- < 10ms on publish & receive
+- <= 256KB message size
+
+aws sqs receive-message --queue-url https://sqs.ap-south-1.amazonaws.com/535146832369/MageshTestQueue
+
+## AWS Lambda 
+- Function as a service (FaaS)
+- No need to take care any other infrastructure concerns (VMs)
+- Limited by time (short executions)
+- Run on-demand
+- Built-in scalability
+- Pay per request & compute time
+- 1,000,000 requests free / month
+- Can be integrated with other AWS services easily
+     - API Gateway
+     - S3
+     - SQS
+     - SNS
+     - other services
+- support for most popular languages
+    - can also bring your own runtime
+- Easy to get more resources (upto 10MB RAM)
+
+```
+aws lambda invoke --function-name first_lambda --cli-binary-format raw-in-base64-out --payload '{"message": "Hi there!"}' --region ap-south-1 response.json
+```
+
