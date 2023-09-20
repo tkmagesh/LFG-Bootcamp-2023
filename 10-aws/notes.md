@@ -222,6 +222,10 @@ aws sqs receive-message --queue-url https://sqs.ap-south-1.amazonaws.com/5351468
 - Easy to get more resources (upto 10MB RAM)
 
 ```
+synchronous invocation
 aws lambda invoke --function-name first_lambda --cli-binary-format raw-in-base64-out --payload '{"message": "Hi there!"}' --region ap-south-1 response.json
+
+asynchronous invocation
+aws lambda invoke --function-name first_lambda --invocation-type Event --cli-binary-format raw-in-base64-out --payload '{"message": "Hi there!"}' response.json
 ```
 
