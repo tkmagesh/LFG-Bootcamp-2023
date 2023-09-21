@@ -8,6 +8,9 @@ Globals:
   Function:
     Timeout: 3
     MemorySize: 128
+    Runtime: python3.9
+    Architectures:
+      - x86_64
     Environment:
       Variables:
         BUGS_TABLE: !Ref BugsTable
@@ -19,15 +22,17 @@ Resources:
       PrimaryKey:
         Name: id
         Type: Number
+        
+  BugsS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-${AWS::AccountId}-${AWS::Region}
 
   CreateBugFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: bugs_api/
       Handler: create.lambda_handler
-      Runtime: python3.9
-      Architectures:
-        - x86_64
       Events:
         CreateBug:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -43,9 +48,6 @@ Resources:
     Properties:
       CodeUri: bugs_api/
       Handler: read.lambda_handler
-      Runtime: python3.9
-      Architectures:
-        - x86_64
       Events:
         ReadBug:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -55,6 +57,22 @@ Resources:
       Policies:
         - DynamoDBReadPolicy:
             TableName: !Ref BugsTable
+  
+  BatchProcessFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: bugs_api/
+      Handler: batch.lambda_handler
+      Events:
+        BugDataFileEvent:
+          Type: S3
+          Properties:
+            Bucket: !Ref BugsS3Bucket
+            Events: s3:ObjectCreated:*
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Sub ${AWS::StackName}-${AWS::AccountId}-${AWS::Region}
+      
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
