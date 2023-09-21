@@ -27,6 +27,10 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub ${AWS::StackName}-${AWS::AccountId}-${AWS::Region}
+  
+  BugCreateTopic:
+    Type: AWS::SNS::Topic
+
 
   CreateBugFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -72,6 +76,12 @@ Resources:
       Policies:
         - S3ReadPolicy:
             BucketName: !Sub ${AWS::StackName}-${AWS::AccountId}-${AWS::Region}
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt BugCreateTopic.TopicName
+      Environment:
+        Variables:
+          BUG_CREATE_TOPIC: !Ref BugCreateTopic
+
       
 
 Outputs:
