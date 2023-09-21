@@ -81,7 +81,17 @@ Resources:
       Environment:
         Variables:
           BUG_CREATE_TOPIC: !Ref BugCreateTopic
-
+    
+  ProcessBugFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: bugs_api/
+      Handler: process.lambda_handler
+      Events:
+        BugCreateTopicEvent:
+          Type: SNS
+          Properties:
+            Topic: !Ref BugCreateTopic
       
 
 Outputs:
