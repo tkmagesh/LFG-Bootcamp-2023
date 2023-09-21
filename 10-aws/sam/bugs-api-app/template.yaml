@@ -58,8 +58,8 @@ Resources:
           Properties:
             Path: /bugs/{id}
             Method: get
-#            Auth:
-#              ApiKeyRequired: true
+            Auth:
+              ApiKeyRequired: true
       Policies:
         - DynamoDBReadPolicy:
             TableName: !Ref BugsTable
