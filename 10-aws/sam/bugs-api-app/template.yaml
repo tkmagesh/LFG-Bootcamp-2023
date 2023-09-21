@@ -58,6 +58,8 @@ Resources:
           Properties:
             Path: /bugs/{id}
             Method: get
+#            Auth:
+#              ApiKeyRequired: true
       Policies:
         - DynamoDBReadPolicy:
             TableName: !Ref BugsTable
@@ -92,6 +94,9 @@ Resources:
           Type: SNS
           Properties:
             Topic: !Ref BugCreateTopic
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BugsTable
       
 
 Outputs:
