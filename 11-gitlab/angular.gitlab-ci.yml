@@ -1,0 +1,28 @@
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - build
+  - deploy
+
+build-job:
+  image: node:latest
+  stage: build
+  before_script:
+     - npm install
+  script:
+    - ./node_modules/.bin/ng build
+  artifacts:
+    paths:
+      - dist/
+
+deploy-job:
+  image: python:latest
+  stage: deploy
+  before_script:
+    - pip install awscli
+  script:
+    - cd dist/angular-ci-demo
+    - ls -al
+    - aws s3 cp ./ s3://magesh-angular-gitlab-app --recursive
